@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom"
-import ClubList from "./"
+import ClubList from "../components/ClubList/ClubList"
+
 
 const AppRoutes = () => {
 
     return (
         <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
+            {/* <Route path="/" /> */}
 
             {/* <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} /> */}
@@ -32,5 +33,6 @@ const AppRoutes = () => {
         </Routes>
     )
 }
+
 
 export default AppRoutes
