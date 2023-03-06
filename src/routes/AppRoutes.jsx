@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import ClubList from "./"
+
 
 const AppRoutes = () => {
 
@@ -12,7 +12,7 @@ const AppRoutes = () => {
             {/* <Route path="/profile" element={<HomePage />} />
             <Route path="/profile/:user_id" element={<HomePage />} /> */}
 
-            <Route path="/clubs" element={<ClubList />} />
+            {/* <Route path="/clubs" element={<ClubList />} /> */}
             {/* <Route path="/clubs/create" element={<ClubForm />} /> */}
             {/* <Route path="/clubs/:club_id" element={<HomePage />} />
             <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
