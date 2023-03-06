@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Navigation />
       <h1>Testing site</h1>
-
+      <AppRoutes />
       <Footer />
     </div >
   )
