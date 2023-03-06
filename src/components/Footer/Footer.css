@@ -1,0 +1,17 @@
+img {
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 8px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 0.6em;
+}
+
+footer img {
+    width: 80px;
+}
