@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react"
 import { Container, Modal, Button } from "react-bootstrap"
 import ClubList from "../../components/ClubList/ClubList"
