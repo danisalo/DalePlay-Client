@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './Navigation.css'
 
 
@@ -14,13 +15,20 @@ const Navigation = () => {
                             className="DalePlayLogo"
                         />
                     </Navbar.Brand >
-                    <Nav.Link href="/">Inicio</Nav.Link>
-                    <Nav.Link href="/">Ver Clubs</Nav.Link>
-                    <Nav.Link href="/">Ver Partidas</Nav.Link>
+                    <Link to="/">
+                        <Nav.Link as="span">Inicio</Nav.Link>
+                    </Link>
+                    <Link to="/clubs">
+                        <Nav.Link as="span">Ver Clubs</Nav.Link>
+                    </Link>
+                    <Link to="/">
+                        <Nav.Link as="span">Ver Partidas</Nav.Link>
+                    </Link>
                 </Nav >
                 <Nav>
                     <Nav.Link href="/">Crear Cuenta</Nav.Link>
                     <Nav.Link href="/">Iniciar Sesión</Nav.Link>
+                    <Nav.Link href="/">Mi Perfil</Nav.Link>
                     <Nav.Link href="/">Cerrar Sesión</Nav.Link>
                 </Nav>
             </Container >

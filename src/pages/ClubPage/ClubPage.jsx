@@ -1,6 +1,8 @@
-import { useContext, useEffect, useState } from "react"
-import { Container, Modal, Button } from "react-bootstrap"
+// import { useContext, useEffect, useState } from "react"
+import { Container } from "react-bootstrap"
 import ClubList from "../../components/ClubList/ClubList"
+import './ClubPage.css'
+
 
 
 const ClubListPage = () => {
@@ -10,7 +12,7 @@ const ClubListPage = () => {
             <Container>
                 <h1>Listado de Clubs</h1>
                 <hr />
-                <ClubList clubs={clubs} />
+                <ClubList /*clubs={clubs}*/ />
             </Container>
         </>
     )
