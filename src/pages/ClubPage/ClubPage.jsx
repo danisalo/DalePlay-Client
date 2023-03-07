@@ -4,7 +4,6 @@ import ClubList from "../../components/ClubList/ClubList"
 import './ClubPage.css'
 
 
-
 const ClubListPage = () => {
 
     return (
@@ -17,5 +16,6 @@ const ClubListPage = () => {
         </>
     )
 }
+
 
 export default ClubListPage
