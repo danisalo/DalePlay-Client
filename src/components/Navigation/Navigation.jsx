@@ -29,8 +29,10 @@ const Navigation = () => {
                     <Nav.Link href="/">Crear Cuenta</Nav.Link>
                     <Nav.Link href="/">Iniciar Sesión</Nav.Link>
                     <Nav.Link href="/">Mi Perfil</Nav.Link>
+                    <Nav.Link href="/registro">Crear Cuenta</Nav.Link>
+                    <Nav.Link href="/iniciar-sesion">Iniciar Sesión</Nav.Link>
                     <Nav.Link href="/">Cerrar Sesión</Nav.Link>
-                </Nav>
+                </Nav >
             </Container >
         </Navbar >
     )
