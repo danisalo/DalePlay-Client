@@ -1,13 +1,15 @@
 import { Route, Routes } from "react-router-dom"
-import ClubList from "../components/ClubList/ClubList"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import RegisterPage from "../pages/RegisterPage/RegisterPage"
+import HomePage from "../pages/HomePage/HomePage"
+import ClubPage from "../pages/ClubPage/ClubPage"
 
 
 const AppRoutes = () => {
 
     return (
         <Routes>
+
             <Route path="/" element={<HomePage />} />
 
             <Route path="/registro" element={<RegisterPage />} />
@@ -15,7 +17,7 @@ const AppRoutes = () => {
             {/* <Route path="/profile" element={<HomePage />} />
             <Route path="/profile/:user_id" element={<HomePage />} /> */}
 
-            <Route path="/clubs" element={<ClubListPage />} />
+            <Route path="/clubs" element={<ClubPage />} />
             {/* <Route path="/clubs/create" element={<ClubForm />} /> */}
             {/* <Route path="/clubs/:club_id" element={<HomePage />} />
             <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
