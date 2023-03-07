@@ -1,5 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap"
 import RegisterForm from "../../components/RegsiterForm/RegsiterForm"
+import './RegisterPage.css'
+
 
 const RegisterPage = () => {
 
@@ -17,5 +19,6 @@ const RegisterPage = () => {
         </Container>
     )
 }
+
 
 export default RegisterPage

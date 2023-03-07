@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap"
 import LoginForm from "../../components/LoginForm/LoginForm"
+import './LoginPage.css'
 
 
 const LoginPage = () => {
@@ -8,13 +9,13 @@ const LoginPage = () => {
         <Container>
             <Row>
                 <Col>
-                    <h1>Inicio de sesión</h1>
-
+                    <h1>Inicia sesión</h1>
                     <LoginForm />
                 </Col>
             </Row>
         </Container>
     )
 }
+
 
 export default LoginPage

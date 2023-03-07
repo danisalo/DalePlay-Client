@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { Container, Row, Form, Button } from "react-bootstrap"
+import './CreateClubPage.css'
 
-function BasicExample() {
+
+const CreateClubPage = () => {
+
     return (
         <Container>
             <Form>
@@ -34,4 +37,5 @@ function BasicExample() {
     )
 }
 
-export default BasicExample
+
+export default CreateClubPage
