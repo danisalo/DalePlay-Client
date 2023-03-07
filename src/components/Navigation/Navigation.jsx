@@ -1,9 +1,14 @@
+import { useContext } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../contexts/auth.context'
 import './Navigation.css'
 
 
 const Navigation = () => {
+
+    const { user, logout } = useContext(AuthContext)
+
     return (
         <Navbar bg='light' expand='lg'>
             <Container fluid>
@@ -25,12 +30,25 @@ const Navigation = () => {
                         <Nav.Link as="span">Ver Partidas</Nav.Link>
                     </Link>
                 </Nav >
-                <Nav>
-                    <Nav.Link href="/registro">Crear Cuenta</Nav.Link>
-                    <Nav.Link href="/iniciar-sesion">Iniciar Sesión</Nav.Link>
-                    <Nav.Link href="/">Mi Perfil</Nav.Link>
-                    <Nav.Link href="/">Cerrar Sesión</Nav.Link>
-                </Nav >
+                {
+                    user
+                        ?
+                        <>
+                            <Link to="/perfil">
+                                <Nav.Link as="span">Mi Perfil</Nav.Link>
+                            </Link>
+                            <Nav.Link as="span" onClick={logout}>Cerrar sesión</Nav.Link>
+                        </>
+                        :
+                        <>
+                            <Link to="/iniciar-sesion">
+                                <Nav.Link as="span">Iniciar sesión</Nav.Link>
+                            </Link>
+                            <Link to="/registro">
+                                <Nav.Link as="span">Registrarme</Nav.Link>
+                            </Link>
+                        </>
+                }
             </Container >
         </Navbar >
     )
