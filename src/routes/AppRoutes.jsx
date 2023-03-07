@@ -1,15 +1,17 @@
 import { Route, Routes } from "react-router-dom"
 import ClubList from "../components/ClubList/ClubList"
+import LoginPage from "../pages/LoginPage/LoginPage"
+import RegisterPage from "../pages/RegisterPage/RegisterPage"
 
 
 const AppRoutes = () => {
 
     return (
         <Routes>
-            {/* <Route path="/" /> */}
+            <Route path="/" />
 
-            {/* <Route path="/register" element={<RegisterForm />} />
-            <Route path="/login" element={<LoginForm />} /> */}
+            <Route path="/registro" element={<RegisterPage />} />
+            <Route path="/iniciar-sesion" element={<LoginPage />} />
             {/* <Route path="/profile" element={<HomePage />} />
             <Route path="/profile/:user_id" element={<HomePage />} /> */}
 

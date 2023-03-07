@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav } from 'react-bootstrap'
+
 import './Navigation.css'
 
 
@@ -19,8 +20,8 @@ const Navigation = () => {
                     <Nav.Link href="/">Ver Partidas</Nav.Link>
                 </Nav >
                 <Nav>
-                    <Nav.Link href="/">Crear Cuenta</Nav.Link>
-                    <Nav.Link href="/">Iniciar Sesión</Nav.Link>
+                    <Nav.Link href="/registro">Crear Cuenta</Nav.Link>
+                    <Nav.Link href="/iniciar-sesion">Iniciar Sesión</Nav.Link>
                     <Nav.Link href="/">Cerrar Sesión</Nav.Link>
                 </Nav>
             </Container >

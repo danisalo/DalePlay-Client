@@ -8,7 +8,7 @@ class AuthService {
         })
     }
 
-    signup(userData) {
+    register(userData) {
         return this.api.post('/register', userData)
     }
 
