@@ -1,5 +1,6 @@
 import { Row, Col } from "react-bootstrap"
 import ClubCard from "../ClubCard/ClubCard"
+import './ClubList.css'
 
 const ClubList = ({ clubs }) => {
     return (

@@ -4,14 +4,21 @@ img {
 
 footer {
     text-align: center;
-    padding: 8px;
-    position: fixed;
+    padding: 24px;
     bottom: 0;
     left: 0;
     width: 100%;
-    font-size: 0.6em;
+    background-color: rgb(69, 69, 69);
+    color: white;
 }
 
 footer img {
     width: 80px;
+}
+
+.copyright,
+p {
+    text-align: center;
+    font-size: 18px;
+    padding: 4px 0 16px 0;
 }

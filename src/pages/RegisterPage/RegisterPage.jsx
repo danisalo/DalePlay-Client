@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap"
-import RegisterForm from "../../components/RegsiterForm/RegsiterForm"
+import RegisterForm from "../../pages/RegisterPage/RegisterPage"
 import './RegisterPage.css'
 
 

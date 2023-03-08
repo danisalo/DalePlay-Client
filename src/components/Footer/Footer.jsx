@@ -1,22 +1,29 @@
+import { Link } from 'react-router-dom'
+
 import './Footer.css'
 
+
 const Footer = () => {
-    const footerStyle = {
-        backgroundColor: 'light',
-        color: 'light'
-    }
+
     return (
-        <footer style={footerStyle}>
+        <footer className='mt-4'>
             <div>
-                <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
-                <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
-                <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
+                <Link>
+                    <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
+                </Link>
+                <Link>
+                    <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
+                </Link>
+                <Link>
+                    <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
+                </Link>
+            </div >
+            <div className='mt-2 copyright'>
+                <p className='mt-2 copyright'>© Dale Play 2200</p>
             </div>
-            <div>
-                <p>© Dale Play 2200</p>
-            </div>
-        </footer>
+        </footer >
     )
 }
+
 
 export default Footer

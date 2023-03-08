@@ -6,7 +6,7 @@ import './ClubPage.css'
 import clubServices from '../../services/club.services'
 
 
-const ClubListPage = () => {
+const ClubPage = () => {
 
 
     const [clubs, setClubs] = useState([])
@@ -50,4 +50,4 @@ const ClubListPage = () => {
 }
 
 
-export default ClubListPage
+export default ClubPage
