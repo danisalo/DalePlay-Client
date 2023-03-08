@@ -1,12 +1,31 @@
-import { Row } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 import ClubCard from "../ClubCard/ClubCard"
+import './ClubList.css'
 
-const ClubList = () => {
+
+const ClubList = ({ clubs }) => {
     return (
         <Row>
-            <h1>Esto es ClubList</h1>
-            {/*  CLUB CARDS MAP */}
-            <ClubCard />
+            <Col md={{ span: 3 }} >
+                <ClubCard />
+            </Col>
+            <Col md={{ span: 3 }} >
+                <ClubCard />
+            </Col>
+            <Col md={{ span: 3 }} >
+                <ClubCard />
+            </Col>
+            <Col md={{ span: 3 }} >
+                <ClubCard />
+            </Col>
+
+            {/* {clubs.map(elm => {
+                return (
+                    <Col md={{ span: 3 }} key={elm._id}>
+                        <ClubCard {...elm} />
+                    </Col>
+                )
+            })} */}
         </Row>
     )
 }

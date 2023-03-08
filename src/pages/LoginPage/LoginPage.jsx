@@ -7,10 +7,12 @@ const LoginPage = () => {
 
     return (
         <Container>
-            <Row>
-                <Col>
+            <Row className="mt-4">
+                <Col md={{ span: 8, offset: 2 }}>
                     <h1>Inicia sesión</h1>
-                    <LoginForm />
+                    <div className="loginForm">
+                        <LoginForm />
+                    </div>
                 </Col>
             </Row>
         </Container>

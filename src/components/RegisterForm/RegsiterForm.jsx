@@ -3,6 +3,9 @@ import { Button, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import authService from "../../services/auth.services"
 
+import './RegisterForm.css'
+
+
 const RegisterForm = () => {
 
     const [registerData, SetRegisterData] = useState({

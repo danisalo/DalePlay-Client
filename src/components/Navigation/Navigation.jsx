@@ -10,7 +10,7 @@ const Navigation = () => {
     const { user, logout } = useContext(AuthContext)
 
     return (
-        <Navbar bg='light' expand='lg'>
+        <Navbar className='navbar' bg='light' expand='lg'>
             <Container fluid>
                 <Nav>
                     <Navbar.Brand href="/">

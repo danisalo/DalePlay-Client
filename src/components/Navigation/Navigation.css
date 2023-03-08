@@ -5,3 +5,12 @@ img {
 .DalePlayLogo {
     height: 24px;
 }
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+}

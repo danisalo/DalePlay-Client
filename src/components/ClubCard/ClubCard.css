@@ -1,0 +1,29 @@
+.blackOps {
+    font-family: 'Black Ops One', sans-serif;
+}
+
+.ClubCard {
+    text-decoration: none;
+    color: black;
+}
+
+.ClubCard:hover {
+    background-color: #fffcca;
+}
+
+h3 {
+    text-align: center;
+    font-size: 32px;
+    line-height: 24px;
+}
+
+p {
+    text-align: left;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.ubi {
+    color: rgb(48, 48, 255);
+    text-decoration: underline;
+}
