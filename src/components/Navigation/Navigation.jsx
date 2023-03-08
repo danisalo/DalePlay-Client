@@ -26,8 +26,14 @@ const Navigation = () => {
                     <Link to="/clubs">
                         <Nav.Link as="span">Ver Clubs</Nav.Link>
                     </Link>
-                    <Link to="/">
+                    <Link to="/partidas">
                         <Nav.Link as="span">Ver Partidas</Nav.Link>
+                    </Link>
+                    <Link to="/crear-partida">
+                        <Nav.Link as="span">Crear Partidas</Nav.Link>
+                    </Link>
+                    <Link to="/crear-club">
+                        <Nav.Link as="span">Crear Clubs</Nav.Link>
                     </Link>
                 </Nav >
                 {

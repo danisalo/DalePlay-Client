@@ -1,47 +1,46 @@
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
-import ClubList from "../../components/ClubList/ClubList"
+import EventsList from "../../components/EventList/EventList"
 import Loader from "../../components/Loader/Loader"
-import './ClubPage.css'
-import clubServices from '../../services/club.services'
+import './EventsPage.css'
+import eventsServices from "../../services/events.services"
 
 
-const ClubListPage = () => {
+const EventsPage = () => {
 
-
-    const [clubs, setClubs] = useState([])
+    const [events, setEvents] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => { loadClub() }, [])
+    useEffect(() => { loadEvents() }, [])
 
-    const loadClub = () => {
+    const loadEvents = () => {
 
-        clubServices
-            .getClubs()
+        eventsServices
+            .getEvents()
             .then(({ data }) => {
-                setClubs(data)
+                setEvents(data)
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
 
     const fireFinalActions = () => {
-        loadClub()
+        loadEvents()
     }
+
 
     return (
         <>
             <Container>
-
                 {
                     isLoading
                         ?
                         <Loader />
                         :
                         <>
-                            <h1>Listado de Clubs</h1>
+                            <h1>Partida Activas</h1>
                             <hr />
-                            <ClubList clubs={clubs} />
+                            <EventsList events={events} />
                         </>
                 }
             </Container>
@@ -50,4 +49,4 @@ const ClubListPage = () => {
 }
 
 
-export default ClubListPage
+export default EventsPage

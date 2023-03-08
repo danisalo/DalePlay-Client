@@ -12,7 +12,7 @@ import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
 import FieldPage from "../pages/FieldPage/FieldPage"
 import CreateFieldPage from "../pages/CreateFieldPage/CreateFieldPage"
 
-import EventPage from "../pages/EventPage/EventPage"
+import EventsPage from "../pages/EventsPage/EventsPage"
 import CreateEventPage from "../pages/CreateEventPage/CreateEventPage"
 
 
@@ -29,7 +29,7 @@ const AppRoutes = () => {
             {/* <Route path="/profile/:user_id" element={<UserProfilePage />} /> */}
 
             <Route path="/clubs" element={<ClubPage />} />
-            <Route path="/clubs/create" element={<CreateClubPage />} />
+            <Route path="/crear-club" element={<CreateClubPage />} />
             {/* <Route path="/clubs/:club_id" element={<HomePage />} /> */}
             {/* <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
 
@@ -38,8 +38,8 @@ const AppRoutes = () => {
             {/* <Route path="/field/:field_id" element={<HomePage />} /> */}
             {/* <Route path="/field/edit/:field_id" element={<HomePage />} /> */}
 
-            <Route path="/events" element={<EventPage />} />
-            <Route path="/events/create" element={<CreateEventPage />} />
+            <Route path="/partidas" element={<EventsPage />} />
+            <Route path="/crear-partida" element={<CreateEventPage />} />
             {/* <Route path="/events/:event_id" element={<HomePage />} /> */}
             {/* <Route path="/events/cancel/:event_id" element={<HomePage />} /> */}
 

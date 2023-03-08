@@ -1,18 +1,15 @@
 import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 
 
-
-const ClubCard = ({ DATA }) => {
+const ClubCard = ({ name, description, location, imageUrl, fields }) => {
     return (
         <Card>
-            <Card.Img variant="top" src="https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg" />
+            <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
-                <Card.Title>Nombre Hardcodeado</Card.Title>
-                <Card.Text>
-                    Está sería la descripción de la unidad deportiva... SI TUVIERAMOS ALGUNA
-                </Card.Text>
-                <Button fluid variant="dark">Go somewhere</Button>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>{description}</Card.Text>
+                <Card.Text>{location}</Card.Text>
+                <Button fluid variant="dark" href='/field/create'>Añadir Cancha Deportiva</Button>
             </Card.Body>
         </Card>
     )
