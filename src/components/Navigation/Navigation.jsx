@@ -1,5 +1,5 @@
-import { useContext } from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { useContext, useState } from 'react'
+import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import './Navigation.css'
@@ -8,10 +8,11 @@ import './Navigation.css'
 const Navigation = () => {
 
     const { user, logout } = useContext(AuthContext)
+    const [showModal, setShowModal] = useState(false)
 
     return (
 
-        <Navbar className='mb-4' bg='light' expand="md">
+        <Navbar bg='light' expand="md">
             <Container fluid>
                 <Nav>
                     <Navbar.Brand href="/">

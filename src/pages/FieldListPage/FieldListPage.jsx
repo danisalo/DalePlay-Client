@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
 import fieldsServices from "../../services/field.services"
-import './FieldPage.css'
+import './FieldListPage.css'
 import Loader from "../../components/Loader/Loader"
 import FieldList from "../../components/FieldList/FieldList"
 
 
-const FieldPage = () => {
+const FieldListPage = () => {
 
     const [fields, setFields] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -49,4 +49,4 @@ const FieldPage = () => {
 }
 
 
-export default FieldPage
+export default FieldListPage

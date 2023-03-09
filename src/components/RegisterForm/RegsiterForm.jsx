@@ -24,7 +24,6 @@ const RegisterForm = () => {
     const handleFormSubmit = e => {
 
         e.preventDefault()
-
         authService
             .register(registerData)
             .then(() => navigate('/'))

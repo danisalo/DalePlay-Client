@@ -10,7 +10,7 @@ import ClubListPage from "../pages/ClubListPage/ClubListPage"
 import ClubDetailsPage from "../pages/ClubDetailsPage/ClubDetailsPage"
 import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
 
-import FieldPage from "../pages/FieldPage/FieldPage"
+import FieldListPage from "../pages/FieldListPage/FieldListPage"
 import CreateFieldPage from "../pages/CreateFieldPage/CreateFieldPage"
 
 import EventsPage from "../pages/EventsPage/EventsPage"
@@ -35,7 +35,7 @@ const AppRoutes = () => {
             <Route path="/clubs/:club_id" element={<ClubDetailsPage />} />
             {/* <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
 
-            <Route path="/canchas" element={<FieldPage />} />
+            <Route path="/canchas" element={<FieldListPage />} />
 
             {/* <Route path="/field/:field_id" element={<HomePage />} /> */}
             {/* <Route path="/field/edit/:field_id" element={<HomePage />} /> */}
