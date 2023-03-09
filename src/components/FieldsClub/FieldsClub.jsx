@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { Container } from 'react-bootstrap'
+import { Link, useParams } from 'react-router-dom'
 
-import fieldsServices from '../../services/field.services'
+import clubServices from '../../services/club.services'
 import Loader from "../Loader/Loader"
 
 import FieldList from '../FieldList/FieldList'
@@ -9,17 +10,19 @@ import FieldList from '../FieldList/FieldList'
 
 const FieldsClub = () => {
 
-    const [fields, setFields] = useState([])
+    const [club, setClub] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+
+    const { club_id } = useParams()
 
     useEffect(() => { loadField() }, [])
 
     const loadField = () => {
 
-        fieldsServices
-            .getFields()
+        clubServices
+            .getOne(club_id)
             .then(({ data }) => {
-                setFields(data)
+                setClub(data)
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
@@ -28,7 +31,6 @@ const FieldsClub = () => {
     const fireFinalActions = () => {
         loadField()
     }
-
 
     return (
         <Container>
@@ -39,7 +41,7 @@ const FieldsClub = () => {
                     :
                     <div >
                         <h2 className='mb-4'>Canchas disponibles</h2>
-                        <FieldList fields={fields} />
+                        <FieldList fields={club.fields} />
                     </div>
             }
         </Container>

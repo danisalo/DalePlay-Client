@@ -43,7 +43,7 @@ const AppRoutes = () => {
 
             < Route element={<PrivateRoute />} >
                 <Route path="/crear-club" element={<CreateClubPage />} />
-                <Route path="/crear-cancha" element={<CreateFieldPage />} />
+                <Route path="/:club_id/crear-cancha" element={<CreateFieldPage />} />
                 <Route path="/crear-partida" element={<CreateEventPage />} />
                 <Route path="/profile" element={<MyProfilePage />} />
             </Route>

@@ -4,10 +4,15 @@ import './FieldList.css'
 
 
 const FieldList = ({ fields }) => {
+
+    // FIND BY ID
+
+
     return (
         <Row>
             {
                 fields?.map(elm => {
+
                     return (
                         <Col md={{ span: 3 }} key={elm._id}>
                             <FieldCard {...elm} />

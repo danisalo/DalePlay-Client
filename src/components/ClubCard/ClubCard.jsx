@@ -16,9 +16,6 @@ const ClubCard = ({ _id, name, description, location, imageUrl }) => {
                     <Link to={`/clubs/${_id}`} className="d-grid">
                         <Button variant="dark">Ver Club</Button>
                     </Link>
-                    <Link to={`/crear-cancha`} className="d-grid">
-                        <Button variant="dark">Crear cancha</Button>
-                    </Link>
                 </Card.Body>
             </Card>
         </Link >

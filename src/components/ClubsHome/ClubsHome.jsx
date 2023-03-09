@@ -38,7 +38,7 @@ const ClubsHome = () => {
                     ?
                     <Loader />
                     :
-                    <div className='AvailableClubsHome'>
+                    <div className='ClubsHome'>
                         <h2 className='mb-4'>Clubes Populares</h2>
                         <ClubList clubs={clubs} />
                     </div>

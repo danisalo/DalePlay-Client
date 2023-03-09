@@ -3,7 +3,7 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 
 import fieldsServices from '../../services/field.services'
 
-const CreateFieldForm = () => {
+const CreateFieldForm = ({ club_id }) => {
 
     const [fieldData, setFieldData] = useState({
         sport: '',
@@ -11,6 +11,7 @@ const CreateFieldForm = () => {
         maxPlayers: '',
         imageUrl: '',
         timeSlots: [],
+        owner: club_id
     })
 
     const sportOptions = ['Futbol-5', 'Futbol-7', 'Futbol-11', 'Volleyball-6', 'Baloncesto-3', 'Baloncesto-5', 'Padel-2', 'Padel-4', 'Tennis-2', 'Tennis-4']
@@ -52,11 +53,6 @@ const CreateFieldForm = () => {
     return (
 
         <Form onSubmit={handleFieldSubmit}>
-
-            {/* <Form.Group className="mb-4" controlId="name">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" name="name" value={clubData.name} onChange={handleInputChange} placeholder="Club Deportivo" />
-            </Form.Group> */}
 
             <Form.Group className="mb-4" controlId="sport">
                 <Form.Label>Deporte:</Form.Label>
