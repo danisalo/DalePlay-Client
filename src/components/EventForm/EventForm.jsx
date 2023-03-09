@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Button, Form, Row, Col } from "react-bootstrap"
 import eventsServices from '../../services/events.services'
 
-const NewEventForm = ({ fireFinalActions }) => {
+const EventForm = ({ fireFinalActions }) => {
 
     const [eventData, setEventData] = useState({
         name: '',
@@ -54,4 +54,4 @@ const NewEventForm = ({ fireFinalActions }) => {
         </Form>
     );
 }
-export default NewEventForm
+export default EventForm

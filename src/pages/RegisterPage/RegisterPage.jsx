@@ -6,14 +6,13 @@ import './RegisterPage.css'
 const RegisterPage = () => {
 
     return (
-        <Container>
-            <Row>
-
-                <Col md={{ offset: 3, span: 6 }}>
-
+        <Container className="pt-5">
+            <Row className="pt-5">
+                <Col md={{ span: 8, offset: 2 }}>
                     <h1>Registro</h1>
-
-                    <RegisterForm />
+                    <div className="registerForm">
+                        <RegisterForm />
+                    </div>
                 </Col>
             </Row>
         </Container>

@@ -10,13 +10,13 @@ import './HomePage.css'
 const HomePage = () => {
 
     return (
-        <>
-            <Container className='homepage'>
+        <div className='pt-5'>
+            <Container className='pt-5'>
                 <HeroSectionHome />
                 <AvailableClubsHome />
                 <HowDoesItHome />
             </Container>
-        </>
+        </div>
     )
 }
 

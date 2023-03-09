@@ -6,10 +6,10 @@ import Loader from "../../components/Loader/Loader"
 
 import ClubList from "../../components/ClubList/ClubList"
 
-import './ClubPage.css'
+import './ClubListPage.css'
 
 
-const ClubPage = () => {
+const ClubListPage = () => {
 
     const [clubs, setClubs] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -33,23 +33,22 @@ const ClubPage = () => {
     }
 
     return (
-        <>
-            <Container>
+        <div className="pt-5">
+            <Container className="pt-5">
                 {
                     isLoading
                         ?
                         <Loader />
                         :
                         <>
-                            <h1>Listado de Clubs</h1>
-                            <hr />
+                            <h2>Listado de Clubs</h2>
                             <ClubList clubs={clubs} />
                         </>
                 }
             </Container>
-        </>
+        </div>
     )
 }
 
 
-export default ClubPage
+export default ClubListPage
