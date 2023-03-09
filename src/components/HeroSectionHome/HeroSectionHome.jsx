@@ -1,4 +1,4 @@
-import { Row, Col, Carousel } from "react-bootstrap"
+import { Row, Carousel } from "react-bootstrap"
 import React, { useState } from 'react'
 import './HeroSectionHome.css'
 
@@ -7,10 +7,10 @@ function HeroSectionHome() {
     const tempImg = "https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg"
     return (
         <Row>
-            <Carousel className="Carousel">
-                <Carousel.Item interval={2000} className="Carousel">
+            <Carousel>
+                <Carousel.Item /* interval={2000} */ className="Carousel">
                     <img
-                        // className="d-block w-100"
+                        className="d-block w-100"
                         src={tempImg}
                         alt="First slide"
                     />
@@ -19,9 +19,9 @@ function HeroSectionHome() {
                         <p>Juega al fútbol, vóleyball, báloncesto y pádel con gente nueva</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item interval={2000}>
+                <Carousel.Item /* interval={2000} */ className="Carousel">
                     <img
-                        // className="d-block w-100"
+                        className="d-block w-100"
                         src={tempImg}
                         alt="Second slide"
                     />
@@ -30,9 +30,9 @@ function HeroSectionHome() {
                         <p>Encuentra partidas abiertas de lo que mas te gusta</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item interval={2000}>
+                <Carousel.Item /* interval={2000} */ className="Carousel">
                     <img
-                        // className="d-block w-100"
+                        className="d-block w-100"
                         src={tempImg}
                         alt="Third slide"
                     />

@@ -6,10 +6,10 @@ import './LoginPage.css'
 const LoginPage = () => {
 
     return (
-        <Container>
-            <Row className="mt-4">
+        <Container className="pt-5">
+            <Row className="pt-5">
                 <Col md={{ span: 8, offset: 2 }}>
-                    <h1>Inicia sesión</h1>
+                    <h2>Inicia sesión</h2>
                     <div className="loginForm">
                         <LoginForm />
                     </div>

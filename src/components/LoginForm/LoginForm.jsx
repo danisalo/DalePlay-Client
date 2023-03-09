@@ -33,7 +33,6 @@ const LoginForm = () => {
     }
 
     return (
-
         <Form onSubmit={handleSubmit}>
 
             <Form.Group className="mb-4" controlId="email">
@@ -53,5 +52,6 @@ const LoginForm = () => {
         </Form>
     )
 }
+
 
 export default LoginForm

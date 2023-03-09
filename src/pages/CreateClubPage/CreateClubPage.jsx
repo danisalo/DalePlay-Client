@@ -1,5 +1,5 @@
 
-import { Container } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 import ClubForm from "../../components/ClubForm/ClubForm"
 import './CreateClubPage.css'
 
@@ -7,8 +7,15 @@ import './CreateClubPage.css'
 const CreateClubPage = () => {
 
     return (
-        <Container>
-            <ClubForm />
+        <Container className="pt-5">
+            <Row className="pt-5">
+                <Col md={{ span: 8, offset: 2 }}>
+                    <h2 >Agregar Club Deportivo</h2>
+                    <div className="clubForm">
+                        <ClubForm />
+                    </div>
+                </Col>
+            </Row>
         </Container>
     )
 }

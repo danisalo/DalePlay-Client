@@ -1,6 +1,6 @@
-import { Container } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
-import NewEventForm from "../../components/NewEventForm/NewEventForm"
+import EventForm from "../../components/EventForm/EventForm"
 import './CreateEventPage.css'
 
 
@@ -13,13 +13,16 @@ const CreateEventPage = () => {
     }
 
     return (
-        <>
-            <Container>
-                <h1>Crea una partida</h1>
-
-                <NewEventForm fireFinalActions={fireFinalActions} />
-            </Container>
-        </>
+        <Container className="pt-5">
+            <Row className="pt-5">
+                <Col md={{ span: 8, offset: 2 }}>
+                    <h2>Crear partida</h2>
+                    <div className="clubForm">
+                        <EventForm fireFinalActions={fireFinalActions} />
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

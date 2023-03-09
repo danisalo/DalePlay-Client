@@ -31,19 +31,20 @@ const EventsPage = () => {
     }
 
     return (
-        <Container>
-            {
-                isLoading
-                    ?
-                    <Loader />
-                    :
-                    <>
-                        <h1>Partida Activas</h1>
-                        <hr />
-                        <EventsList events={events} />
-                    </>
-            }
-        </Container>
+        <div className='pt-5'>
+            <Container className='pt-5'>
+                {
+                    isLoading
+                        ?
+                        <Loader />
+                        :
+                        <>
+                            <h2>Partida Activas</h2>
+                            <EventsList events={events} />
+                        </>
+                }
+            </Container>
+        </div>
     )
 }
 

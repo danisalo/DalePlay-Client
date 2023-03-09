@@ -6,7 +6,8 @@ import LoginPage from "../pages/LoginPage/LoginPage"
 import MyProfilePage from "../pages/MyProfilePage/MyProfilePage"
 import UserProfilePage from "../pages/UserProfilePage/UserProfilePage"
 
-import ClubPage from "../pages/ClubPage/ClubPage"
+import ClubListPage from "../pages/ClubListPage/ClubListPage"
+import ClubDetailsPage from "../pages/ClubDetailsPage/ClubDetailsPage"
 import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
 
 import FieldPage from "../pages/FieldPage/FieldPage"
@@ -29,9 +30,9 @@ const AppRoutes = () => {
 
             {/* <Route path="/profile/:user_id" element={<UserProfilePage />} /> */}
 
-            <Route path="/clubs" element={<ClubPage />} />
-
-            {/* <Route path="/clubs/:club_id" element={<HomePage />} /> */}
+            <Route path="/clubs" element={<ClubListPage />} />
+            <Route path="/crear-club" element={<CreateClubPage />} />
+            <Route path="/clubs/:club_id" element={<ClubDetailsPage />} />
             {/* <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
 
             <Route path="/canchas" element={<FieldPage />} />
