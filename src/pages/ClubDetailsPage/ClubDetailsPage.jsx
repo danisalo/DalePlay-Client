@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { Container, Row, Col, Image } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { Container, Row, Col, Image, Button } from "react-bootstrap"
+import { Link, useParams } from 'react-router-dom'
 
 import FieldsClub from "../../components/FieldsClub/FieldsClub"
 
@@ -44,6 +44,9 @@ const ClubDetailsPage = () => {
                 <Col md={{ span: 8 }}>
                     <h2>{club.name}</h2>
                     <p>{club.description}</p>
+                    <Link to={`/${club_id}/crear-cancha`} className="d-grid">
+                        <Button variant="dark">Agregar cancha</Button>
+                    </Link>
                 </Col>
             </Row>
             <Row id="map">
