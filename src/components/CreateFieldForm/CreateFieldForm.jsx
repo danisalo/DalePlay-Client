@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
+
 import fieldsServices from '../../services/field.services'
 
-const FieldForm = () => {
+const CreateFieldForm = () => {
 
     const [fieldData, setFieldData] = useState({
         sport: '',
@@ -14,19 +15,17 @@ const FieldForm = () => {
 
     const sportOptions = ['Futbol-5', 'Futbol-7', 'Futbol-11', 'Volleyball-6', 'Baloncesto-3', 'Baloncesto-5', 'Padel-2', 'Padel-4', 'Tennis-2', 'Tennis-4']
 
-    const [value1, setValue1] = useState(7);
-    const [value2, setValue2] = useState(23);
-
-
+    const [value1, setValue1] = useState(7)
+    const [value2, setValue2] = useState(23)
 
     const createHoursArray = (startHour, endHour) => {
         const hoursArray = [];
 
         for (let i = startHour; i <= endHour; i++) {
-            let hourString = i.toString().padStart(2, '0');
-            hoursArray.push(hourString + ':00');
+            let hourString = i.toString().padStart(2, '0')
+            hoursArray.push(hourString + ':00')
         }
-        return hoursArray;
+        return hoursArray
     }
 
     const handleInputChange = e => {
@@ -44,19 +43,22 @@ const FieldForm = () => {
             timeSlots: hoursArray
         }
 
-
         fieldsServices
             .createField(updateFieldData)
             .then(({ data }) => { console.log(data) })
             .catch(err => console.log(err))
     }
 
-
-
     return (
 
         <Form onSubmit={handleFieldSubmit}>
-            <Form.Group className="mb-3" controlId="sport">
+
+            {/* <Form.Group className="mb-4" controlId="name">
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control type="text" name="name" value={clubData.name} onChange={handleInputChange} placeholder="Club Deportivo" />
+            </Form.Group> */}
+
+            <Form.Group className="mb-4" controlId="sport">
                 <Form.Label>Deporte:</Form.Label>
                 <Form.Select name="sport" value={fieldData.sport}
                     onChange={handleInputChange}>
@@ -69,7 +71,8 @@ const FieldForm = () => {
                     }
                 </Form.Select>
             </Form.Group>
-            <Row className="mb-3">
+
+            <Row className="mb-4">
                 <Form.Group as={Col} controlId="hourlyPrice">
                     <Form.Label>Precio por hora</Form.Label>
                     <Form.Control type="text" name="hourlyPrice" value={fieldData.hourlyPrice} onChange={handleInputChange} />
@@ -80,7 +83,7 @@ const FieldForm = () => {
                     <Form.Control type="text" name="maxPlayers" value={fieldData.maxPlayers} onChange={handleInputChange} />
                 </Form.Group>
             </Row>
-            <Form.Group className="mb-3" controlId="imageUrl">
+            <Form.Group className="mb-4" controlId="imageUrl">
                 <Form.Label>Foto:</Form.Label>
                 <Form.Control type="text" name="imageUrl" value={fieldData.imageUrl} onChange={handleInputChange} />
             </Form.Group>
@@ -99,8 +102,11 @@ const FieldForm = () => {
                     <option value="22">21:00</option>
                 </Form.Select>
             </Form.Group>
-            <Button variant="dark" type="submit">Crear partida</Button>
-        </Form>)
+
+            <Button variant="dark" type="submit" size="lg">Crear partida</Button>
+
+        </Form>
+    )
 }
 
-export default FieldForm
+export default CreateFieldForm

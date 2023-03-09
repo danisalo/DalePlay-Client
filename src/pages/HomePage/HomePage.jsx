@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap'
 
-import AvailableClubsHome from '../../components/AvailableClubsHome/AvailableClubsHome'
+import ClubsHome from '../../components/ClubsHome/ClubsHome'
 import HeroSectionHome from '../../components/HeroSectionHome/HeroSectionHome'
 import HowDoesItHome from '../../components/HowDoesItHome/HowDoesItHome'
 
@@ -13,7 +13,7 @@ const HomePage = () => {
         <div className='pt-5'>
             <Container className='pt-5'>
                 <HeroSectionHome />
-                <AvailableClubsHome />
+                <ClubsHome />
                 <HowDoesItHome />
             </Container>
         </div>

@@ -1,9 +1,9 @@
-
 import { useState } from "react"
 import { Button, Form, Row, Col } from "react-bootstrap"
+
 import eventsServices from '../../services/events.services'
 
-const EventForm = ({ fireFinalActions }) => {
+const CreateEventForm = ({ fireFinalActions }) => {
 
     const [eventData, setEventData] = useState({
         name: '',
@@ -11,8 +11,6 @@ const EventForm = ({ fireFinalActions }) => {
         timeStart: '',
         playMinTotal: '',
     })
-
-
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -29,11 +27,14 @@ const EventForm = ({ fireFinalActions }) => {
     }
 
     return (
+
         <Form onSubmit={handleEventSubmit}>
+
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control type="text" name="name" value={eventData.name} onChange={handleInputChange} />
             </Form.Group>
+
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="timeStart">
                     <Form.Label>Hora Inicio</Form.Label>
@@ -45,6 +46,7 @@ const EventForm = ({ fireFinalActions }) => {
                     <Form.Control type="text" name="playMinTotal" value={eventData.playMinTotal} onChange={handleInputChange} />
                 </Form.Group>
             </Row>
+
             <Form.Group className="mb-3" controlId="notes">
                 <Form.Label>Notas</Form.Label>
                 <Form.Control type="text" name="notes" value={eventData.notes} onChange={handleInputChange} />
@@ -52,6 +54,7 @@ const EventForm = ({ fireFinalActions }) => {
 
             <Button variant="dark" type="submit">Crear partida</Button>
         </Form>
-    );
+
+    )
 }
-export default EventForm
+export default CreateEventForm

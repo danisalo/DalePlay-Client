@@ -1,0 +1,18 @@
+#hero {
+    text-align: left;
+}
+
+
+#hero img {
+    height: 200px;
+    width: auto;
+}
+
+#map img {
+    height: 200px;
+    width: auto;
+}
+
+#field img {
+    height: 50px;
+}

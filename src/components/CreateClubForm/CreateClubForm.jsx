@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
+
 import clubsServices from '../../services/club.services'
 
-const ClubForm = () => {
+const CreateClubForm = () => {
 
     const [clubData, setClubData] = useState({
         name: '',
@@ -24,8 +25,6 @@ const ClubForm = () => {
             .then(({ data }) => { console.log(data) })
             .catch(err => console.log(err))
     }
-
-
 
     return (
         <Form onSubmit={handleClubSubmit}>
@@ -59,4 +58,4 @@ const ClubForm = () => {
 }
 
 
-export default ClubForm
+export default CreateClubForm
