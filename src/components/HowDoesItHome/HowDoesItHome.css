@@ -2,12 +2,13 @@
     font-family: 'Black Ops One', sans-serif;
 }
 
-.HowDoesItHome {
-    margin: 48px 0 48px 0;
+.HowDoesItHome h2 {
+    text-align: left;
 }
 
 .halfImg {
     object-fit: cover;
     width: 50vw;
     height: 600px;
+    left: 0;
 }

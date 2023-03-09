@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
-import ClubList from "../../components/ClubList/ClubList"
-import Loader from "../../components/Loader/Loader"
-import './ClubPage.css'
+
 import clubServices from '../../services/club.services'
+import Loader from "../../components/Loader/Loader"
+
+import ClubList from "../../components/ClubList/ClubList"
+
+import './ClubPage.css'
 
 
 const ClubPage = () => {
-
 
     const [clubs, setClubs] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -32,7 +34,6 @@ const ClubPage = () => {
     return (
         <>
             <Container>
-
                 {
                     isLoading
                         ?
