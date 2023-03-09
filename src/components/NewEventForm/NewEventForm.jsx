@@ -12,6 +12,8 @@ const NewEventForm = ({ fireFinalActions }) => {
         playMinTotal: '',
     })
 
+
+
     const handleInputChange = e => {
         const { value, name } = e.target
         setEventData({ ...eventData, [name]: value })

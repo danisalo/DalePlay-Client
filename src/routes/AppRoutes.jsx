@@ -33,8 +33,8 @@ const AppRoutes = () => {
             {/* <Route path="/clubs/:club_id" element={<HomePage />} /> */}
             {/* <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
 
-            <Route path="/field" element={<FieldPage />} />
-            <Route path="/field/create" element={<CreateFieldPage />} />
+            <Route path="/canchas" element={<FieldPage />} />
+            <Route path="/crear-cancha" element={<CreateFieldPage />} />
             {/* <Route path="/field/:field_id" element={<HomePage />} /> */}
             {/* <Route path="/field/edit/:field_id" element={<HomePage />} /> */}
 

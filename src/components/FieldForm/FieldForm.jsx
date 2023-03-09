@@ -12,8 +12,22 @@ const FieldForm = () => {
         timeSlots: [],
     })
 
-    const [value1, setValue1] = useState(2);
-    const [value2, setValue2] = useState(0);
+    const sportOptions = ['Futbol-5', 'Futbol-7', 'Futbol-11', 'Volleyball-6', 'Baloncesto-3', 'Baloncesto-5', 'Padel-2', 'Padel-4', 'Tennis-2', 'Tennis-4']
+
+    const [value1, setValue1] = useState(7);
+    const [value2, setValue2] = useState(23);
+
+
+
+    const createHoursArray = (startHour, endHour) => {
+        const hoursArray = [];
+
+        for (let i = startHour; i <= endHour; i++) {
+            let hourString = i.toString().padStart(2, '0');
+            hoursArray.push(hourString + ':00');
+        }
+        return hoursArray;
+    }
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -23,8 +37,16 @@ const FieldForm = () => {
     const handleFieldSubmit = e => {
         e.preventDefault()
 
+        const hoursArray = createHoursArray(value1, value2)
+
+        const updateFieldData = {
+            ...fieldData,
+            timeSlots: hoursArray
+        }
+
+
         fieldsServices
-            .createField(fieldData)
+            .createField(updateFieldData)
             .then(({ data }) => { console.log(data) })
             .catch(err => console.log(err))
     }
@@ -35,8 +57,17 @@ const FieldForm = () => {
 
         <Form onSubmit={handleFieldSubmit}>
             <Form.Group className="mb-3" controlId="sport">
-                <Form.Label>Cancha Deportiva:</Form.Label>
-                <Form.Control type="text" name="sport" value={fieldData.sport} onChange={handleInputChange} />
+                <Form.Label>Deporte:</Form.Label>
+                <Form.Select name="sport" value={fieldData.sport}
+                    onChange={handleInputChange}>
+                    {
+                        sportOptions.map(elm => {
+                            return (
+                                <option value={elm}>{elm}</option>
+                            )
+                        })
+                    }
+                </Form.Select>
             </Form.Group>
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="hourlyPrice">
@@ -68,8 +99,6 @@ const FieldForm = () => {
                     <option value="22">21:00</option>
                 </Form.Select>
             </Form.Group>
-
-
             <Button variant="dark" type="submit">Crear partida</Button>
         </Form>)
 }

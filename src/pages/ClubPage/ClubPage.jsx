@@ -19,6 +19,7 @@ const ClubPage = () => {
         clubServices
             .getClubs()
             .then(({ data }) => {
+                console.log(data)
                 setClubs(data)
                 setIsLoading(false)
             })

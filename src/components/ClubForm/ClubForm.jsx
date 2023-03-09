@@ -30,6 +30,7 @@ const ClubForm = () => {
     return (
 
         <Form onSubmit={handleClubSubmit}>
+            <h1>CREAR CLUB</h1>
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Nombre del Club Deportivo:</Form.Label>
                 <Form.Control type="text" name="name" value={clubData.name} onChange={handleInputChange} />
