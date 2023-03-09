@@ -1,4 +1,4 @@
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Image, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import './HowDoesItHome.css'
@@ -10,7 +10,7 @@ const HowDoesItHome = () => {
     return (
         <Row>
             <Col md={{ span: 6 }}>
-                <img src={tempImg} alt="Image" className='halfImg' />
+                <Image fluid src={tempImg} alt="Image" />
             </Col>
             <Col className='HowDoesItHome' md={{ span: 6 }}>
                 <h2 className='blackOps mb-4'>¿Cómo funciona?</h2>
@@ -18,7 +18,7 @@ const HowDoesItHome = () => {
                 <p><b>2. Busca partidas:</b> Encuentra partidas disponibles cerca de ti.</p>
                 <p><b>3. Únete u organiza:</b> Únete a un partido existente u organiza uno tú mismo.</p>
                 <p className='mt-2'>¡Disfruta de jugar fútbol, vóley, baloncesto o pádel con gente nueva!</p>
-                <Link to="/clubs">
+                <Link to="/partidas" className='d-grid'>
                     <Button variant="dark">Ver Partidas</Button>
                 </Link>
             </Col>

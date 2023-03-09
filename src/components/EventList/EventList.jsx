@@ -1,5 +1,7 @@
+import { Row, Col } from "react-bootstrap"
 import EventCard from "../EventCard/EventCard"
-import { Col, Row } from "react-bootstrap"
+import './EventList.css'
+
 
 const EventsList = ({ events }) => {
 

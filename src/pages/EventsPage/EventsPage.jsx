@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
-import EventsList from "../../components/EventList/EventList"
-import Loader from "../../components/Loader/Loader"
-import './EventsPage.css'
+
 import eventsServices from "../../services/events.services"
+import Loader from "../../components/Loader/Loader"
+
+import EventsList from "../../components/EventList/EventList"
+import './EventsPage.css'
 
 
 const EventsPage = () => {
@@ -28,23 +30,20 @@ const EventsPage = () => {
         loadEvents()
     }
 
-
     return (
-        <>
-            <Container>
-                {
-                    isLoading
-                        ?
-                        <Loader />
-                        :
-                        <>
-                            <h1>Partida Activas</h1>
-                            <hr />
-                            <EventsList events={events} />
-                        </>
-                }
-            </Container>
-        </>
+        <Container>
+            {
+                isLoading
+                    ?
+                    <Loader />
+                    :
+                    <>
+                        <h1>Partida Activas</h1>
+                        <hr />
+                        <EventsList events={events} />
+                    </>
+            }
+        </Container>
     )
 }
 
