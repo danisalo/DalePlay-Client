@@ -47,7 +47,6 @@ const FieldCard = ({ sport, hourlyPrice, maxPlayers, timeSlots, events }) => {
                 setIsLoading(false)
                 console.log(availableSlots)
                 return availableSlots
-
             })
     }
 

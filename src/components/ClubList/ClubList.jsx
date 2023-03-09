@@ -6,6 +6,7 @@ import './ClubList.css'
 const ClubList = ({ clubs }) => {
 
     return (
+
         <Row>
             {
                 clubs?.map(elm => {

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
-import { Container } from "react-bootstrap"
+import { Container, Row, Col, Image } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 
+import FieldsClub from "../../components/FieldsClub/FieldsClub"
 
 import clubServices from '../../services/club.services'
 
+import './ClubDetailsPage.css'
 
 const ClubDetailsPage = () => {
 
@@ -31,14 +33,32 @@ const ClubDetailsPage = () => {
         loadClub()
     }
 
-    return (
-        <div className="pt-5">
-            <Container className="pt-5">
-                <h2>Detalles del club</h2>
-                <p>club.name: {club.name}</p>
+    const tempImg = "https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg"
 
-            </Container>
-        </div>
+    return (
+        <Container>
+            <Row id="hero">
+                <Col md={{ span: 3 }}>
+                    <Image fluid rounded src={tempImg} alt="Club image" />
+                </Col>
+                <Col md={{ span: 8 }}>
+                    <h2>{club.name}</h2>
+                    <p>{club.description}</p>
+                </Col>
+            </Row>
+            <Row id="map">
+                <Col>
+                    <img src={tempImg} alt="Map" />
+                    <h4>Ubicación{club.location}</h4>
+                    <p>Abrir en Google Maps</p>
+                </Col>
+            </Row>
+            <Row id="field">
+                <Col>
+                    <FieldsClub />
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

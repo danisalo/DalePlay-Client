@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 import { Container } from 'react-bootstrap'
 
 import clubServices from '../../services/club.services'
-import Loader from "../../components/Loader/Loader"
+import Loader from "../Loader/Loader"
 
 import ClubList from '../ClubList/ClubList'
 
-import './AvailableClubsHome.css'
+import './ClubsHome.css'
 
 
-const AvailableClubsHome = () => {
+const ClubsHome = () => {
 
     const [clubs, setClubs] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -39,7 +39,7 @@ const AvailableClubsHome = () => {
                     <Loader />
                     :
                     <div className='AvailableClubsHome'>
-                        <h2 className='blackOps mb-4'>Clubes Populares</h2>
+                        <h2 className='mb-4'>Clubes Populares</h2>
                         <ClubList clubs={clubs} />
                     </div>
             }
@@ -48,4 +48,4 @@ const AvailableClubsHome = () => {
 }
 
 
-export default AvailableClubsHome
+export default ClubsHome

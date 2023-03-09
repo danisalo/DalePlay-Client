@@ -1,18 +1,16 @@
 import { Container, Row, Col } from "react-bootstrap"
-import RegisterForm from "../../pages/RegisterPage/RegisterPage"
+import RegisterForm from "../../components/RegisterForm/RegsiterForm"
 import './RegisterPage.css'
 
 
 const RegisterPage = () => {
 
     return (
-        <Container className="pt-5">
-            <Row className="pt-5">
+        <Container className="formTitle">
+            <Row>
                 <Col md={{ span: 8, offset: 2 }}>
-                    <h1>Registro</h1>
-                    <div className="registerForm">
-                        <RegisterForm />
-                    </div>
+                    <h2>Registro</h2>
+                    <RegisterForm />
                 </Col>
             </Row>
         </Container>
