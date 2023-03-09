@@ -19,7 +19,7 @@ const Footer = () => {
                 </Link>
             </div >
             <div className='mt-2 copyright'>
-                <p className='mt-2 copyright'>© Dale Play 2200</p>
+                <p className='mt-2 copyright'>© Dale Play 2023</p>
             </div>
         </footer >
     )

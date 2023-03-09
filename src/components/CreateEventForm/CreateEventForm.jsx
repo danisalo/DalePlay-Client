@@ -38,7 +38,7 @@ const CreateEventForm = ({ fireFinalActions, hours, price, maxPlayers, fieldId, 
 
         <Form onSubmit={handleEventSubmit}>
             <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Partida de {sport}</Form.Label>
+                <Form.Label>Partida Deporte de {sport}</Form.Label>
                 <Form.Control type="text" name="name" value={eventData.name} onChange={handleInputChange} />
             </Form.Group>
 
