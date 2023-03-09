@@ -3,17 +3,25 @@ import { Button, Form, Row, Col } from "react-bootstrap"
 
 import eventsServices from '../../services/events.services'
 
-const CreateEventForm = ({ fireFinalActions }) => {
+const CreateEventForm = ({ fireFinalActions, hours, price, maxPlayers, fieldId, sport }) => {
+
+    const total = (hours.length * price)
+    const totalMin = (hours.length * 60)
+    const start = hours[0]
 
     const [eventData, setEventData] = useState({
         name: '',
         notes: '',
-        timeStart: '',
-        playMinTotal: '',
+        cost: total,
+        timeSlot: hours,
+        timeStart: start,
+        playMinTotal: totalMin,
+        field: fieldId,
     })
 
     const handleInputChange = e => {
         const { value, name } = e.target
+
         setEventData({ ...eventData, [name]: value })
     }
 
@@ -29,22 +37,15 @@ const CreateEventForm = ({ fireFinalActions }) => {
     return (
 
         <Form onSubmit={handleEventSubmit}>
-
             <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Nombre</Form.Label>
+                <Form.Label>Partida de {sport}</Form.Label>
                 <Form.Control type="text" name="name" value={eventData.name} onChange={handleInputChange} />
             </Form.Group>
 
-            <Row className="mb-3">
-                <Form.Group as={Col} controlId="timeStart">
-                    <Form.Label>Hora Inicio</Form.Label>
-                    <Form.Control type="datetime-local" name="timeStart" value={eventData.timeStart} onChange={handleInputChange} />
-                </Form.Group>
+            <p>{sport}</p>
 
-                <Form.Group as={Col} controlId="playMinTotal">
-                    <Form.Label>Minutos</Form.Label>
-                    <Form.Control type="text" name="playMinTotal" value={eventData.playMinTotal} onChange={handleInputChange} />
-                </Form.Group>
+            <Row className="mb-3">
+                <p>Horas de Reserva: {hours[0]} {hours[1]}</p>
             </Row>
 
             <Form.Group className="mb-3" controlId="notes">
@@ -52,7 +53,7 @@ const CreateEventForm = ({ fireFinalActions }) => {
                 <Form.Control type="text" name="notes" value={eventData.notes} onChange={handleInputChange} />
             </Form.Group>
 
-            <Button variant="dark" type="submit">Crear partida</Button>
+            <Button variant="dark" type="submit">Reservar</Button>
         </Form>
 
     )
