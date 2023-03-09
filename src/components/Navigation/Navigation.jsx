@@ -10,7 +10,8 @@ const Navigation = () => {
     const { user, logout } = useContext(AuthContext)
 
     return (
-        <Navbar className='navbar' bg='light' expand='lg'>
+
+        <Navbar className='mb-4' bg='light' expand="md">
             <Container fluid>
                 <Nav>
                     <Navbar.Brand href="/">
@@ -29,17 +30,17 @@ const Navigation = () => {
                     <Link to="/partidas">
                         <Nav.Link as="span">Ver Partidas</Nav.Link>
                     </Link>
-                    <Link to="/crear-partida">
-                        <Nav.Link as="span">Crear Partidas</Nav.Link>
-                    </Link>
-                    <Link to="/crear-club">
-                        <Nav.Link as="span">Crear Clubs</Nav.Link>
-                    </Link>
                 </Nav >
                 {
                     user
                         ?
                         <>
+                            <Link to="/crear-partida">
+                                <Nav.Link as="span">Crear Partidas</Nav.Link>
+                            </Link>
+                            <Link to="/crear-club">
+                                <Nav.Link as="span">Crear Clubs</Nav.Link>
+                            </Link>
                             <Link to="/perfil">
                                 <Nav.Link as="span">Mi Perfil</Nav.Link>
                             </Link>

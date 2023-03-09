@@ -2,6 +2,11 @@ img {
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit
+}
+
 .App {
   text-align: center;
   margin: 0;

@@ -14,6 +14,7 @@ import CreateFieldPage from "../pages/CreateFieldPage/CreateFieldPage"
 
 import EventsPage from "../pages/EventsPage/EventsPage"
 import CreateEventPage from "../pages/CreateEventPage/CreateEventPage"
+import PrivateRoute from "./PrivateRoutes"
 
 
 const AppRoutes = () => {
@@ -25,21 +26,26 @@ const AppRoutes = () => {
 
             <Route path="/registro" element={<RegisterPage />} />
             <Route path="/iniciar-sesion" element={<LoginPage />} />
-            <Route path="/profile" element={<MyProfilePage />} />
+
             {/* <Route path="/profile/:user_id" element={<UserProfilePage />} /> */}
 
             <Route path="/clubs" element={<ClubPage />} />
-            <Route path="/crear-club" element={<CreateClubPage />} />
+
             {/* <Route path="/clubs/:club_id" element={<HomePage />} /> */}
             {/* <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
 
             <Route path="/canchas" element={<FieldPage />} />
-            <Route path="/crear-cancha" element={<CreateFieldPage />} />
+
             {/* <Route path="/field/:field_id" element={<HomePage />} /> */}
             {/* <Route path="/field/edit/:field_id" element={<HomePage />} /> */}
-
+            <Route element={<PrivateRoute />} >
+                <Route path="/crear-club" element={<CreateClubPage />} />
+                <Route path="/crear-cancha" element={<CreateFieldPage />} />
+                <Route path="/crear-partida" element={<CreateEventPage />} />
+                <Route path="/profile" element={<MyProfilePage />} />
+            </Route>
             <Route path="/partidas" element={<EventsPage />} />
-            <Route path="/crear-partida" element={<CreateEventPage />} />
+
             {/* <Route path="/events/:event_id" element={<HomePage />} /> */}
             {/* <Route path="/events/cancel/:event_id" element={<HomePage />} /> */}
 
