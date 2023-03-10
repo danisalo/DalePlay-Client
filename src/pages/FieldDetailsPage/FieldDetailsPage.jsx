@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import FieldDetail from "../../components/FieldDetail/FieldDetail"
 import fieldsServices from "../../services/field.services"
 import Loader from '../../components/Loader/Loader'
+import WeekTab from "../../components/WeekTab/WeekTab"
 
 
 const FieldListPage = () => {
@@ -43,7 +44,9 @@ const FieldListPage = () => {
                         <Container>
                             <h1>Cancha</h1>
 
-                            <FieldDetail field={field} />
+                            <WeekTab field={field} />
+
+
                         </Container>
                     </>
             }

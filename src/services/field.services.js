@@ -39,6 +39,10 @@ class FieldService {
     editField(field_id) {
         return this.api.put(`/edit/${field_id}`)
     }
+
+    addEvent(field_id, event_id) {
+        return this.api.put(`/addEvent/${field_id}/${event_id}`)
+    }
 }
 
 const fieldsServices = new FieldService()

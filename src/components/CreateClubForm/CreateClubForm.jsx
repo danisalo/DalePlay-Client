@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 
 import clubsServices from '../../services/club.services'
+import FormError from "../FormError/FormError"
 
 const CreateClubForm = () => {
 
@@ -11,6 +12,8 @@ const CreateClubForm = () => {
         location: '',
         imageUrl: '',
     })
+
+    const [errors, setErrors] = useState([])
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -23,7 +26,7 @@ const CreateClubForm = () => {
         clubsServices
             .createClub(clubData)
             .then(({ data }) => { console.log(data) })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     return (
@@ -48,6 +51,8 @@ const CreateClubForm = () => {
                 <Form.Label>Portada</Form.Label>
                 <Form.Control type="text" name="imageUrl" value={clubData.imageUrl} onChange={handleInputChange} placeholder="Enlace (temporal)" />
             </Form.Group>
+
+            {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
                 <Button variant="dark" type="submit" size="lg">Agregar club</Button>
