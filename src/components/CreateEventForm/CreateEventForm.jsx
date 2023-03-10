@@ -2,21 +2,25 @@ import { useState } from "react"
 import { Button, Form, Row, Col } from "react-bootstrap"
 
 import eventsServices from '../../services/events.services'
+import fieldsServices from "../../services/field.services"
 
-const CreateEventForm = ({ fireFinalActions, hours, price, maxPlayers, fieldId, sport }) => {
+const CreateEventForm = ({ fireFinalActions, hours, price, maxPlayers, fieldId, sport, day }) => {
 
     const total = (hours.length * price)
     const totalMin = (hours.length * 60)
     const start = hours[0]
+    const reserveDay = day
+    const fi = fieldId
 
     const [eventData, setEventData] = useState({
-        name: '',
+        name: sport,
         notes: '',
         cost: total,
         timeSlot: hours,
         timeStart: start,
         playMinTotal: totalMin,
-        field: fieldId,
+        field: fi,
+        day: reserveDay
     })
 
     const handleInputChange = e => {
@@ -30,22 +34,33 @@ const CreateEventForm = ({ fireFinalActions, hours, price, maxPlayers, fieldId, 
 
         eventsServices
             .createEvent(eventData)
-            .then(({ data }) => { fireFinalActions() })
+            .then(({ data }) => {
+                const eventId = data._id
+                console.log(eventId)
+                fieldsServices
+                    .addEvent(fi, eventId)
+                    .then(({ data }) => fireFinalActions())
+                    .catch(err => console.log(err))
+            })
             .catch(err => console.log(err))
     }
 
     return (
 
         <Form onSubmit={handleEventSubmit}>
-            <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Partida Deporte de {sport}</Form.Label>
-                <Form.Control type="text" name="name" value={eventData.name} onChange={handleInputChange} />
-            </Form.Group>
-
-            <p>{sport}</p>
+            <Row>
+                <Col>
+                    <p>Reserva de {sport}</p>
+                </Col>
+                <Col>
+                    <p>{day}</p>
+                </Col>
+            </Row>
+            <p></p>
 
             <Row className="mb-3">
-                <p>Horas de Reserva: {hours[0]} {hours[1]}</p>
+                <p>Horas de Reserva: {hours.map(elm => <p>{elm}</p>)}</p>
+
             </Row>
 
             <Form.Group className="mb-3" controlId="notes">

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { SelectButton } from 'primereact/selectbutton'
 import "primereact/resources/themes/lara-light-indigo/theme.css"
@@ -10,17 +9,15 @@ import Loader from '../Loader/Loader'
 import CreateEventForm from "../CreateEventForm/CreateEventForm"
 
 
-const FieldDetail = ({ field }) => {
+const FieldDetail = ({ field, day }) => {
 
     const [showModal, setShowModal] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [value, setSelectedHour] = useState([])
     const [availableSlots, setAvailableSlots] = useState([field.timeSlots])
 
-
     useEffect(() => {
         getAvailableSlots()
-
     }, [])
 
     const getAvailableSlots = () => {
@@ -38,17 +35,16 @@ const FieldDetail = ({ field }) => {
                     .catch(err => console.log(err))
             )
 
-
             return Promise.all(occupiedSlotsPromise)
                 .then(occupiedSlots => {
-                    const avSlots = [...field.timeSlots].filter(elm => !occupiedSlots[0].includes(elm))
+                    const notAvailable = Array.from(new Set(occupiedSlots.flat(Infinity)))
+                    const avSlots = [...field.timeSlots].filter(elm => !notAvailable.includes(elm))
+
                     setAvailableSlots(avSlots)
                     setIsLoading(false)
                     return avSlots
                 })
         }
-
-
 
     }
 
@@ -58,8 +54,6 @@ const FieldDetail = ({ field }) => {
         setShowModal(false)
         getAvailableSlots()
     }
-
-
 
     return (
         <>
@@ -93,7 +87,7 @@ const FieldDetail = ({ field }) => {
                         <Modal show={showModal} onHide={() => setShowModal(false)}>
                             <Modal.Header closeButton> <Modal.Title>Resumen de reserva {field.sport}</Modal.Title></Modal.Header>
                             <Modal.Body>
-                                <CreateEventForm fireFinalActions={fireFinalActions} sport={field.sport} hours={value} price={field.hourlyPrice} maxPlayers={field.maxPlayers} fieldId={field.id} />
+                                <CreateEventForm fireFinalActions={fireFinalActions} sport={field.sport} hours={value} price={field.hourlyPrice} maxPlayers={field.maxPlayers} fieldId={field._id} day={day} />
                             </Modal.Body>
                         </Modal>
 

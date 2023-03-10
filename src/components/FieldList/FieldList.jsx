@@ -5,7 +5,7 @@ import './FieldList.css'
 
 const FieldList = ({ fields }) => {
 
-    // FIND BY ID
+    // Find by ID
 
 
     return (
