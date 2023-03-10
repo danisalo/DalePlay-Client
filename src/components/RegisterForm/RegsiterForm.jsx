@@ -1,20 +1,22 @@
 import { useState } from "react"
 import { Button, Form } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+
 import authService from "../../services/auth.services"
+import uploadServices from "../../services/upload.services"
 
 import './RegisterForm.css'
 
 
-const RegisterForm = () => {
+const RegisterForm = ({ fireFinalActions }) => {
 
     const [registerData, SetRegisterData] = useState({
-        email: '',
+        username: '',
         password: '',
-        username: ''
+        email: '',
+        imageUrl: ''
     })
 
-    const navigate = useNavigate()
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -24,12 +26,35 @@ const RegisterForm = () => {
     const handleFormSubmit = e => {
 
         e.preventDefault()
+
         authService
             .register(registerData)
-            .then(() => navigate('/'))
+            .then(({ data }) => {
+                fireFinalActions()
+            })
             .catch(err => console.log(err))
-
     }
+
+    const handleFileUpload = e => {
+
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(({ data }) => {
+                SetRegisterData({ ...registerData, imageUrl: data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+            })
+    }
+
+
     return (
         <Form onSubmit={handleFormSubmit}>
 
@@ -50,9 +75,13 @@ const RegisterForm = () => {
                 <Form.Control type="email" value={registerData.email} onChange={handleInputChange} name="email" placeholder="ejemplo@correo.com" />
             </Form.Group>
 
+            <Form.Group className="mb-4" controlId="image">
+                <Form.Label>Avatar</Form.Label>
+                <Form.Control type="file" onChange={handleFileUpload} />
+            </Form.Group>
 
             <div className="d-grid mb-4">
-                <Button variant="dark" type="submit" size="lg">Registrarme</Button>
+                <Button variant="dark" type="submit" size="lg" disabled={loadingImage}>Registrarme</Button>
             </div>
 
         </Form>

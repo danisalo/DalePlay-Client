@@ -1,18 +1,14 @@
-import { Col, Container, Row } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import FieldCard from '../FieldCard/FieldCard'
 import './FieldList.css'
 
 
 const FieldList = ({ fields }) => {
 
-    // FIND BY ID
-
-
     return (
         <Row>
             {
                 fields?.map(elm => {
-
                     return (
                         <Col md={{ span: 3 }} key={elm._id}>
                             <FieldCard {...elm} />
