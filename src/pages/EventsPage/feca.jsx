@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Container, Dropdown } from "react-bootstrap"
 
-// import eventsServices from "../../services/events.services"
 import fieldServices from "../../services/field.services"
 
 import Loader from "../../components/Loader/Loader"
@@ -9,58 +8,78 @@ import EventsList from "../../components/EventList/EventList"
 
 import './EventsPage.css'
 
-
 const EventsPage = () => {
-
-    const [events, setEvents] = useState([])
+    const [fields, setFields] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [sport, setSport] = useState()
 
-    useEffect(() => { loadEvents() }, [])
+    const [selectedSport, setSelectedSport] = useState(null)
 
-    const loadEvents = () => {
-        fieldServices
+    useEffect(() => { loadFields() }, [])
+
+    const loadFields = () => {
+        return fieldServices
             .getSports(sport)
             .then(({ data }) => {
-                setEvents(data)
+                setFields(data)
+                setSelectedSport(data[0].sport)
+                console.log(`log data: ${data}`)
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
-    const fireFinalActions = () => {
-        loadEvents()
+
+    const handleSportChange = event => {
+        setSelectedSport(event.target.value)
     }
 
-    const handleSportChange = e => {
-        console.log(e.target)
+    const getFilteredEvents = () => {
+        if (!selectedSport) {
+            return events
+        }
+
+        const selectedField = fields.find(field => field.sport === selectedSport)
+
+        if (!selectedField) {
+            return []
+        }
+
+        return selectedField.events
     }
 
+    const renderSportOptions = () => {
+        return fields.map(field => (
+            <Dropdown.Item key={field.sport} value={field.sport}>
+                {field.sport}
+            </Dropdown.Item >
+        ))
+    }
 
+    const filteredEvents = getFilteredEvents();
 
     return (
-        <div className='pt-5'>
-            <Container className='pt-5'>
+        <div className="pt-5">
+            <Container className="pt-5">
                 {
-                    isLoading
-                        ?
+                    isLoading ? (
                         <Loader />
-                        :
+                    ) : (
                         <>
-                            <h2>Partida Activas</h2>
+                            <h2>Partidas Activas</h2>
                             <Dropdown>
-                                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                    All Sports
+                                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                                    {selectedSport || "Todos los deportes"}
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item onClick={handleSportChange} value={'Futbol 5v5'}>FUT 5</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">FUT 7</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">BASKET</Dropdown.Item>
+                                    <Dropdown.Item value={null} onClick={handleSportChange}>
+                                        Todos los deportes
+                                    </Dropdown.Item>
+                                    {renderSportOptions()}
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <EventsList events={events} />
+                            <EventsList events={filteredEvents} />
                         </>
-                }
+                    )}
             </Container>
         </div>
     )

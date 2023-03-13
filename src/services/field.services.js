@@ -45,7 +45,7 @@ class FieldService {
     }
 
     getSports(sport) {
-        return axios.get(`${process.env.REACT_APP_API_URL}/fields/filter?sport=${sport}`)
+        return this.api.get(`/filter?sport=${sport}`)
     }
 }
 

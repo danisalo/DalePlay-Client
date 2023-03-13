@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Container, Dropdown } from "react-bootstrap"
+import { Container, Col, Form } from "react-bootstrap"
 
 import fieldServices from "../../services/field.services"
 
@@ -7,79 +7,74 @@ import Loader from "../../components/Loader/Loader"
 import EventsList from "../../components/EventList/EventList"
 
 import './EventsPage.css'
+import eventsServices from "../../services/events.services"
+import fieldsServices from "../../services/field.services"
 
 const EventsPage = () => {
     const [fields, setFields] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    // const [isLoading, setIsLoading] = useState(true)
 
     const [selectedSport, setSelectedSport] = useState()
 
-    useEffect(() => { loadFields() }, [])
+    // useEffect(() => { loadFields() }, [])
 
-    const loadFields = () => {
-        return fieldServices
-            .getSports(sport)
+    // const loadFields = () => {
+    //     return fieldServices
+    //         .getSports(sport)
+    //         .then(({ data }) => {
+    //             setFields(data)
+    //             setSelectedSport(data[0].sport)
+    //             console.log(`log data: ${data}`)
+    //             setIsLoading(false)
+    //         })
+    //         .catch(err => console.log(err))
+    // }
+
+    const handleInputChange = event => {
+        setSelectedSport(event.target.value)
+    }
+
+    useEffect(() => {
+        selectedSport && getFilteredEvents()
+    }, [selectedSport])
+
+    const getFilteredEvents = () => {
+        fieldsServices
+            .getSports(selectedSport)
             .then(({ data }) => {
-                setFields(data)
-                setSelectedSport(data[0].sport)
-                console.log(`log data: ${data}`)
-                setIsLoading(false)
+                console.log('data antes del set', data[0].events)
+                setFields(data[0].events)
             })
             .catch(err => console.log(err))
     }
 
-    const handleSportChange = event => {
-        setSelectedSport(event.target.value)
-    }
-
-    const getFilteredEvents = () => {
-        if (!selectedSport) {
-            return events
-        }
-
-        const selectedField = fields.find(field => field.sport === selectedSport)
-
-        if (!selectedField) {
-            return []
-        }
-
-        return selectedField.events
-    }
-
-    const renderSportOptions = () => {
-        return fields.map(field => (
-            <Dropdown.Item key={field.sport} value={field.sport}>
-                {field.sport}
-            </Dropdown.Item >
-        ))
-    }
-
-    const filteredEvents = getFilteredEvents();
-
+    const sportOptions = ['Futbol 5v5', 'Futbol 7v7', 'Futbol 11v11', 'Volleyball 6v6', 'Baloncesto 3v3', 'Baloncesto 5v5', 'Padel 1v1', 'Padel 2v2', 'Tennis 1v1', 'Tennis 2v2']
     return (
         <div className="pt-5">
             <Container className="pt-5">
-                {
+                {/* {
                     isLoading ? (
                         <Loader />
-                    ) : (
-                        <>
-                            <h2>Partidas Activas</h2>
-                            <Dropdown>
-                                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                                    {selectedSport || "Todos los deportes"}
-                                </Dropdown.Toggle>
+                    ) : ( */}
+                <>
+                    <h2>Partidas Activas</h2>
+                    <Form.Group as={Col} controlId="sport">
+                        <Form.Label>Deporte</Form.Label>
+                        <Form.Select name="sport" value={selectedSport}
+                            onChange={handleInputChange}>
+                            {
+                                sportOptions.map(elm => {
+                                    return (
+                                        <option value={elm}>{elm}</option>
+                                    )
+                                })
+                            }
+                        </Form.Select>
+                    </Form.Group>
 
-                                <Dropdown.Menu>
-                                    <Dropdown.Item value={null} onClick={handleSportChange}>
-                                        Todos los deportes
-                                    </Dropdown.Item>
-                                    {renderSportOptions()}
-                                </Dropdown.Menu>
-                            </Dropdown>
-                            <EventsList events={filteredEvents} />
-                        </>
-                    )}
+                    <EventsList events={fields} />
+                </>
+                {/* )} */}
             </Container>
         </div>
     )

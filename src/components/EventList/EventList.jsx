@@ -6,7 +6,7 @@ import './EventList.css'
 
 
 const EventsList = ({ events }) => {
-
+    console.log('events listtttt', events)
     return (
         <Row>
             {
