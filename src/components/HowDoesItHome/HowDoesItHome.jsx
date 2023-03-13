@@ -13,7 +13,7 @@ const HowDoesItHome = () => {
                 <Image fluid src={tempImg} alt="Image" />
             </Col>
             <Col className='HowDoesItHome' md={{ span: 6 }}>
-                <h2 className='blackOps mb-4'>¿Cómo funciona?</h2>
+                <h2 className='mb-4'>¿Cómo funciona?</h2>
                 <p><b>1. Regístrate:</b> Crea una cuenta y únete a nuestra comunidad deportiva.</p>
                 <p><b>2. Busca partidas:</b> Encuentra partidas disponibles cerca de ti.</p>
                 <p><b>3. Únete u organiza:</b> Únete a un partido existente u organiza uno tú mismo.</p>

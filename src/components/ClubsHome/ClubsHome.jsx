@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 import clubServices from '../../services/club.services'
 import Loader from "../Loader/Loader"
@@ -31,6 +32,8 @@ const ClubsHome = () => {
         loadClub()
     }
 
+    const tempImg = 'https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg'
+
     return (
         <Container className='homepage'>
             {
@@ -39,8 +42,23 @@ const ClubsHome = () => {
                     <Loader />
                     :
                     <div className='ClubsHome'>
-                        <h2 className='mb-4'>Clubes Populares</h2>
-                        <ClubList clubs={clubs} />
+                        <h2 className='mt-2 mb-4'>Clubes Populares</h2>
+                        <Row>
+                            <ClubList className='mt-4' clubs={clubs.slice(0, 3)} />
+                            <Col md={{ span: 3 }}>
+                                <Link to={`/clubs`}>
+                                    <Card className="mb-4 ClubCard">
+                                        <Card.Img variant="top" src={tempImg} />
+                                        <Card.Body>
+                                            <h4>¿Te gustaría agregar a tu club?</h4>
+                                            <Link to={`/clubs`} className="d-grid">
+                                                <Button variant="dark">Agregar mi club</Button>
+                                            </Link>
+                                        </Card.Body>
+                                    </Card>
+                                </Link >
+                            </Col>
+                        </Row>
                     </div>
             }
         </Container>

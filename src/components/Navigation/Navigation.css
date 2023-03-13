@@ -5,3 +5,9 @@ img {
 .DalePlayLogo {
     height: 24px;
 }
+
+#fixed {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+}

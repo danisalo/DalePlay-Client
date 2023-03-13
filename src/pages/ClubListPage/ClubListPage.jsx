@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { Container } from "react-bootstrap"
+import { Container, Row, Col, Card, Button } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 
 import clubServices from '../../services/club.services'
 import Loader from "../../components/Loader/Loader"
@@ -21,7 +22,6 @@ const ClubListPage = () => {
         clubServices
             .getClubs()
             .then(({ data }) => {
-                console.log(data)
                 setClubs(data)
                 setIsLoading(false)
             })
@@ -32,9 +32,11 @@ const ClubListPage = () => {
         loadClub()
     }
 
+    const tempImg = 'https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg'
+
     return (
-        <div className="pt-5">
-            <Container className="pt-5">
+        <div className="pt-4">
+            <Container className="pt-4">
                 {
                     isLoading
                         ?
@@ -42,7 +44,24 @@ const ClubListPage = () => {
                         :
                         <>
                             <h2>Listado de Clubs</h2>
-                            <ClubList clubs={clubs} />
+                            <Row>
+                                <ClubList clubs={clubs} />
+                            </Row>
+                            <Row>
+                                <Col md={{ span: 3 }}>
+                                    <Link to={`/clubs`}>
+                                        <Card className="mb-4 ClubCard">
+                                            <Card.Img variant="top" src={tempImg} />
+                                            <Card.Body>
+                                                <h4>¿Te gustaría agregar a tu club?</h4>
+                                                <Link to={`/clubs`} className="d-grid">
+                                                    <Button variant="dark">Agregar mi club</Button>
+                                                </Link>
+                                            </Card.Body>
+                                        </Card>
+                                    </Link >
+                                </Col>
+                            </Row>
                         </>
                 }
             </Container>

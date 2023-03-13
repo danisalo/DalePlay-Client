@@ -43,6 +43,10 @@ class FieldService {
     addEvent(field_id, event_id) {
         return this.api.put(`/addEvent/${field_id}/${event_id}`)
     }
+
+    getSports(sport) {
+        return axios.get(`${process.env.REACT_APP_API_URL}/fields/filter?sport=${sport}`)
+    }
 }
 
 const fieldsServices = new FieldService()

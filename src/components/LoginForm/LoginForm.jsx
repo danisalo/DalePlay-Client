@@ -1,7 +1,12 @@
 import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
+
 import { AuthContext } from "../../contexts/auth.context"
+
 import authService from "../../services/auth.services"
+
+import FormError from "../FormError/FormError"
+
 import './LoginForm.css'
 
 
@@ -11,6 +16,8 @@ const LoginForm = () => {
         email: '',
         password: ''
     })
+
+    const [errors, setErrors] = useState('')
 
     const { authenticateUser } = useContext(AuthContext)
 
@@ -29,7 +36,12 @@ const LoginForm = () => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                setErrors(err.response.data.message)
+            })
+        console.log(errors)
+
     }
 
     return (
@@ -44,6 +56,8 @@ const LoginForm = () => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={loginData.password} onChange={handleInputChange} name="password" placeholder="Contraseña" />
             </Form.Group>
+
+            {errors.length > 0 && <FormError><p>{errors}</p></FormError>}
 
             <div className="d-grid mb-4">
                 <Button type="submit" variant="dark" size="lg">Iniciar sesión</Button>

@@ -1,26 +1,20 @@
-.blackOps {
-    font-family: 'Black Ops One', sans-serif;
-}
-
 .ClubCard {
     text-decoration: none;
     color: black;
+    /* min-height: 200px;
+    max-height: 200px; */
 }
 
 .ClubCard:hover {
     background-color: #fffcca;
 }
 
-h3 {
-    text-align: center;
-    font-size: 32px;
-    line-height: 24px;
+h4 {
+    text-align: left;
 }
 
 p {
     text-align: left;
-    font-size: 18px;
-    line-height: 22px;
 }
 
 .ubi {
