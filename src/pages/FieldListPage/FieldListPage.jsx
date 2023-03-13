@@ -28,10 +28,6 @@ const FieldListPage = () => {
             .catch(err => console.log(err))
     }
 
-    const fireFinalActions = () => {
-        loadField()
-    }
-
     return (
         <>
             <Container>

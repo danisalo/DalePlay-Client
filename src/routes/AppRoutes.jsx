@@ -29,17 +29,14 @@ const AppRoutes = () => {
             <Route path="/registro" element={<RegisterPage />} />
             <Route path="/iniciar-sesion" element={<LoginPage />} />
 
-            {/* <Route path="/profile/:user_id" element={<UserProfilePage />} /> */}
 
             <Route path="/clubs" element={<ClubListPage />} />
             <Route path="/crear-club" element={<CreateClubPage />} />
             <Route path="/clubs/:club_id" element={<ClubDetailsPage />} />
-            {/* <Route path="/clubs/edit/:club_id" element={<HomePage />} /> */}
 
             <Route path="/canchas" element={<FieldListPage />} />
 
             <Route path="/cancha/:field_id" element={<FieldDetailsPage />} />
-            {/* <Route path="/field/edit/:field_id" element={<HomePage />} /> */}
 
             < Route element={<PrivateRoute />} >
                 <Route path="/crear-club" element={<CreateClubPage />} />
@@ -50,8 +47,6 @@ const AppRoutes = () => {
 
             <Route path="/partidas" element={<EventsPage />} />
 
-            {/* <Route path="/events/:event_id" element={<HomePage />} /> */}
-            {/* <Route path="/events/cancel/:event_id" element={<HomePage />} /> */}
 
             <Route path="*" element={<p>404</p>} />
         </Routes>

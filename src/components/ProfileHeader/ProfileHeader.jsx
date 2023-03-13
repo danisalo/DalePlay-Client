@@ -19,7 +19,6 @@ const ProfileHeader = ({ user_id }) => {
             .catch(err => console.log(err))
 
     }
-    console.log(user)
 
     return (
         <Row>

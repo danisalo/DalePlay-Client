@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Button, Form, Row, Col } from "react-bootstrap"
 
+import FormError from "../FormError/FormError"
+
 import eventsServices from '../../services/events.services'
 import fieldsServices from "../../services/field.services"
 
@@ -25,14 +27,16 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
         day: reserveDay
     })
 
+    const [errors, setErrors] = useState([])
 
-    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-    const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
+
+    const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+    const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
 
     const parts = reserveDay.toString().split(' ')
 
-    const dia = dias[date.getDay()]
-    const mes = meses[date.getMonth()]
+    const dia = days[date.getDay()]
+    const mes = months[date.getMonth()]
     const year = parts[3]
 
     // Log the day, month, and year in Spanish format

@@ -4,8 +4,8 @@ const FieldCard = ({ sport, hourlyPrice, maxPlayers, timeSlots }) => {
 
     const tempImg = "https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg"
 
-    const abre = 0
-    const cierra = timeSlots.length - 1
+    const opens = 0
+    const closes = timeSlots.length - 1
 
     return (
         <>
@@ -15,7 +15,7 @@ const FieldCard = ({ sport, hourlyPrice, maxPlayers, timeSlots }) => {
                     <Card.Title>Partida de {sport}</Card.Title>
                     <Card.Text>Precio por hora:{hourlyPrice}</Card.Text>
                     <Card.Text>Jugadores: {maxPlayers}</Card.Text>
-                    <Card.Text>Abierto de {timeSlots[abre]} a {timeSlots[cierra]}</Card.Text>
+                    <Card.Text>Abierto de {timeSlots[opens]} a {timeSlots[closes]}</Card.Text>
                 </Card.Body>
             </Card >
         </>

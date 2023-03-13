@@ -71,7 +71,6 @@ const CreateFieldForm = ({ club_id }) => {
                 setLoadingImage(false)
             })
             .catch(err => {
-                console.log(err)
                 setLoadingImage(false)
             })
     }

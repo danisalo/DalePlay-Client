@@ -28,9 +28,6 @@ const ClubListPage = () => {
             .catch(err => console.log(err))
     }
 
-    const fireFinalActions = () => {
-        loadClub()
-    }
 
     const tempImg = 'https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg'
 
