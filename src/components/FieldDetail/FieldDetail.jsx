@@ -4,17 +4,22 @@ import { SelectButton } from 'primereact/selectbutton'
 import "primereact/resources/themes/lara-light-indigo/theme.css"
 import "primereact/resources/primereact.min.css"
 import "primeicons/primeicons.css"
+import "./FieldDetail.css"
 import eventsServices from "../../services/events.services"
 import Loader from '../Loader/Loader'
 import CreateEventForm from "../CreateEventForm/CreateEventForm"
 
+//ACTUALIZAR EL FIELD
 
-const FieldDetail = ({ field, day }) => {
+
+const FieldDetail = ({ field, day, date }) => {
 
     const [showModal, setShowModal] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [value, setSelectedHour] = useState([])
     const [availableSlots, setAvailableSlots] = useState([field.timeSlots])
+
+    console.log('aqui estyo nueva fecha', date)
 
     useEffect(() => {
         getAvailableSlots()
@@ -27,26 +32,34 @@ const FieldDetail = ({ field, day }) => {
         }
 
         else {
-            const occupiedSlotsPromise = field.events.map(event =>
+            const activeEvents = field.events.map(event =>
 
                 eventsServices
                     .getOne(event)
-                    .then(({ data }) => data.timeSlot)
+                    .then(({ data }) => data)
                     .catch(err => console.log(err))
             )
 
-            return Promise.all(occupiedSlotsPromise)
-                .then(occupiedSlots => {
-                    const notAvailable = Array.from(new Set(occupiedSlots.flat(Infinity)))
-                    const avSlots = [...field.timeSlots].filter(elm => !notAvailable.includes(elm))
+            return Promise
+                .all(activeEvents)
+                .then(events => {
 
-                    setAvailableSlots(avSlots)
+                    console.log('ANTES', availableSlots)
+
+                    const filteredEvents = events.filter(elm => elm.day === `${day}`)
+                    const slotsReserved = filteredEvents.map(obj => obj.timeSlot)
+                    const notAvailable = Array.from(new Set(slotsReserved.flat(Infinity)))
+                    const slotsAvailables = [...field.timeSlots].filter(elm => !notAvailable.includes(elm))
+
+                    console.log('DESPUES', slotsAvailables)
+
+                    setAvailableSlots(slotsAvailables)
                     setIsLoading(false)
-                    return avSlots
+                    return slotsAvailables
                 })
         }
-
     }
+
 
     const items = availableSlots.map(str => ({ name: str, value: str }))
 
@@ -71,14 +84,14 @@ const FieldDetail = ({ field, day }) => {
                             <Row>
 
                                 <Col md={{ span: 6, offset: 1 }}>
-
+                                    <img src={field.imageUrl} style={{ width: '150px' }} />
                                 </Col>
 
-                                <Col md={{ span: 4 }}>
-                                    <img src={field.imageUrl} style={{ width: '100%' }} />
+                                <Col md={{ span: 4 }} >
+                                    <SelectButton style={{ border: '2px solid', fontSize: '8px' }} value={value} onChange={(e) => setSelectedHour(e.value)} optionLabel='name' options={items} multiple />
                                 </Col>
 
-                                <SelectButton value={value} onChange={(e) => setSelectedHour(e.value)} optionLabel='name' options={items} multiple />
+
                                 <Button onClick={() => setShowModal(true)} variant="dark" size='sm'>Crear nueva partida</Button>
                             </Row>
 
@@ -87,7 +100,7 @@ const FieldDetail = ({ field, day }) => {
                         <Modal show={showModal} onHide={() => setShowModal(false)}>
                             <Modal.Header closeButton> <Modal.Title>Resumen de reserva {field.sport}</Modal.Title></Modal.Header>
                             <Modal.Body>
-                                <CreateEventForm fireFinalActions={fireFinalActions} sport={field.sport} hours={value} price={field.hourlyPrice} maxPlayers={field.maxPlayers} fieldId={field._id} day={day} />
+                                <CreateEventForm fireFinalActions={fireFinalActions} sport={field.sport} hours={value} price={field.hourlyPrice} maxPlayers={field.maxPlayers} fieldId={field._id} date={date} />
                             </Modal.Body>
                         </Modal>
 

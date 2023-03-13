@@ -5,9 +5,6 @@ import './FieldList.css'
 
 const FieldList = ({ fields }) => {
 
-    // Find by ID
-
-
     return (
         <Row>
             {

@@ -28,6 +28,10 @@ class EventService {
         return this.api.get(`/getOne/${event_id}`)
     }
 
+    getUserEvents(user_id) {
+        return this.api.get(`/getByUser/${user_id}`)
+    }
+
     createEvent(eventData) {
         return this.api.post('/create', eventData)
     }

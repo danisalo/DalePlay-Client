@@ -24,11 +24,14 @@ const WeekTab = ({ field }) => {
     return (
         <div className="card">
             <TabView scrollableTabs>
-                {scrollableTabs.map((tab) => {
+                {scrollableTabs.map((tab, idx) => {
+
+                    const date = new Date();
+                    date.setDate(currentDate.getDate() + idx);
                     return (
                         <TabPanel key={tab.title} header={tab.title}>
 
-                            <FieldDetail field={field} day={tab.title} />
+                            <FieldDetail field={field} day={tab.title} date={date} />
                         </TabPanel>
                     );
                 })}

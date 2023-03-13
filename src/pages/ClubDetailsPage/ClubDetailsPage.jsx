@@ -52,7 +52,6 @@ const ClubDetailsPage = () => {
             <Row id="map">
                 <Col>
                     <img src={tempImg} alt="Map" />
-                    <h4>Ubicación{club.location}</h4>
                     <p>Abrir en Google Maps</p>
                 </Col>
             </Row>

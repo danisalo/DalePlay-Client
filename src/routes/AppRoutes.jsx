@@ -45,7 +45,7 @@ const AppRoutes = () => {
                 <Route path="/crear-club" element={<CreateClubPage />} />
                 <Route path="/:club_id/crear-cancha" element={<CreateFieldPage />} />
                 <Route path="/crear-partida" element={<CreateEventPage />} />
-                <Route path="/profile" element={<MyProfilePage />} />
+                <Route path="/miperfil/:user_id" element={<MyProfilePage />} />
             </Route>
             <Route path="/partidas" element={<EventsPage />} />
 
