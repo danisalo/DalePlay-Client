@@ -16,30 +16,52 @@ a {
   text-align: left;
 }
 
+.textOverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 /* TYPE SYSTEM */
 
 h1 {
   font-size: 6rem;
-  font-family: 'Black Ops One', sans-serif;
+  letter-spacing: 0.1rem;
+  font-family: 'Climate Crisis', cursive;
+  line-height: 100%;
 }
 
 h2 {
   font-size: 4rem;
-  font-family: 'Black Ops One', sans-serif;
+  letter-spacing: 0.1rem;
+  font-family: 'Climate Crisis', cursive;
+  line-height: 100%;
 }
 
 h3 {
-  font-size: 3rem;
-  font-family: 'Black Ops One', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.1rem;
+  font-family: 'Climate Crisis', cursive;
+  line-height: 100%;
 }
 
 h4 {
-  font-size: 2.5rem;
-  font-family: 'Black Ops One', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  font-family: 'Climate Crisis', cursive;
+  line-height: 100%;
 }
 
 h5 {
   font-size: 1.5rem;
+}
+
+h6 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 p {

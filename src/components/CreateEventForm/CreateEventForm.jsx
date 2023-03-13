@@ -41,7 +41,6 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
 
     const handleInputChange = e => {
         const { value, name } = e.target
-
         setEventData({ ...eventData, [name]: value })
     }
 
@@ -51,16 +50,18 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
         eventsServices
             .createEvent(eventData)
             .then(({ data }) => {
+                const eventId = data._id
                 fieldsServices
-                    .addEvent(fi, data._id)
-                    .then(({ data }) => { fireFinalActions() })
-                    .catch(err => console.log(err))
+                    .addEvent(fi, eventId)
+                    .then(({ data }) => {
+                        fireFinalActions()
+                    })
+                    .catch(err => setErrors(err.response.data.errorMessages))
             })
             .catch(err => console.log(err))
     }
 
     return (
-
         <Form onSubmit={handleEventSubmit}>
             <Row>
                 <Col>
@@ -72,20 +73,25 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
             </Row>
             <p></p>
 
-            <Row className="mb-3">
-                <p>{dia}, {parts[2]} de {mes} de {year}</p>
+            <Row className="mb-4">
                 <p>Horas de Reserva: {hours.map(elm => <p>{elm}</p>)}</p>
 
             </Row>
 
-            <Form.Group className="mb-3" controlId="notes">
+            <Form.Group className="mb-4" controlId="notes">
                 <Form.Label>Notas</Form.Label>
                 <Form.Control type="text" name="notes" value={eventData.notes} onChange={handleInputChange} />
             </Form.Group>
 
-            <Button variant="dark" type="submit">Reservar</Button>
-        </Form>
+            {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
+            <div className="d-grid mb-4">
+                <Button variant="dark" type="submit" size="lg" >Reservar</Button>
+            </div>
+
+        </Form>
     )
 }
+
+
 export default CreateEventForm

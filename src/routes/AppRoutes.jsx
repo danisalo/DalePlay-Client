@@ -47,6 +47,7 @@ const AppRoutes = () => {
                 <Route path="/crear-partida" element={<CreateEventPage />} />
                 <Route path="/miperfil/:user_id" element={<MyProfilePage />} />
             </Route>
+
             <Route path="/partidas" element={<EventsPage />} />
 
             {/* <Route path="/events/:event_id" element={<HomePage />} /> */}

@@ -1,4 +1,4 @@
-import { Row, Col } from "react-bootstrap"
+import { Col } from "react-bootstrap"
 import ClubCard from "../ClubCard/ClubCard"
 import './ClubList.css'
 
@@ -6,8 +6,7 @@ import './ClubList.css'
 const ClubList = ({ clubs }) => {
 
     return (
-
-        <Row>
+        <>
             {
                 clubs?.map(elm => {
                     return (
@@ -17,7 +16,7 @@ const ClubList = ({ clubs }) => {
                     )
                 })
             }
-        </Row>
+        </>
     )
 }
 

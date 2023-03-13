@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Container, Row, Col, Image, Button } from "react-bootstrap"
 import { Link, useParams } from 'react-router-dom'
 
+import Loader from "../../components/Loader/Loader"
 import FieldsClub from "../../components/FieldsClub/FieldsClub"
 
 import clubServices from '../../services/club.services'
@@ -10,13 +11,12 @@ import './ClubDetailsPage.css'
 
 const ClubDetailsPage = () => {
 
-    const [club, setClub] = useState([])
+    const [club, setClub] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
     const { club_id } = useParams()
 
-
-    useEffect(() => { loadClub() }, [])
+    useEffect(() => { loadClub() }, [club_id])
 
     const loadClub = () => {
 
@@ -29,37 +29,40 @@ const ClubDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    const fireFinalActions = () => {
-        loadClub()
-    }
-
-    const tempImg = "https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg"
-
     return (
         <Container>
-            <Row id="hero">
-                <Col md={{ span: 3 }}>
-                    <Image fluid rounded src={tempImg} alt="Club image" />
-                </Col>
-                <Col md={{ span: 8 }}>
-                    <h2>{club.name}</h2>
-                    <p>{club.description}</p>
-                    <Link to={`/${club_id}/crear-cancha`} className="d-grid">
-                        <Button variant="dark">Agregar cancha</Button>
-                    </Link>
-                </Col>
-            </Row>
-            <Row id="map">
-                <Col>
-                    <img src={tempImg} alt="Map" />
-                    <p>Abrir en Google Maps</p>
-                </Col>
-            </Row>
-            <Row id="field">
-                <Col>
-                    <FieldsClub />
-                </Col>
-            </Row>
+            {
+                isLoading
+                    ?
+                    <Loader />
+                    :
+                    <>
+                        <Row id="hero">
+                            <Col md={{ span: 3 }}>
+                                <Image fluid rounded src={club.imageUrl} alt="Club image" />
+                            </Col>
+                            <Col md={{ span: 8 }}>
+                                <h2>{club.name}</h2>
+                                <p>{club.description}</p>
+                                <Link to={`/${club_id}/crear-cancha`} className="d-grid">
+                                    <Button variant="dark">Agregar cancha</Button>
+                                </Link>
+                            </Col>
+                        </Row>
+                        <Row id="map">
+                            <Col>
+                                <img src={club.imageUrl} alt="Map" />
+                                <h4>Ubicación</h4>
+                                <p>Abrir en Google Maps</p>
+                            </Col>
+                        </Row>
+                        <Row id="field">
+                            <Col>
+                                <FieldsClub fields={club.fields} />
+                            </Col>
+                        </Row>
+                    </>
+            }
         </Container>
     )
 }

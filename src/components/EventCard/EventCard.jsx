@@ -1,10 +1,12 @@
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import { Card, Button } from "react-bootstrap"
+import { Link } from 'react-router-dom'
+
 import eventsServices from '../../services/events.services'
+
 import './EventCard.css'
 
 
-function EventCard({ _id, name, timeStart, playMinTotal }) {
+function EventCard({ _id, name, notes, timeStart, playMinTotal }) {
 
     const handleJoinSubmit = e => {
         e.preventDefault()
@@ -15,18 +17,29 @@ function EventCard({ _id, name, timeStart, playMinTotal }) {
             .catch(err => console.log(err))
     }
 
-    const tempImg = "https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg"
+    const timeEnd = (timeStart, playMinTotal) => {
+        const [startHours, startMinutes] = timeStart.split(":").map(Number)
+
+        const endMinutes = startMinutes + playMinTotal
+        const endHours = startHours + Math.floor(endMinutes / 60)
+
+        const finalEndMinutes = endMinutes % 60
+        const finalEndHours = String(endHours).padStart(2, "0")
+        const finalEndTime = `${finalEndHours}:${finalEndMinutes.toString().padStart(2, "0")}`
+
+        return finalEndTime
+    }
 
     return (
         <>
             <Card className="mb-4 EventCard">
-                <Card.Img variant="top" src={tempImg} />
                 <Card.Body>
-                    <h3 className='blackOps'>{name}</h3>
-                    <p>{timeStart} PM - {playMinTotal}13 PM</p>
-                    <div className="d-grid mb-2">
+                    <h3>{name}</h3>
+                    <p>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
+                    <p>{notes}</p>
+                    <Link to={`/event/${_id}`} className="d-grid mb-2">
                         <Button variant="dark">Ver Detalles</Button>
-                    </div>
+                    </Link>
                     <div className="d-grid">
                         <Button variant="dark" onClick={handleJoinSubmit} >Unirme</Button>
                     </div>

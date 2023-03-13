@@ -2,9 +2,12 @@ import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 
 import clubsServices from '../../services/club.services'
+import uploadServices from "../../services/upload.services"
+
 import FormError from "../FormError/FormError"
 
-const CreateClubForm = () => {
+
+const CreateClubForm = ({ fireFinalActions }) => {
 
     const [clubData, setClubData] = useState({
         name: '',
@@ -14,6 +17,7 @@ const CreateClubForm = () => {
     })
 
     const [errors, setErrors] = useState([])
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -21,12 +25,34 @@ const CreateClubForm = () => {
     }
 
     const handleClubSubmit = e => {
+
         e.preventDefault()
 
         clubsServices
             .createClub(clubData)
-            .then(({ data }) => { console.log(data) })
+            .then(({ data }) => {
+                fireFinalActions()
+            })
             .catch(err => setErrors(err.response.data.errorMessages))
+    }
+
+    const handleFileUpload = e => {
+
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(({ data }) => {
+                setClubData({ ...clubData, imageUrl: data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+            })
     }
 
     return (
@@ -47,9 +73,9 @@ const CreateClubForm = () => {
                 <Form.Control type="text" name="location" value={clubData.location} onChange={handleInputChange} placeholder="Ubicación" />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="imageUrl">
+            <Form.Group className="mb-4" controlId="image">
                 <Form.Label>Portada</Form.Label>
-                <Form.Control type="text" name="imageUrl" value={clubData.imageUrl} onChange={handleInputChange} placeholder="Enlace (temporal)" />
+                <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
