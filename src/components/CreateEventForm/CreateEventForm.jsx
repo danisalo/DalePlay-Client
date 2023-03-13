@@ -39,7 +39,6 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
     const mes = months[date.getMonth()]
     const year = parts[3]
 
-    // Log the day, month, and year in Spanish format
     console.log(`${dia}, ${parts[2]} de ${mes} de ${year}`);
 
 
@@ -60,7 +59,7 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
                     .then(({ data }) => {
                         fireFinalActions()
                     })
-                    .catch(err => setErrors(err.response.data.errorMessages))
+                    .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
     }
@@ -87,7 +86,7 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
                 <Form.Control type="text" name="notes" value={eventData.notes} onChange={handleInputChange} />
             </Form.Group>
 
-            {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
+            {/* {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>} */}
 
             <div className="d-grid mb-4">
                 <Button variant="dark" type="submit" size="lg" >Reservar</Button>
