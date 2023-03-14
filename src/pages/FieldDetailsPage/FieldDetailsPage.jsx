@@ -14,10 +14,10 @@ const FieldListPage = () => {
     const [field, setField] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
+    console.log(field)
 
     useEffect(() => {
         loadField()
-
     }, [])
 
     const loadField = () => {
@@ -25,7 +25,6 @@ const FieldListPage = () => {
         fieldsServices
             .getOne(field_id)
             .then(({ data }) => {
-
                 setField(data)
                 setIsLoading(false)
             })
@@ -44,7 +43,7 @@ const FieldListPage = () => {
                         <Container>
                             <h1>Cancha</h1>
 
-                            <WeekTab field={field} />
+                            <WeekTab field={field} loadField={loadField} />
 
 
                         </Container>

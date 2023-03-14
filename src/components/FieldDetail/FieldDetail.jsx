@@ -9,29 +9,22 @@ import eventsServices from "../../services/events.services"
 import Loader from '../Loader/Loader'
 import CreateEventForm from "../CreateEventForm/CreateEventForm"
 
-//ACTUALIZAR EL FIELD
 
-
-const FieldDetail = ({ field, day, date }) => {
+const FieldDetail = ({ field, day, date, loadField }) => {
 
     const [showModal, setShowModal] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [value, setSelectedHour] = useState([])
-    const [availableSlots, setAvailableSlots] = useState([field.timeSlots])
+    const [availableSlots, setAvailableSlots] = useState([])
 
-    console.log('aqui estyo nueva fecha', date)
 
     useEffect(() => {
         getAvailableSlots()
-    }, [])
+    }, [field])
 
     const getAvailableSlots = () => {
 
-        if (field.events.length === 0) {
-            setAvailableSlots(field.timeSlots)
-        }
-
-        else {
+        if (field.events.length > 0) {
             const activeEvents = field.events.map(event =>
 
                 eventsServices
@@ -43,29 +36,39 @@ const FieldDetail = ({ field, day, date }) => {
             return Promise
                 .all(activeEvents)
                 .then(events => {
-
-                    console.log('ANTES', availableSlots)
-
-                    const filteredEvents = events.filter(elm => elm.day === `${day}`)
+                    const filteredEvents = events.filter(elm => elm.dayText === `${day}`)
                     const slotsReserved = filteredEvents.map(obj => obj.timeSlot)
                     const notAvailable = Array.from(new Set(slotsReserved.flat(Infinity)))
                     const slotsAvailables = [...field.timeSlots].filter(elm => !notAvailable.includes(elm))
-
-                    console.log('DESPUES', slotsAvailables)
-
                     setAvailableSlots(slotsAvailables)
                     setIsLoading(false)
                     return slotsAvailables
                 })
+
+        }
+
+        else {
+            setAvailableSlots(field.timeSlots)
+            setIsLoading(false)
         }
     }
 
+    const transformSlotsToObjects = (hours) => {
+        const transformedHours = hours.map(hour => ({
+            name: hour,
+            value: hour
+        }))
 
-    const items = availableSlots.map(str => ({ name: str, value: str }))
+        return transformedHours
+    }
+    const items = transformSlotsToObjects(availableSlots)
 
     const fireFinalActions = () => {
+
         setShowModal(false)
+        loadField()
         getAvailableSlots()
+
     }
 
     return (
@@ -100,7 +103,7 @@ const FieldDetail = ({ field, day, date }) => {
                         <Modal show={showModal} onHide={() => setShowModal(false)}>
                             <Modal.Header closeButton> <Modal.Title>Resumen de reserva {field.sport}</Modal.Title></Modal.Header>
                             <Modal.Body>
-                                <CreateEventForm fireFinalActions={fireFinalActions} sport={field.sport} hours={value} price={field.hourlyPrice} maxPlayers={field.maxPlayers} fieldId={field._id} date={date} />
+                                <CreateEventForm fireFinalActions={fireFinalActions} sport={field.sport} hours={value} price={field.hourlyPrice} maxPlayers={field.maxPlayers} fieldId={field._id} date={date} dayText={day} />
                             </Modal.Body>
                         </Modal>
 

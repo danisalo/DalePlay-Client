@@ -11,6 +11,7 @@ const ProfileGames = ({ user_id }) => {
     const [games, SetGames] = useState([])
 
 
+
     useEffect(() => {
         loadGamesData()
     }, [])

@@ -6,15 +6,14 @@ import FormError from "../FormError/FormError"
 import eventsServices from '../../services/events.services'
 import fieldsServices from "../../services/field.services"
 
-const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fieldId, date }) => {
+const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fieldId, date, dayText }) => {
 
     const total = (hours.length * price)
     const totalMin = (hours.length * 60)
     const start = hours[0]
     const reserveDay = date
     const fi = fieldId
-
-    console.log('Aqui RESERVEEEE', reserveDay)
+    const dayT = dayText
 
     const [eventData, setEventData] = useState({
         name: sport,
@@ -24,7 +23,8 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
         timeStart: start,
         playMinTotal: totalMin,
         field: fi,
-        day: reserveDay
+        day: reserveDay,
+        dayText: dayT
     })
 
     const [errors, setErrors] = useState([])
@@ -38,9 +38,6 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
     const dia = days[date.getDay()]
     const mes = months[date.getMonth()]
     const year = parts[3]
-
-    console.log(`${dia}, ${parts[2]} de ${mes} de ${year}`);
-
 
     const handleInputChange = e => {
         const { value, name } = e.target

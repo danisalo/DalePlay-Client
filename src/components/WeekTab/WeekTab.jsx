@@ -3,7 +3,7 @@ import { useState } from "react"
 import { TabView, TabPanel } from 'primereact/tabview'
 import FieldDetail from '../FieldDetail/FieldDetail'
 
-const WeekTab = ({ field }) => {
+const WeekTab = ({ field, loadField }) => {
 
 
 
@@ -31,7 +31,7 @@ const WeekTab = ({ field }) => {
                     return (
                         <TabPanel key={tab.title} header={tab.title}>
 
-                            <FieldDetail field={field} day={tab.title} date={date} />
+                            <FieldDetail field={field} day={tab.title} date={date} loadField={loadField} />
                         </TabPanel>
                     );
                 })}

@@ -40,6 +40,10 @@ class FieldService {
         return this.api.put(`/edit/${field_id}`)
     }
 
+    addMaxPlayer(field_id, max) {
+        return this.api.put(`/addmax/${field_id}/${max}`)
+    }
+
     addEvent(field_id, event_id) {
         return this.api.put(`/addEvent/${field_id}/${event_id}`)
     }

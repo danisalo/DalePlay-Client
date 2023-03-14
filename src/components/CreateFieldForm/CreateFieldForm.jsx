@@ -1,17 +1,18 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
-
+import sportOptions from "../../consts/fieldConsts"
 import fieldsServices from '../../services/field.services'
 import uploadServices from "../../services/upload.services"
 
 import FormError from "../FormError/FormError"
+
 
 const CreateFieldForm = ({ club_id }) => {
 
     const [fieldData, setFieldData] = useState({
         sport: '',
         hourlyPrice: '',
-        maxPlayers: '',
+        maxPlayers: null,
         imageUrl: '',
         timeSlots: [],
         owner: club_id
@@ -20,11 +21,10 @@ const CreateFieldForm = ({ club_id }) => {
     const [errors, setErrors] = useState([])
     const [loadingImage, setLoadingImage] = useState(false)
 
+    const sportNames = sportOptions.map((sport) => sport.name)
 
-    const sportOptions = ['Futbol 5v5', 'Futbol 7v7', 'Futbol 11v11', 'Volleyball 6v6', 'Baloncesto 3v3', 'Baloncesto 5v5', 'Padel 1v1', 'Padel 2v2', 'Tennis 1v1', 'Tennis 2v2']
-
-    const [value1, setValue1] = useState(7)
-    const [value2, setValue2] = useState(23)
+    const [openHour, setOpenHour] = useState(7)
+    const [closeHour, setCloseHour] = useState(23)
 
     const createHoursArray = (startHour, endHour) => {
         const hoursArray = [];
@@ -37,6 +37,7 @@ const CreateFieldForm = ({ club_id }) => {
     }
 
     const handleInputChange = e => {
+
         const { value, name } = e.target
         setFieldData({ ...fieldData, [name]: value })
     }
@@ -44,16 +45,21 @@ const CreateFieldForm = ({ club_id }) => {
     const handleFieldSubmit = e => {
         e.preventDefault()
 
-        const hoursArray = createHoursArray(value1, value2)
+        const hoursArray = createHoursArray(openHour, closeHour)
 
-        const updateFieldData = {
-            ...fieldData,
-            timeSlots: hoursArray
-        }
+        const updateFieldData = { ...fieldData, timeSlots: hoursArray }
 
         fieldsServices
             .createField(updateFieldData)
-            .then(({ data }) => { console.log(data) })
+            .then(({ data }) => {
+                const max = getMaxPlayersByName(data.sport)
+                fieldsServices
+                    .addMaxPlayer(data._id, max)
+                    .then(({ data }) => {
+                        console.log(data)
+                    })
+                    .catch(err => setErrors(err.response.data.errorMessages))
+            })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
@@ -75,6 +81,11 @@ const CreateFieldForm = ({ club_id }) => {
             })
     }
 
+    const getMaxPlayersByName = (name) => {
+        const sportMax = sportOptions.find((sport) => sport.name === name);
+        return sportMax ? sportMax.maxPlayers : null;
+    }
+
     return (
 
         <Form onSubmit={handleFieldSubmit}>
@@ -85,7 +96,7 @@ const CreateFieldForm = ({ club_id }) => {
                     <Form.Select name="sport" value={fieldData.sport}
                         onChange={handleInputChange}>
                         {
-                            sportOptions.map(elm => {
+                            sportNames.map(elm => {
                                 return (
                                     <option value={elm}>{elm}</option>
                                 )
@@ -93,18 +104,13 @@ const CreateFieldForm = ({ club_id }) => {
                         }
                     </Form.Select>
                 </Form.Group>
-
-                <Form.Group as={Col} controlId="maxPlayers">
-                    <Form.Label>Máximo de jugadores</Form.Label>
-                    <Form.Control type="text" name="maxPlayers" value={fieldData.maxPlayers} onChange={handleInputChange} />
-                </Form.Group>
             </Row>
 
             <Row className="mb-4">
                 <Form.Group as={Col}>
                     <Form.Label>Hora de apertura</Form.Label>
-                    <Form.Select as={Col} aria-label="Default select example" value={value1}
-                        onChange={e => setValue1(e.target.value)}>
+                    <Form.Select as={Col} aria-label="Default select example" value={openHour}
+                        onChange={e => setOpenHour(e.target.value)}>
                         <option value="7">07:00</option>
                         <option value="8">08:00</option>
                         <option value="9">09:00</option>
@@ -127,8 +133,8 @@ const CreateFieldForm = ({ club_id }) => {
 
                 <Form.Group as={Col}>
                     <Form.Label>Hora de cierre</Form.Label>
-                    <Form.Select as={Col} aria-label="Default select example" value={value2}
-                        onChange={e => setValue2(e.target.value)}>
+                    <Form.Select as={Col} aria-label="Default select example" value={closeHour}
+                        onChange={e => setCloseHour(e.target.value)}>
                         <option value="7">07:00</option>
                         <option value="8">08:00</option>
                         <option value="9">09:00</option>

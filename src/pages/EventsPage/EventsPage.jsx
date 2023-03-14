@@ -12,23 +12,10 @@ import fieldsServices from "../../services/field.services"
 
 const EventsPage = () => {
     const [fields, setFields] = useState([])
-    // const [isLoading, setIsLoading] = useState(true)
 
     const [selectedSport, setSelectedSport] = useState()
 
-    // useEffect(() => { loadFields() }, [])
 
-    // const loadFields = () => {
-    //     return fieldServices
-    //         .getSports(sport)
-    //         .then(({ data }) => {
-    //             setFields(data)
-    //             setSelectedSport(data[0].sport)
-    //             console.log(`log data: ${data}`)
-    //             setIsLoading(false)
-    //         })
-    //         .catch(err => console.log(err))
-    // }
 
     const handleInputChange = event => {
         setSelectedSport(event.target.value)
