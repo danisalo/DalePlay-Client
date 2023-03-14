@@ -1,4 +1,4 @@
-const sportOptions = [
+export const SPORTS_OPTIONS = [
     {
         name: 'Futbol 5v5',
         value: 'Futbol 5v5',
@@ -53,7 +53,7 @@ const sportOptions = [
 ]
 
 
-const scheduleOptions = [
+export const SCHEDULE_OPTIONS = [
     {
         name: '06:00',
         value: '6'
@@ -127,5 +127,3 @@ const scheduleOptions = [
         value: '23'
     }
 ]
-
-export default { sportOptions, scheduleOptions }

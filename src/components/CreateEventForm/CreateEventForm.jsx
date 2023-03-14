@@ -86,7 +86,7 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
             {/* {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>} */}
 
             <div className="d-grid mb-4">
-                <Button variant="dark" type="submit" size="lg" >Reservar</Button>
+                <Button variant="DPmain" type="submit" size="lg" >Reservar</Button>
             </div>
 
         </Form>

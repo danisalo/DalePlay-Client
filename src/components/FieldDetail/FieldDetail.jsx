@@ -95,7 +95,7 @@ const FieldDetail = ({ field, day, date, loadField }) => {
                                 </Col>
 
 
-                                <Button onClick={() => setShowModal(true)} variant="dark" size='sm'>Crear nueva partida</Button>
+                                <Button onClick={() => setShowModal(true)} variant="DPmain" size='sm'>Crear nueva partida</Button>
                             </Row>
 
                         </Container >

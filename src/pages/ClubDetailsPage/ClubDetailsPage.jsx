@@ -62,7 +62,7 @@ const ClubDetailsPage = () => {
                                     </div>
                                     <div className="d-grid">
                                         <Link to={`/${club_id}/crear-cancha`} className="d-grid">
-                                            <Button variant="dark">Agregar Cancha</Button>
+                                            <Button variant="DPmain">Agregar Cancha</Button>
                                         </Link>
                                         <Link to={`/${club_id}/editar`} className="d-grid">
                                             <Button variant="warning">Editar Club</Button>

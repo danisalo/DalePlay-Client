@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useParams, useNavigate } from "react-router-dom"
 
-import { sportOptions, scheduleOptions } from "../../consts/fieldConsts"
+import * as projectConsts from "../../consts/projectConsts"
 import fieldsServices from '../../services/field.services'
 import uploadServices from "../../services/upload.services"
 
@@ -26,7 +26,7 @@ const EditFieldForm = ({ club_id }) => {
 
     const { field_id } = useParams()
 
-    const sportNames = sportOptions.map((sport) => sport.name)
+    const sportNames = projectConsts.SPORTS_OPTIONS.map((sport) => sport.name)
 
     const [openHour, setOpenHour] = useState(7)
     const [closeHour, setCloseHour] = useState(23)
@@ -95,12 +95,12 @@ const EditFieldForm = ({ club_id }) => {
     }
 
     const getMaxPlayersByName = (name) => {
-        const sportMax = sportOptions.find((sport) => sport.name === name)
+        const sportMax = projectConsts.SPORTS_OPTIONS.find((sport) => sport.name === name)
         return sportMax ? sportMax.maxPlayers : null
     }
 
     const getScheduleHours = () => {
-        scheduleOptions.map(elm => {
+        projectConsts.SCHEDULE_OPTIONS.map(elm => {
             return (
                 <option value={elm.value}>{elm.name}</option>
             )
@@ -169,7 +169,7 @@ const EditFieldForm = ({ club_id }) => {
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
-                <Button variant="dark" type="submit" size="lg" >Crear Partida</Button>
+                <Button variant="DPmain" type="submit" size="lg" >Crear Partida</Button>
             </div>
         </Form>
     )
