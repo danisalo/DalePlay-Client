@@ -34,7 +34,6 @@ const FieldListPage = () => {
 
     return (
         <>
-
             {
                 isLoading
                     ?
@@ -43,17 +42,13 @@ const FieldListPage = () => {
                     <>
                         <Container>
                             <h1>Cancha</h1>
-
                             <WeekTab field={field} />
-
-
                         </Container>
                     </>
             }
-
         </>
-
     )
 }
+
 
 export default FieldListPage

@@ -1,5 +1,5 @@
-import { Row, Col, Carousel, Button, C } from "react-bootstrap"
-import React, { useState } from 'react'
+import { Row, Col, Carousel } from "react-bootstrap"
+
 import './HeroSectionHome.css'
 
 function HeroSectionHome() {

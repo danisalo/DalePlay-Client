@@ -33,11 +33,11 @@ class ClubsService {
     }
 
     deleteClub(club_id) {
-        return this.api.post(`/delete/${club_id}`)
+        return this.api.delete(`/delete/${club_id}`)
     }
 
-    editClub(club_id) {
-        return this.api.put(`/edit/${club_id}`)
+    editClub(club_id, clubData) {
+        return this.api.put(`/edit/${club_id}`, clubData)
     }
 }
 
