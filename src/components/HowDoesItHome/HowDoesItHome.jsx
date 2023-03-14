@@ -19,7 +19,7 @@ const HowDoesItHome = () => {
                 <p><b>3. Únete u organiza:</b> Únete a un partido existente u organiza uno tú mismo.</p>
                 <p className='mt-2'>¡Disfruta de jugar fútbol, vóley, baloncesto o pádel con gente nueva!</p>
                 <Link to="/partidas" className='d-grid'>
-                    <Button variant="dark">Ver Partidas</Button>
+                    <Button variant="DPmain">Ver Partidas</Button>
                 </Link>
             </Col>
         </Row>

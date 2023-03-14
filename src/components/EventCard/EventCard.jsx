@@ -38,10 +38,10 @@ function EventCard({ _id, name, notes, timeStart, playMinTotal }) {
                     <p>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
                     <p>{notes}</p>
                     <Link to={`/event/${_id}`} className="d-grid mb-2">
-                        <Button variant="dark">Ver Detalles</Button>
+                        <Button variant="DPmain">Ver Detalles</Button>
                     </Link>
                     <div className="d-grid">
-                        <Button variant="dark" onClick={handleJoinSubmit} >Unirme</Button>
+                        <Button variant="DPmain" onClick={handleJoinSubmit} >Unirme</Button>
                     </div>
                 </Card.Body>
             </Card>

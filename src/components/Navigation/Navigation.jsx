@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import './Navigation.css'
@@ -32,23 +32,24 @@ const Navigation = () => {
                         {user ? (
                             <>
                                 <hr className='d-block d-md-none' />
-                                <Link to={`/miperfil/${user._id}`}>
-                                    <Nav.Link as='span'>Mi Perfil</Nav.Link>
+
+                                <Link onClick={logout} className='mx-2'>
+                                    <Button variant="DPoutline">Cerrar sesión</Button>
                                 </Link>
-                                <Nav.Link as='span' onClick={logout}>
-                                    Cerrar sesión
-                                </Nav.Link>
+                                <Link to={`/miperfil/${user._id}`} className='mx-2'>
+                                    <Button variant="DPmain">Mi Perfil</Button>
+                                </Link>
                             </>
                         ) : (
-                            <>
+                            <div className='gap-2'>
                                 <hr className='d-block d-md-none' />
-                                <Link to='/iniciar-sesion'>
-                                    <Nav.Link as='span'>Iniciar sesión</Nav.Link>
+                                <Link to='/registro' className='mx-2'>
+                                    <Button variant="DPoutline">Registrarme</Button>
                                 </Link>
-                                <Link to='/registro'>
-                                    <Nav.Link as='span'>Registrarme</Nav.Link>
+                                <Link to='/iniciar-sesion' className='mx-2'>
+                                    <Button variant="DPmain">Iniciar sesión</Button>
                                 </Link>
-                            </>
+                            </div>
                         )}
                     </Nav>
                 </Navbar.Collapse>

@@ -16,6 +16,15 @@ a {
   text-align: left;
 }
 
+.titleOverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .textOverflow {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -23,6 +32,38 @@ a {
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+/* BUTTONS */
+
+.btn-DPmain {
+  background-color: #6366F1;
+  color: white;
+  min-width: 160px;
+}
+
+.btn-DPmain:hover {
+  background-color: #3335b5;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-DPoutline {
+  background-color: transparent;
+  border-width: 1.5px;
+  border-color: #6366F1;
+  color: #6366F1;
+  min-width: 160px;
+}
+
+.btn-DPoutline:hover {
+  background-color: transparent;
+  border-width: 2px;
+  border-color: #3335b5;
+  color: #3335b5;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 /* TYPE SYSTEM */
@@ -66,4 +107,10 @@ h6 {
 
 p {
   font-size: 0.8rem;
+}
+
+#openMap {
+  color: blue;
+  text-decoration: underline;
+  text-align: left;
 }

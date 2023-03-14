@@ -47,7 +47,7 @@ const LoginForm = () => {
     return (
         <Form onSubmit={handleSubmit}>
 
-            <Form.Group className="mb-4" controlId="email">
+            <Form.Group className="mb-2" controlId="email">
                 <Form.Label>Correo electrónico</Form.Label>
                 <Form.Control type="email" value={loginData.email} onChange={handleInputChange} name="email" placeholder="ejemplo@correo.com" />
             </Form.Group>
@@ -59,8 +59,8 @@ const LoginForm = () => {
 
             {errors.length > 0 && <FormError><p>{errors}</p></FormError>}
 
-            <div className="d-grid mb-4">
-                <Button type="submit" variant="dark" size="lg">Iniciar sesión</Button>
+            <div className="d-grid mb-2">
+                <Button type="submit" variant="DPmain" size="lg">Iniciar sesión</Button>
             </div>
 
         </Form>

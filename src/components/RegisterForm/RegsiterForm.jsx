@@ -59,17 +59,17 @@ const RegisterForm = ({ fireFinalActions }) => {
     return (
         <Form onSubmit={handleFormSubmit}>
 
-            <Form.Group className="mb-4" controlId="username">
+            <Form.Group className="mb-2" controlId="username">
                 <Form.Label>Nombre de usuario</Form.Label>
                 <Form.Control type="text" value={registerData.username} onChange={handleInputChange} name="username" placeholder="Username" />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="password">
+            <Form.Group className="mb-2" controlId="password">
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={registerData.password} onChange={handleInputChange} name="password" placeholder="Contraseña" />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="email">
+            <Form.Group className="mb-2" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={registerData.email} onChange={handleInputChange} name="email" placeholder="ejemplo@correo.com" />
             </Form.Group>
@@ -81,8 +81,8 @@ const RegisterForm = ({ fireFinalActions }) => {
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
-            <div className="d-grid mb-4">
-                <Button variant="dark" type="submit" size="lg" disabled={loadingImage}>Registrarme</Button>
+            <div className="d-grid mb-2">
+                <Button variant="DPmain" type="submit" size="lg" disabled={loadingImage}>Registrarme</Button>
             </div>
 
         </Form>

@@ -1,12 +1,13 @@
 .ClubCard {
     text-decoration: none;
     color: black;
-    /* min-height: 200px;
-    max-height: 200px; */
+    min-height: 550px;
+    max-height: 550px;
 }
 
 .ClubCard:hover {
     background-color: #fffcca;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 h4 {
@@ -15,9 +16,4 @@ h4 {
 
 p {
     text-align: left;
-}
-
-.ubi {
-    color: rgb(48, 48, 255);
-    text-decoration: underline;
 }

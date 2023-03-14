@@ -52,7 +52,7 @@ const ClubListPage = () => {
                                             <Card.Body>
                                                 <h4>¿Te gustaría agregar a tu club?</h4>
                                                 <Link to={`/clubs`} className="d-grid">
-                                                    <Button variant="dark">Agregar mi club</Button>
+                                                    <Button variant="DPmain">Agregar mi club</Button>
                                                 </Link>
                                             </Card.Body>
                                         </Card>

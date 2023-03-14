@@ -94,7 +94,7 @@ const EditClubForm = ({ fireFinalActions }) => {
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
-                <Button variant="dark" type="submit" size="lg">Guardar cambios</Button>
+                <Button variant="DPmain" type="submit" size="lg">Guardar cambios</Button>
             </div>
 
         </Form>
