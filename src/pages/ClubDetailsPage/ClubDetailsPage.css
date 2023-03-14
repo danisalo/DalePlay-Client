@@ -16,3 +16,9 @@
 #field img {
     height: 50px;
 }
+
+#openMap {
+    font-size: 1rem;
+    color: blue;
+    text-decoration: underline;
+}

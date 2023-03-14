@@ -33,7 +33,6 @@ const FieldListPage = () => {
 
     return (
         <>
-
             {
                 isLoading
                     ?
@@ -49,10 +48,9 @@ const FieldListPage = () => {
                         </Container>
                     </>
             }
-
         </>
-
     )
 }
+
 
 export default FieldListPage

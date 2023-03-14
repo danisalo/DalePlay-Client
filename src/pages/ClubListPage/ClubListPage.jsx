@@ -39,7 +39,7 @@ const ClubListPage = () => {
                         ?
                         <Loader />
                         :
-                        <>
+                        <div className="pt-4">
                             <h2>Listado de Clubs</h2>
                             <Row>
                                 <ClubList clubs={clubs} />
@@ -59,7 +59,7 @@ const ClubListPage = () => {
                                     </Link >
                                 </Col>
                             </Row>
-                        </>
+                        </div>
                 }
             </Container>
         </div>

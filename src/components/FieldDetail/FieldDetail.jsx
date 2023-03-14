@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Button, Modal } from "react-bootstrap"
+
 import { SelectButton } from 'primereact/selectbutton'
 import "primereact/resources/themes/lara-light-indigo/theme.css"
 import "primereact/resources/primereact.min.css"
 import "primeicons/primeicons.css"
-import "./FieldDetail.css"
-import eventsServices from "../../services/events.services"
+
 import Loader from '../Loader/Loader'
+import eventsServices from "../../services/events.services"
 import CreateEventForm from "../CreateEventForm/CreateEventForm"
 
 
@@ -16,7 +17,6 @@ const FieldDetail = ({ field, day, date, loadField }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [value, setSelectedHour] = useState([])
     const [availableSlots, setAvailableSlots] = useState([])
-
 
     useEffect(() => {
         getAvailableSlots()

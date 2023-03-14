@@ -11,7 +11,7 @@ const Navigation = () => {
         <Navbar bg='light' variant='light' expand='md' id='fixed'>
             <Container fluid>
                 <Navbar.Brand href='/'>
-                    <h4>Dale Play</h4>
+                    <h4 id='logo'>Dale Play</h4>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                 <Navbar.Collapse id='responsive-navbar-nav'>

@@ -2,8 +2,8 @@ img {
     width: 100%;
 }
 
-.DalePlayLogo {
-    height: 24px;
+#logo {
+    translate: 0 10%;
 }
 
 #fixed {

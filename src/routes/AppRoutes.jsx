@@ -9,14 +9,18 @@ import UserProfilePage from "../pages/UserProfilePage/UserProfilePage"
 import ClubListPage from "../pages/ClubListPage/ClubListPage"
 import ClubDetailsPage from "../pages/ClubDetailsPage/ClubDetailsPage"
 import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
+import EditClubPage from "../pages/EditClubPage/EditClubPage"
 
 import FieldListPage from "../pages/FieldListPage/FieldListPage"
 import CreateFieldPage from "../pages/CreateFieldPage/CreateFieldPage"
 import FieldDetailsPage from "../pages/FieldDetailsPage/FieldDetailsPage"
+import EditFieldForm from "../components/EditFieldForm/EditFieldForm"
 
 import EventsPage from "../pages/EventsPage/EventsPage"
 import CreateEventPage from "../pages/CreateEventPage/CreateEventPage"
+
 import PrivateRoute from "./PrivateRoutes"
+
 
 
 const AppRoutes = () => {
@@ -37,10 +41,14 @@ const AppRoutes = () => {
             <Route path="/canchas" element={<FieldListPage />} />
 
             <Route path="/cancha/:field_id" element={<FieldDetailsPage />} />
+            <Route path="/:field_id/editar" element={<EditFieldForm />} />
 
             < Route element={<PrivateRoute />} >
                 <Route path="/crear-club" element={<CreateClubPage />} />
+                <Route path="/:club_id/editar" element={<EditClubPage />} />
+
                 <Route path="/:club_id/crear-cancha" element={<CreateFieldPage />} />
+
                 <Route path="/crear-partida" element={<CreateEventPage />} />
                 <Route path="/miperfil/:user_id" element={<MyProfilePage />} />
             </Route>
