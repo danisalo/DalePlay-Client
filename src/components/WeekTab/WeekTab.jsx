@@ -12,11 +12,11 @@ const WeekTab = ({ field, loadField }) => {
     let weekDays = []
 
     for (let i = 0; i < 7; i++) {
-        let day = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + i)
-        let dayOfWeek = daysOfWeek[day.getDay()]
-        let date = day.getDate()
-        let month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(day)
-        weekDays.push(dayOfWeek + " | " + date + " | " + month)
+        let dayT = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + i)
+        let dayOfWeek = daysOfWeek[dayT.getDay()]
+        let dateType = dayT.getDate()
+        let month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(dayT)
+        weekDays.push(dayOfWeek + " | " + dateType + " | " + month)
     }
 
     const scrollableTabs = Array.from({ length: 7 }, (_, i) => ({ title: weekDays[i], content: `Tab ${i + 1} Content` }))
@@ -26,14 +26,14 @@ const WeekTab = ({ field, loadField }) => {
             <TabView scrollableTabs>
                 {scrollableTabs.map((tab, idx) => {
 
-                    const date = new Date();
-                    date.setDate(currentDate.getDate() + idx);
+                    const date = new Date()
+                    date.setDate(currentDate.getDate() + idx)
                     return (
                         <TabPanel key={tab.title} header={tab.title}>
 
                             <FieldDetail field={field} day={tab.title} date={date} loadField={loadField} />
                         </TabPanel>
-                    );
+                    )
                 })}
             </TabView>
         </div>

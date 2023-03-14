@@ -1,9 +1,8 @@
-import { Card } from "react-bootstrap"
+import { Card, Col, Row } from "react-bootstrap"
 import './EventCardProfile.css'
 
 
-const EventCardProfile = ({ name, timeStart, playMinTotal }) => {
-
+const EventCardProfile = ({ name, timeStart, playMinTotal, players }) => {
 
 
     return (
@@ -12,8 +11,25 @@ const EventCardProfile = ({ name, timeStart, playMinTotal }) => {
             <Card className="mb-4 EventCard">
                 <Card.Img variant="top" />
                 <Card.Body>
-                    <h3 className='blackOps'>{name}</h3>
-                    <p>{timeStart} PM - {playMinTotal} min</p>
+                    <Row>
+                        <Col>
+                            <p>{name}</p>
+                            <p>{timeStart}</p>
+                        </Col>
+                    </Row>
+                    <Row>
+
+                        {players.map(elm => {
+                            return (
+                                <Col md={{ span: 3 }} key={elm._id}>
+                                    <img src={elm.imageUrl} alt={elm.username} />
+                                </Col>
+                            )
+                        })}
+
+                    </Row>
+
+
 
                 </Card.Body>
             </Card>

@@ -15,7 +15,7 @@ const ProfileHeader = ({ user_id }) => {
 
         profileServices
             .getProfile(user_id)
-            .then(data => SetUser(data))
+            .then(response => SetUser(response))
             .catch(err => console.log(err))
 
     }
@@ -23,7 +23,7 @@ const ProfileHeader = ({ user_id }) => {
     return (
         <Row>
             <Col xs={{ span: 3, offset: 3 }} className="d-flex justify-content-center">
-                <p>{user.data.email}</p>
+                <p>{user.email}</p>
             </Col>
             <Col className="d-flex justify-content-center" xs={6} >
                 <h2>Bern Vera</h2>

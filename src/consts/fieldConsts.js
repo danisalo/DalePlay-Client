@@ -128,4 +128,4 @@ const scheduleOptions = [
     }
 ]
 
-export default { sportOptions, scheduleOptions }
+export { sportOptions, scheduleOptions }

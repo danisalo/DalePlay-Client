@@ -25,4 +25,5 @@ class ProfileService {
 }
 
 const profileServices = new ProfileService()
+
 export default profileServices

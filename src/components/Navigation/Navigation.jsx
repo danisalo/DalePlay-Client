@@ -7,6 +7,8 @@ import './Navigation.css'
 const Navigation = () => {
     const { user, logout } = useContext(AuthContext)
 
+    console.log(user)
+
     return (
         <Navbar bg='light' variant='light' expand='md' id='fixed'>
             <Container fluid>
@@ -30,7 +32,7 @@ const Navigation = () => {
                         {user ? (
                             <>
                                 <hr className='d-block d-md-none' />
-                                <Link to='/perfil'>
+                                <Link to={`/miperfil/${user._id}`}>
                                     <Nav.Link as='span'>Mi Perfil</Nav.Link>
                                 </Link>
                                 <Nav.Link as='span' onClick={logout}>

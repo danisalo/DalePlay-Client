@@ -6,11 +6,7 @@ import EventCardProfile from "../EventCardProfile/EventCardProfile"
 
 const ProfileGames = ({ user_id }) => {
 
-
-
     const [games, SetGames] = useState([])
-
-
 
     useEffect(() => {
         loadGamesData()
@@ -20,10 +16,11 @@ const ProfileGames = ({ user_id }) => {
 
         eventsServices
             .getUserEvents(user_id)
-            .then(data => SetGames(data))
+            .then(data => SetGames(data),)
             .catch(err => console.log(err))
 
     }
+
     return (
         <Container>
             <Row>
@@ -32,7 +29,7 @@ const ProfileGames = ({ user_id }) => {
 
                         return (
                             <Col md={{ span: 3 }} key={elm._id}>
-                                <EventCardProfile name={elm.name} timeStart={elm.timeStart} playMinTotal={elm.playMinTotal} />
+                                <EventCardProfile name={elm.name} timeStart={elm.timeStart} playMinTotal={elm.playMinTotal} players={elm.players} />
                             </Col>
                         )
                     })
