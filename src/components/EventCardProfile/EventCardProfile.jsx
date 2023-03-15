@@ -32,8 +32,6 @@ function EventCardProfile({ _id, name, notes, timeStart, playMinTotal, players, 
             .catch(err => console.log(err))
     }
 
-    console.log('field', fieldData)
-
     return (
         <Link to={`/evento/${_id}`}>
             <Card className="mb-4 EventCard">

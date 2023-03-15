@@ -6,20 +6,24 @@ import EventCardProfile from "../EventCardProfile/EventCardProfile"
 
 const ProfileGames = ({ user_id }) => {
 
-    const [games, SetGames] = useState([])
+    const [games, setGames] = useState([])
+    const [hasGames, setHasGames] = useState(false)
 
-    useEffect(() => {
-        loadGamesData()
-
-    }, [])
+    useEffect(() => { loadGamesData() }, [])
 
     const loadGamesData = () => {
 
         eventsServices
             .getUserEvents(user_id)
-            .then(data => SetGames(data),)
+            .then(elm => setGames(elm.data),)
             .catch(err => console.log(err))
     }
+
+    useEffect(() => {
+        if (games.length > 0) { setHasGames(true) }
+        else { setHasGames(false) }
+    }, [games])
+
 
 
     return (
@@ -27,7 +31,7 @@ const ProfileGames = ({ user_id }) => {
             <hr />
             <h3 className="text-left mb-4">Mis partidas</h3>
             {
-                games.data ? games.data.map(elm => {
+                hasGames ? games.map(elm => {
 
                     return (
                         <Col md={{ span: 3 }} key={elm._id}>
