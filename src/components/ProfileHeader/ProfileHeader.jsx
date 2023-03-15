@@ -44,6 +44,7 @@ const ProfileHeader = ({ user_id }) => {
     }
 
     let memberSince
+
     if (userData.createdAt) {
         const date = new Date(userData.createdAt)
         const month = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(date)
