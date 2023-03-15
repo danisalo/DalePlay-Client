@@ -8,12 +8,12 @@ import uploadServices from "../../services/upload.services"
 import FormError from "../FormError/FormError"
 
 
-const EditClubForm = ({ fireFinalActions }) => {
+const EditClubForm = () => {
 
     const [clubData, setClubData] = useState({
         name: '',
         description: '',
-        location: '',
+        address: '',
         imageUrl: '',
     })
 
@@ -81,9 +81,9 @@ const EditClubForm = ({ fireFinalActions }) => {
                 <Form.Control type="text" name="description" value={clubData.description} onChange={handleInputChange} />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="location">
+            <Form.Group className="mb-4" controlId="address">
                 <Form.Label>Ubicación</Form.Label>
-                <Form.Control type="text" name="location" value={clubData.location} onChange={handleInputChange} />
+                <Form.Control type="text" name="address" value={clubData.address} onChange={handleInputChange} />
             </Form.Group>
 
             <Form.Group className="mb-4" controlId="image">
@@ -94,7 +94,7 @@ const EditClubForm = ({ fireFinalActions }) => {
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
-                <Button variant="DPmain" type="submit" size="lg">Guardar cambios</Button>
+                <Button variant="DPmain" type="submit" size="lg" disabled={loadingImage}>Guardar cambios</Button>
             </div>
 
         </Form>

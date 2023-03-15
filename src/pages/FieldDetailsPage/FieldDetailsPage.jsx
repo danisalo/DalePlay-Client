@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
 import { useParams } from "react-router-dom"
-import FieldDetail from "../../components/FieldDetail/FieldDetail"
-import fieldsServices from "../../services/field.services"
+
 import Loader from '../../components/Loader/Loader'
+import fieldsServices from "../../services/field.services"
+
 import WeekTab from "../../components/WeekTab/WeekTab"
+import FieldDetail from "../../components/FieldDetail/FieldDetail"
 
 
 const FieldListPage = () => {

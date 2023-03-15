@@ -1,0 +1,18 @@
+.EventCard {
+    text-decoration: none;
+    color: black;
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.EventCard:hover {
+    background-color: #fffcca;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.EventCard:hover .btn-DPmain {
+    background-color: #3335b5;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}

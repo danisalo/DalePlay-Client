@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react"
 import { Container, Col, Form } from "react-bootstrap"
 
-import fieldServices from "../../services/field.services"
-
 import Loader from "../../components/Loader/Loader"
+import eventsServices from "../../services/events.services"
+import fieldsServices from "../../services/field.services"
+
 import EventsList from "../../components/EventList/EventList"
 
 import './EventsPage.css'
-import eventsServices from "../../services/events.services"
-import fieldsServices from "../../services/field.services"
 
 const EventsPage = () => {
     const [fields, setFields] = useState([])
 
     const [selectedSport, setSelectedSport] = useState()
-
-
 
     const handleInputChange = event => {
         setSelectedSport(event.target.value)
@@ -26,6 +23,7 @@ const EventsPage = () => {
     }, [selectedSport])
 
     const getFilteredEvents = () => {
+
         fieldsServices
             .getSports(selectedSport)
             .then(({ data }) => {

@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: 100vh;
 }
 
 .carousel-text {
@@ -14,6 +15,14 @@
     z-index: 1;
 }
 
-h6 {
+/* .carousel-text h2 {
+    color: #6366F1;
+} */
+
+.carousel-text h5 {
     text-align: center;
+}
+
+.carousel-item {
+    max-height: 100vh;
 }

@@ -45,14 +45,14 @@ const ClubsHome = () => {
                         <h2 className='mt-2 mb-4'>Clubes Populares</h2>
                         <Row>
                             <ClubList className='mt-4' clubs={clubs.slice(0, 3)} />
-                            <Col md={{ span: 3 }}>
+                            <Col key='Clubs' sm={{ span: 6 }} md={{ span: 3 }}>
                                 <Link to={`/clubs`}>
                                     <Card className="mb-4 ClubCard">
                                         <Card.Img variant="top" src={tempImg} />
                                         <Card.Body className='d-flex flex-column justify-content-between'>
-                                            <h4>¿Te gustaría agregar a tu club?</h4>
+                                            <h4>¿Quieres ver todos los clubs disponibles?</h4>
                                             <Link to={`/clubs`} className="d-grid">
-                                                <Button variant="DPmain">Agregar mi club</Button>
+                                                <Button variant="DPmain">Ver clubs</Button>
                                             </Link>
                                         </Card.Body>
                                     </Card>

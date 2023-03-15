@@ -1,3 +1,10 @@
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 7rem;
+  min-height: 100vh;
+}
+
 img {
   width: 100%;
 }
@@ -7,13 +14,25 @@ a {
   color: inherit
 }
 
-.App {
-  text-align: center;
-  margin: 0;
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.socialIcon {
+  width: 48px;
+  height: 48px;
 }
 
 .formTitle {
   text-align: left;
+}
+
+.App {
+  text-align: center;
+  margin: 0;
 }
 
 .titleOverflow {
@@ -32,6 +51,32 @@ a {
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.addressOverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.imgMask {
+  position: relative;
+  padding-top: 100%;
+  max-width: 100%;
+}
+
+.imgOverflow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
 }
 
 /* BUTTONS */
@@ -66,6 +111,32 @@ a {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+.btn-DPwarn {
+  background-color: #f7ca14;
+  color: white;
+  min-width: 160px;
+}
+
+.btn-DPwarn:hover {
+  background-color: #ddb101;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-DPdanger {
+  background-color: #da2638;
+  color: white;
+  min-width: 160px;
+}
+
+.btn-DPdanger:hover {
+  background-color: #a81f2d;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 /* TYPE SYSTEM */
 
 h1 {
@@ -73,6 +144,9 @@ h1 {
   letter-spacing: 0.1rem;
   font-family: 'Climate Crisis', cursive;
   line-height: 100%;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
 }
 
 h2 {
@@ -80,6 +154,9 @@ h2 {
   letter-spacing: 0.1rem;
   font-family: 'Climate Crisis', cursive;
   line-height: 100%;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
 }
 
 h3 {
@@ -87,6 +164,9 @@ h3 {
   letter-spacing: 0.1rem;
   font-family: 'Climate Crisis', cursive;
   line-height: 100%;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
 }
 
 h4 {
@@ -94,19 +174,33 @@ h4 {
   letter-spacing: 0.1rem;
   font-family: 'Climate Crisis', cursive;
   line-height: 100%;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
 }
 
 h5 {
   font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 h6 {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: normal;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 p {
   font-size: 0.8rem;
+  font-weight: normal;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 #openMap {

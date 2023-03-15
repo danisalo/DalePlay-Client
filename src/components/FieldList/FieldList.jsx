@@ -12,7 +12,7 @@ const FieldList = ({ fields }) => {
             {
                 fields?.map(elm => {
                     return (
-                        <Col md={{ span: 3 }} key={elm._id}>
+                        <Col key={elm._id} sm={{ span: 6 }} md={{ span: 3 }}>
                             <FieldCard {...elm} />
                         </Col>
                     )

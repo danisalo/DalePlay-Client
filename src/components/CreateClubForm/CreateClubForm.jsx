@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 import clubsServices from '../../services/club.services'
 import uploadServices from "../../services/upload.services"
@@ -7,17 +8,18 @@ import uploadServices from "../../services/upload.services"
 import FormError from "../FormError/FormError"
 
 
-const CreateClubForm = ({ fireFinalActions }) => {
+const CreateClubForm = () => {
 
     const [clubData, setClubData] = useState({
         name: '',
         description: '',
-        location: '',
+        address: '',
         imageUrl: '',
     })
 
     const [errors, setErrors] = useState([])
     const [loadingImage, setLoadingImage] = useState(false)
+    const navigate = useNavigate()
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -25,19 +27,18 @@ const CreateClubForm = ({ fireFinalActions }) => {
     }
 
     const handleClubSubmit = e => {
-
         e.preventDefault()
 
         clubsServices
             .createClub(clubData)
-            .then(({ data }) => {
-                fireFinalActions()
+            .then(() => {
+                console.log(clubData)
+                navigate('/clubs')
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const handleFileUpload = e => {
-
         setLoadingImage(true)
 
         const formData = new FormData()
@@ -68,9 +69,9 @@ const CreateClubForm = ({ fireFinalActions }) => {
                 <Form.Control type="text" name="description" value={clubData.description} onChange={handleInputChange} placeholder="Descripción" />
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="location">
+            <Form.Group className="mb-4" controlId="address">
                 <Form.Label>Ubicación</Form.Label>
-                <Form.Control type="text" name="location" value={clubData.location} onChange={handleInputChange} placeholder="Ubicación" />
+                <Form.Control type="text" name="address" value={clubData.address} onChange={handleInputChange} placeholder="Ubicación" />
             </Form.Group>
 
             <Form.Group className="mb-4" controlId="image">
@@ -81,7 +82,7 @@ const CreateClubForm = ({ fireFinalActions }) => {
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
-                <Button variant="DPmain" type="submit" size="lg">Agregar club</Button>
+                <Button variant="DPmain" type="submit" size="lg" disabled={loadingImage}>Agregar club</Button>
             </div>
 
         </Form>

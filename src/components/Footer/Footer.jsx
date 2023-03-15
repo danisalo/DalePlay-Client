@@ -6,19 +6,19 @@ import './Footer.css'
 const Footer = () => {
 
     return (
-        <footer className='mt-4'>
+        <footer className='footer'>
             <div>
-                <Link>
-                    <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
+                <Link to='https://www.instagram.com' target='_blank'>
+                    <img className='socialIcon mx-2' src="https://res.cloudinary.com/dle7ctrmn/image/upload/v1678827231/Instagram_jkdzpp.svg" alt="Instagram Icon" />
                 </Link>
-                <Link>
-                    <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
+                <Link to='https://web.whatsapp.com' target='_blank'>
+                    <img className='socialIcon mx-2' src="https://res.cloudinary.com/dle7ctrmn/image/upload/v1678827231/WhatsApp_asg6wk.svg" alt="WhatsApp Icon" />
                 </Link>
-                <Link>
-                    <img src="https://www.traveloffpath.com/wp-content/uploads/2017/11/instagram-icon-white-on-black-circle.png" alt="IG Icon" />
+                <Link to='https://www.tiktok.com/en' target='_blank'>
+                    <img className='socialIcon mx-2' src="https://res.cloudinary.com/dle7ctrmn/image/upload/v1678827230/TikTok_duw3nh.svg" alt="TikTok Icon" />
                 </Link>
             </div >
-            <div className='mt-2 copyright'>
+            <div className='mt-2'>
                 <p className='mt-2 copyright'>© Dale Play 2023</p>
             </div>
         </footer >

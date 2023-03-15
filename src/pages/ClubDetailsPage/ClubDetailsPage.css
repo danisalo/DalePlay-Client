@@ -1,21 +1,22 @@
 #hero {
     text-align: left;
+    min-height: 33vh;
+    overflow: hidden;
+}
+
+#hero figure {
+    border-radius: 20px;
+    /* max-height: 33vh; */
+    width: 100%;
+    aspect-ratio: 1/1;
+
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 
-#hero img {
-    height: 200px;
-    width: auto;
-}
-
-#map img {
-    height: 200px;
-    width: auto;
-}
-
-#field img {
-    height: 50px;
-}
 
 #openMap {
     font-size: 1rem;
