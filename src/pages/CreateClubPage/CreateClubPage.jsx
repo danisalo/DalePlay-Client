@@ -7,7 +7,7 @@ const CreateClubPage = () => {
 
     return (
         <div className="pt-4">
-            <Container className="pt-4 formTitle">
+            <Container className="pt-4 text-left">
                 <Row className="pt-4">
                     <Col md={{ span: 8, offset: 2 }}>
                         <h2 >Agregar Club</h2>

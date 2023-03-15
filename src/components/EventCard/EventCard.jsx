@@ -29,18 +29,14 @@ function EventCard({ _id, name, notes, timeStart, playMinTotal, players, field }
                 setMaxPlayer(data.maxPlayers)
             })
             .catch(err => console.log(err))
-
     }
 
     const gameFull = () => {
-
         if (players.length === maxPlayer) {
             setIsFull(true)
         }
         setIsFull(false)
     }
-
-    console.log('max de jugadores es', maxPlayer)
 
     const handleJoinSubmit = e => {
         e.preventDefault()
@@ -52,7 +48,7 @@ function EventCard({ _id, name, notes, timeStart, playMinTotal, players, field }
     }
 
     return (
-        <Link to={`/event/${_id}`}>
+        <Link to={`/evento/${_id}`}>
             <Card className="mb-4 EventCard">
                 <Card.Body className='d-flex flex-column justify-content-between'>
                     <div>
@@ -61,9 +57,7 @@ function EventCard({ _id, name, notes, timeStart, playMinTotal, players, field }
                         <p className='textOverflow'>{notes}</p>
                     </div>
                     <div>
-                        <Link to={`/event/${_id}`} className="d-grid">
-                            <Button variant="DPmain">Ver Detalles</Button>
-                        </Link>
+                        <Button variant="DPmain">Ver Detalles</Button>
                     </div>
                 </Card.Body>
             </Card>

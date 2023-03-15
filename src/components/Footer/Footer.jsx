@@ -18,8 +18,8 @@ const Footer = () => {
                     <img className='socialIcon mx-2' src="https://res.cloudinary.com/dle7ctrmn/image/upload/v1678827230/TikTok_duw3nh.svg" alt="TikTok Icon" />
                 </Link>
             </div >
-            <div className='mt-2'>
-                <p className='mt-2 copyright'>© Dale Play 2023</p>
+            <div className='mt-4'>
+                <p className='mt-4 copyright'>© Dale Play 2023</p>
             </div>
         </footer >
     )

@@ -63,15 +63,18 @@ const RegisterForm = () => {
     return (
         <Form onSubmit={handleFormSubmit}>
             <Row>
-                <Form.Group as={Col} className="mb-2" controlId="firstName">
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" value={registerData.firstName} onChange={handleInputChange} name="firstName" placeholder="Nombre" />
-                </Form.Group>
-
-                <Form.Group as={Col} className="mb-2" controlId="lastName">
-                    <Form.Label>Apellido</Form.Label>
-                    <Form.Control type="text" value={registerData.lastName} onChange={handleInputChange} name="lastName" placeholder="Apellido" />
-                </Form.Group>
+                <Col>
+                    <Form.Group className="mb-2" controlId="firstName">
+                        <Form.Label>Nombre</Form.Label>
+                        <Form.Control type="text" value={registerData.firstName} onChange={handleInputChange} name="firstName" placeholder="Nombre" />
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Form.Group className="mb-2" controlId="lastName">
+                        <Form.Label>Apellido</Form.Label>
+                        <Form.Control type="text" value={registerData.lastName} onChange={handleInputChange} name="lastName" placeholder="Apellido" />
+                    </Form.Group>
+                </Col>
             </Row>
 
             <Form.Group className="mb-2" controlId="username">

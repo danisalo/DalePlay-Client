@@ -11,12 +11,14 @@ const CreateFieldPage = () => {
     const { club_id } = useParams()
 
     return (
-        <>
-            <Container className="formTitle">
-                <h2>CreateFieldPage</h2>
-                <FieldForm club_id={club_id} />
+        <div className="pt-4">
+            <Container className="text-left pt-4">
+                <div className="pt-4">
+                    <h2>Añadir cancha</h2>
+                    <FieldForm club_id={club_id} />
+                </div>
             </Container>
-        </>
+        </div>
     )
 }
 

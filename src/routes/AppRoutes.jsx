@@ -6,18 +6,19 @@ import LoginPage from "../pages/LoginPage/LoginPage"
 import MyProfilePage from "../pages/MyProfilePage/MyProfilePage"
 import UserProfilePage from "../pages/UserProfilePage/UserProfilePage"
 
+import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
 import ClubListPage from "../pages/ClubListPage/ClubListPage"
 import ClubDetailsPage from "../pages/ClubDetailsPage/ClubDetailsPage"
-import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
 import EditClubPage from "../pages/EditClubPage/EditClubPage"
 
-import FieldListPage from "../pages/FieldListPage/FieldListPage"
 import CreateFieldPage from "../pages/CreateFieldPage/CreateFieldPage"
+import FieldListPage from "../pages/FieldListPage/FieldListPage"
 import FieldDetailsPage from "../pages/FieldDetailsPage/FieldDetailsPage"
 import EditFieldForm from "../components/EditFieldForm/EditFieldForm"
 
-import EventsPage from "../pages/EventsPage/EventsPage"
 import CreateEventPage from "../pages/CreateEventPage/CreateEventPage"
+import EventsPage from "../pages/EventsPage/EventsPage"
+import EventDetailsPage from "../pages/EventDetailsPage/EventDetailsPage"
 
 import PrivateRoute from "./PrivateRoutes"
 
@@ -33,15 +34,15 @@ const AppRoutes = () => {
             <Route path="/registro" element={<RegisterPage />} />
             <Route path="/iniciar-sesion" element={<LoginPage />} />
 
-
-            <Route path="/clubs" element={<ClubListPage />} />
             <Route path="/crear-club" element={<CreateClubPage />} />
+            <Route path="/clubs" element={<ClubListPage />} />
             <Route path="/clubs/:club_id" element={<ClubDetailsPage />} />
 
             <Route path="/canchas" element={<FieldListPage />} />
-
             <Route path="/cancha/:field_id" element={<FieldDetailsPage />} />
             {/* <Route path="/:field_id/editar" element={<EditFieldForm />} /> */}
+
+            <Route path="/evento/:event_id" element={<EventDetailsPage />} />
 
             < Route element={<PrivateRoute />} >
                 <Route path="/crear-club" element={<CreateClubPage />} />
@@ -50,6 +51,7 @@ const AppRoutes = () => {
                 <Route path="/:club_id/crear-cancha" element={<CreateFieldPage />} />
 
                 <Route path="/crear-partida" element={<CreateEventPage />} />
+
                 <Route path="/miperfil/:user_id" element={<MyProfilePage />} />
             </Route>
 

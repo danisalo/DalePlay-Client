@@ -6,7 +6,7 @@ import EditFieldForm from "../../components/EditFieldForm/EditFieldForm"
 const EditFieldPage = () => {
 
     return (
-        <Container className="formTitle">
+        <Container className="text-left">
             <Row>
                 <Col md={{ span: 8, offset: 2 }}>
                     <h2 >Editar Cancha</h2>

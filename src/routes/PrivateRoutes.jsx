@@ -12,7 +12,7 @@ const PrivateRoute = () => {
     }
 
     if (!user) {
-        return <Navigate to="/inicio-sesion" />
+        return <Navigate to="/iniciar-sesion" />
     }
 
     return <Outlet />

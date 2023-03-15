@@ -11,7 +11,6 @@ import EventsList from "../../components/EventList/EventList"
 import './EventsPage.css'
 
 
-
 const EventsPage = () => {
     const [events, setEvents] = useState([])
     const [hasActiveEvents, setHasActiveEvents] = useState(false)
