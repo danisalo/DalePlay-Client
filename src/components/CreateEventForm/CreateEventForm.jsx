@@ -6,6 +6,9 @@ import FormError from "../FormError/FormError"
 import eventsServices from '../../services/events.services'
 import fieldsServices from "../../services/field.services"
 
+import * as projectConsts from './../../consts/projectConsts'
+
+
 const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fieldId, date, dayText }) => {
 
     const total = (hours.length * price)
@@ -29,14 +32,10 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
 
     const [errors, setErrors] = useState([])
 
-
-    const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-    const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
-
     const parts = reserveDay.toString().split(' ')
 
-    const dia = days[date.getDay()]
-    const mes = months[date.getMonth()]
+    const dia = projectConsts.DAYS[date.getDay()]
+    const mes = projectConsts.MONTHS[date.getMonth()]
     const year = parts[3]
 
     const handleInputChange = e => {
@@ -67,15 +66,9 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
                 <Col>
                     <p>Reserva de {sport}</p>
                 </Col>
-                <Col>
-
-                </Col>
             </Row>
-            <p></p>
-
             <Row className="mb-4">
                 <p>Horas de Reserva: {hours.map(elm => <p>{elm}</p>)}</p>
-
             </Row>
 
             <Form.Group className="mb-4" controlId="notes">
@@ -83,12 +76,11 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
                 <Form.Control type="text" name="notes" value={eventData.notes} onChange={handleInputChange} />
             </Form.Group>
 
-            {/* {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>} */}
+            {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
                 <Button variant="DPmain" type="submit" size="lg" >Reservar</Button>
             </div>
-
         </Form>
     )
 }

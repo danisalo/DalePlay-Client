@@ -1,3 +1,5 @@
+// import * as projectConsts from './../../consts/projectConsts'
+
 export const SPORTS_OPTIONS = [
     {
         name: 'Futbol 5v5',
@@ -126,3 +128,7 @@ export const SCHEDULE_OPTIONS = [
         value: '23'
     }
 ]
+
+export const MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+
+export const DAYS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']

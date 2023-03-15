@@ -7,7 +7,6 @@ const FieldsClub = ({ fields }) => {
 
     return (
         <Container>
-
             <div >
                 <h2 className='mb-4'>Canchas disponibles</h2>
                 <FieldList fields={fields} />

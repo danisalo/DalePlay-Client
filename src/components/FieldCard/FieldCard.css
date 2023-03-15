@@ -1,3 +1,22 @@
+.FieldCard {
+    text-decoration: none;
+    color: black;
+    min-height: 550px;
+    max-height: 550px;
+}
+
+.FieldCard:hover {
+    background-color: #fffcca;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.FieldCard:hover .btn-DPmain {
+    background-color: #3335b5;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 p {
     padding: 0;
 }

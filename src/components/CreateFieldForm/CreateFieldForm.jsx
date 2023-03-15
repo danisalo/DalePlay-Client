@@ -170,7 +170,7 @@ const CreateFieldForm = ({ club_id }) => {
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
-                <Button variant="DPmain" type="submit" size="lg" >Crear Partida</Button>
+                <Button variant="DPmain" type="submit" size="lg" disabled={loadingImage}>Crear Partida</Button>
             </div>
 
         </Form>

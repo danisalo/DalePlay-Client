@@ -30,22 +30,21 @@ const Navigation = () => {
                         {user ? (
                             <>
                                 <hr className='d-block d-md-none' />
-
-                                <Link onClick={logout} className='mx-2'>
-                                    <Button variant="DPoutline">Cerrar sesión</Button>
-                                </Link>
                                 <Link to={`/miperfil/${user._id}`} className='mx-2'>
                                     <Button variant="DPmain">Mi Perfil</Button>
+                                </Link>
+                                <Link onClick={logout} className='mx-2'>
+                                    <Button variant="DPoutline">Cerrar sesión</Button>
                                 </Link>
                             </>
                         ) : (
                             <div className='gap-2'>
                                 <hr className='d-block d-md-none' />
-                                <Link to='/registro' className='mx-2'>
-                                    <Button variant="DPoutline">Registrarme</Button>
-                                </Link>
                                 <Link to='/iniciar-sesion' className='mx-2'>
                                     <Button variant="DPmain">Iniciar sesión</Button>
+                                </Link>
+                                <Link to='/registro' className='mx-2'>
+                                    <Button variant="DPoutline">Registrarme</Button>
                                 </Link>
                             </div>
                         )}

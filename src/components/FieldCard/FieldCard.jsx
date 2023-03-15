@@ -4,34 +4,36 @@ import { Link } from 'react-router-dom'
 import './FieldCard.css'
 
 
-const FieldCard = ({ _id, sport, hourlyPrice, maxPlayers, timeSlots }) => {
-
-    const tempImg = "https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg"
+const FieldCard = ({ _id, sport, hourlyPrice, maxPlayers, imageUrl, timeSlots }) => {
 
     const opens = 0
     const closes = timeSlots.length - 1
 
     return (
-        <>
-            < Card>
-                <Card.Img variant="top" src={tempImg} />
-                <Card.Body>
-                    <h4>Partida de {sport}</h4>
-                    <p>Precio por hora: €{hourlyPrice}</p>
-                    <p>Jugadores: {maxPlayers}</p>
-                    <p>Abierto de {timeSlots[opens]} a {timeSlots[closes]}</p>
+        <Link to={`/cancha/${_id}`}>
+            < Card className='FieldCard'>
+                <div className='imgMask'>
+                    <Card.Img variant="top" className='imgOverflow' src={imageUrl} />
+                </div>
+                <Card.Body className='d-flex flex-column justify-content-between'>
+                    <div>
+                        <h4 className='mb-2'>{sport}</h4>
+                        <p className='mb-2'>Jugadores: {maxPlayers}</p>
+                        <p className='mb-2'>Precio por hora: €{hourlyPrice}</p>
+                        <p>Abierto de {timeSlots[opens]} a {timeSlots[closes]}</p>
+                    </div>
                     <div>
                         <Link to={`/cancha/${_id}`} className="d-grid">
                             <Button variant="DPmain">Ver Cancha</Button>
                         </Link>
-                        <Link to={`/${_id}/editar`} className="d-grid">
-                            <Button variant="warning">Editar Cancha</Button>
-                        </Link>
-                        {/* <Button onClick={() => deleteClub(club._id)} variant="danger" className="d-grid">Eliminar Cancha</Button> */}
+                        {/* <Link to={`/${_id}/editar`} className="d-grid">
+                            <Button variant="DPoutline">Editar Cancha</Button>
+                        </Link> */}
+                        {/* <Button onClick={() => deleteClub(club._id)} variant="DPdanger" className="d-grid">Eliminar Cancha</Button> */}
                     </div>
                 </Card.Body>
             </Card >
-        </>
+        </Link>
     )
 }
 

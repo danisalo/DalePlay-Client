@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Container, Row, Col, Image, ButtonGroup, Button } from "react-bootstrap"
+import { Container, Row, Col, Image, Button } from "react-bootstrap"
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 import Loader from "../../components/Loader/Loader"
@@ -48,30 +48,45 @@ const ClubDetailsPage = () => {
                         <Loader />
                         :
                         <div className="pt-4">
-                            <Row id="hero">
+                            <Row id="hero" className="mb-4">
                                 <Col md={{ span: 3 }}>
-                                    <Image fluid rounded src={club.imageUrl} alt="Club image" />
+                                    <figure className="heroImg" style={{ backgroundImage: `url(${club.imageUrl})` }} />
                                 </Col>
-                                <Col md={{ span: 8 }}>
-                                    <div className="mb-4">
-                                        <h2>{club.name}</h2>
-                                        <p>{club.description}</p>
-                                        <h5>Ubicación:</h5>
-                                        <p>Los Chorros, Miranda</p>
-                                        <a id="openMap" href={`https://www.google.com/maps/search/?api=1&query=${club.name}`} target="_blank">Abrir en Google Maps</a>
-                                    </div>
-                                    <div className="d-grid">
-                                        <Link to={`/${club_id}/crear-cancha`} className="d-grid">
-                                            <Button variant="DPmain">Agregar Cancha</Button>
-                                        </Link>
-                                        <Link to={`/${club_id}/editar`} className="d-grid">
-                                            <Button variant="warning">Editar Club</Button>
-                                        </Link>
-                                        <Button onClick={() => deleteClub(club._id)} variant="danger">Eliminar Club</Button>
-                                    </div>
+                                <Col md={{ span: 9 }}>
+                                    <Row>
+                                        <Col md={{ span: 12 }}>
+                                            <Row>
+                                                <div className="mb-4">
+                                                    <h2>{club.name}</h2>
+                                                    <h6>{club.description}</h6>
+                                                    <h5>Ubicación:</h5>
+                                                    <p>{club.address}</p>
+                                                    <a id="openMap" href={`https://www.google.com/maps/search/?api=1&query=${club.address}`} target="_blank">Abrir en Google Maps</a>
+                                                </div>
+                                            </Row>
+                                            <Row>
+                                                <Col xs={{ span: 4 }}>
+                                                    <Link to={`/${club_id}/crear-cancha`} className="d-grid mb-2">
+                                                        <Button variant="DPmain">Agregar Cancha</Button>
+                                                    </Link>
+                                                </Col>
+                                                <Col xs={{ span: 4 }}>
+                                                    <Link to={`/clubs/editar/${club_id}/`} className="d-grid mb-2">
+                                                        <Button variant="DPoutline">Editar Club</Button>
+                                                    </Link>
+                                                </Col>
+                                                <Col xs={{ span: 4 }} className="d-grid">
+                                                    <Link className="d-grid mb-2">
+                                                        <Button onClick={() => deleteClub(club._id)} variant="DPdanger" >Eliminar Club</Button>
+                                                    </Link>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                    </Row>
                                 </Col>
                             </Row>
-                            <Row id="field">
+                            <hr />
+                            <Row>
                                 <Col>
                                     <FieldsClub fields={club.fields} />
                                 </Col>

@@ -10,6 +10,13 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+.ClubCard:hover .btn-DPmain {
+    background-color: #3335b5;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 h4 {
     text-align: left;
 }

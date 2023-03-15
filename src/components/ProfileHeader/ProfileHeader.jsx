@@ -17,17 +17,14 @@ const ProfileHeader = ({ user_id }) => {
             .getProfile(user_id)
             .then(response => SetUser(response))
             .catch(err => console.log(err))
-
+        console.log({ user })
     }
 
     return (
         <Row>
-            <Col xs={{ span: 3, offset: 3 }} className="d-flex justify-content-center">
-                <p>{user.email}</p>
-            </Col>
-            <Col className="d-flex justify-content-center" xs={6} >
-                <h2>Bern Vera</h2>
-
+            <Col>
+                {/* <h4>Perfil de {user.data.firstName}{user.data.lastName}</h4> */}
+                {/* <h4>{user.data.username}</h4> */}
             </Col>
         </Row>
     )

@@ -14,11 +14,11 @@ const HowDoesItHome = () => {
             </Col>
             <Col className='HowDoesItHome' md={{ span: 6 }}>
                 <h2 className='mb-4'>¿Cómo funciona?</h2>
-                <p><b>1. Regístrate:</b> Crea una cuenta y únete a nuestra comunidad deportiva.</p>
-                <p><b>2. Busca partidas:</b> Encuentra partidas disponibles cerca de ti.</p>
-                <p><b>3. Únete u organiza:</b> Únete a un partido existente u organiza uno tú mismo.</p>
-                <p className='mt-2'>¡Disfruta de jugar fútbol, vóley, baloncesto o pádel con gente nueva!</p>
-                <Link to="/partidas" className='d-grid'>
+                <h6 className='mb-4'><b>1. Regístrate:</b> Crea una cuenta y únete a nuestra comunidad deportiva.</h6>
+                <h6 className='mb-4'><b>2. Busca partidas:</b> Encuentra partidas disponibles cerca de ti.</h6>
+                <h6 className='mb-4'><b>3. Únete u organiza:</b> Únete a un partido existente u organiza uno tú mismo.</h6>
+                <h6 className='mb-4'>Disfruta de jugar fútbol, vóley, baloncesto o pádel, ¡Dale Play!</h6>
+                <Link to="/partidas" className='d-grid mt-4'>
                     <Button variant="DPmain">Ver Partidas</Button>
                 </Link>
             </Col>

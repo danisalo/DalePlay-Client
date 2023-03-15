@@ -1,6 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
+
 import EventForm from "../../components/CreateEventForm/CreateEventForm"
+
 import './CreateEventPage.css'
 
 

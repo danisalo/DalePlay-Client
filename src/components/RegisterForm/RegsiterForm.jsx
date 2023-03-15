@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Button, Form } from "react-bootstrap"
+import { Row, Col, Form, Button } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 import authService from "../../services/auth.services"
 import uploadServices from "../../services/upload.services"
@@ -9,9 +10,11 @@ import FormError from "../FormError/FormError"
 import './RegisterForm.css'
 
 
-const RegisterForm = ({ fireFinalActions }) => {
+const RegisterForm = () => {
 
     const [registerData, SetRegisterData] = useState({
+        firstName: '',
+        lastName: '',
         username: '',
         password: '',
         email: '',
@@ -20,6 +23,7 @@ const RegisterForm = ({ fireFinalActions }) => {
 
     const [errors, setErrors] = useState([])
     const [loadingImage, setLoadingImage] = useState(false)
+    const navigate = useNavigate()
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -31,8 +35,8 @@ const RegisterForm = ({ fireFinalActions }) => {
 
         authService
             .register(registerData)
-            .then(({ data }) => {
-                fireFinalActions()
+            .then(() => {
+                navigate('/iniciar-sesion')
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
@@ -58,6 +62,17 @@ const RegisterForm = ({ fireFinalActions }) => {
 
     return (
         <Form onSubmit={handleFormSubmit}>
+            <Row>
+                <Form.Group as={Col} className="mb-2" controlId="firstName">
+                    <Form.Label>Nombre</Form.Label>
+                    <Form.Control type="text" value={registerData.firstName} onChange={handleInputChange} name="firstName" placeholder="Nombre" />
+                </Form.Group>
+
+                <Form.Group as={Col} className="mb-2" controlId="lastName">
+                    <Form.Label>Apellido</Form.Label>
+                    <Form.Control type="text" value={registerData.lastName} onChange={handleInputChange} name="lastName" placeholder="Apellido" />
+                </Form.Group>
+            </Row>
 
             <Form.Group className="mb-2" controlId="username">
                 <Form.Label>Nombre de usuario</Form.Label>

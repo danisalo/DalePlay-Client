@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Button } from 'react-bootstrap'
+import { Alert } from 'react-bootstrap'
 
 
 const FormError = ({ children }) => {
@@ -7,7 +7,7 @@ const FormError = ({ children }) => {
 
     if (show) {
         return (
-            <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+            <Alert variant="DPdanger">
                 <Alert.Heading>¡Ha ocurrido un error!</Alert.Heading>
                 {children}
             </Alert>
