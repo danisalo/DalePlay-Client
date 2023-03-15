@@ -63,11 +63,13 @@ const ClubDetailsPage = () => {
                                 </Col>
                                 <Col md={{ span: 9 }}>
                                     <Row>
-                                        <Col md={{ span: 12 }}>
+                                        <Col md={{ span: 12 }} >
                                             <Row>
                                                 <div className="mb-4">
-                                                    <h2>{club.name}</h2>
-                                                    <h6>{club.description}</h6>
+                                                    <div className="mb-4">
+                                                        <h2 className="mb-2">{club.name}</h2>
+                                                        <h6>{club.description}</h6>
+                                                    </div>
                                                     <h5>Ubicación:</h5>
                                                     <p>{club.address}</p>
                                                     <a id="openMap" href={`https://www.google.com/maps/search/?api=1&query=${club.address}`} target="_blank">Abrir en Google Maps</a>
@@ -102,14 +104,14 @@ const ClubDetailsPage = () => {
                             </Row>
                         </div>
                 }
-            </Container>
+            </Container >
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton> <Modal.Title>Crear Cancha Deportiva</Modal.Title></Modal.Header>
                 <Modal.Body>
                     <CreateFieldForm fireFinalActions={fireFinalActions} club_id={club_id} />
                 </Modal.Body>
             </Modal>
-        </div>
+        </div >
     )
 }
 

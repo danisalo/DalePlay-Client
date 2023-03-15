@@ -16,8 +16,6 @@ const FieldListPage = () => {
     const [field, setField] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
-    console.log(field)
-
     useEffect(() => {
         loadField()
     }, [])

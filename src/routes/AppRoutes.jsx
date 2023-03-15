@@ -4,7 +4,7 @@ import HomePage from "../pages/HomePage/HomePage"
 import RegisterPage from "../pages/RegisterPage/RegisterPage"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import MyProfilePage from "../pages/MyProfilePage/MyProfilePage"
-import UserProfilePage from "../pages/UserProfilePage/UserProfilePage"
+import EditUserForm from "../components/EditUserForm/EditUserForm"
 
 import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
 import ClubListPage from "../pages/ClubListPage/ClubListPage"
@@ -14,7 +14,7 @@ import EditClubPage from "../pages/EditClubPage/EditClubPage"
 import CreateFieldPage from "../pages/CreateFieldPage/CreateFieldPage"
 import FieldListPage from "../pages/FieldListPage/FieldListPage"
 import FieldDetailsPage from "../pages/FieldDetailsPage/FieldDetailsPage"
-import EditFieldForm from "../components/EditFieldForm/EditFieldForm"
+// import EditFieldForm from "../components/EditFieldForm/EditFieldForm"
 
 import CreateEventPage from "../pages/CreateEventPage/CreateEventPage"
 import EventsPage from "../pages/EventsPage/EventsPage"
@@ -53,10 +53,10 @@ const AppRoutes = () => {
                 <Route path="/crear-partida" element={<CreateEventPage />} />
 
                 <Route path="/miperfil/:user_id" element={<MyProfilePage />} />
+                <Route path="/editar/:user_id" element={<EditUserForm />} />
+
             </Route>
-
             <Route path="/partidas" element={<EventsPage />} />
-
 
             <Route path="*" element={<p>404</p>} />
         </Routes>
