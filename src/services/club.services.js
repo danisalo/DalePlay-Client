@@ -28,6 +28,10 @@ class ClubsService {
         return this.api.get(`/getOne/${club_id}`)
     }
 
+    getClubByField(field_id) {
+        return this.api.get(`/getbyfield/${field_id}`)
+    }
+
     addToClub(club_id, field_id) {
         return this.api.put(`/addtoclub/${club_id}/${field_id}`)
     }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Card, Button, Modal } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+import clubsServices from "../../services/club.services"
 
 import eventsServices from '../../services/events.services'
 import fieldsServices from "../../services/field.services"
@@ -11,8 +12,8 @@ import './EventCard.css'
 
 function EventCard({ _id, name, dayText, notes, timeStart, playMinTotal, players, field }) {
 
-
     const [maxPlayer, setMaxPlayer] = useState()
+    const [club, setClub] = useState([])
 
     const [isFull, setIsFull] = useState(false)
 
@@ -25,6 +26,7 @@ function EventCard({ _id, name, dayText, notes, timeStart, playMinTotal, players
     useEffect(() => {
         getMaxPlayers()
         gameFull()
+        getDataClub()
     }, [field])
 
 
@@ -44,14 +46,21 @@ function EventCard({ _id, name, dayText, notes, timeStart, playMinTotal, players
         setIsFull(false)
     }
 
+    const getDataClub = () => {
+        clubsServices
+            .getClubByField(field)
+            .then(({ data }) => {
+                setClub(data[0])
+            })
+            .catch(err => console.log(err))
+    }
+
     const fireJoinActions = () => {
         handleJoinSubmit()
         handleClose()
     }
 
     const handleJoinSubmit = () => {
-
-
         eventsServices
             .joinEvent(_id)
             .catch(err => console.log(err))
@@ -66,6 +75,7 @@ function EventCard({ _id, name, dayText, notes, timeStart, playMinTotal, players
                     <Card.Body className='d-flex flex-column justify-content-between'>
                         <div>
                             <h4>{name}</h4>
+                            <p>{club.name}</p>
                             <p>{dayText}</p>
                             <p>{timeStart} - {timeText}</p>
                             <p className='textOverflow'>{notes}</p>
