@@ -27,6 +27,7 @@ const FieldListPage = () => {
         fieldsServices
             .getOne(field_id)
             .then(({ data }) => {
+                console.log('llamada api', data)
                 setField(data)
                 setIsLoading(false)
             })

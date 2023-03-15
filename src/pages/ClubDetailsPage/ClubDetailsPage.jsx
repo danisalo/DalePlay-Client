@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Container, Row, Col, Image, Button } from "react-bootstrap"
+import { Container, Row, Col, Image, Button, Modal } from "react-bootstrap"
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 import Loader from "../../components/Loader/Loader"
@@ -8,11 +8,13 @@ import FieldsClub from "../../components/FieldsClub/FieldsClub"
 import clubServices from '../../services/club.services'
 
 import './ClubDetailsPage.css'
+import CreateFieldForm from "../../components/CreateFieldForm/CreateFieldForm"
 
 const ClubDetailsPage = () => {
 
     const [club, setClub] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    const [showModal, setShowModal] = useState(false)
 
     const navigate = useNavigate()
 
@@ -37,6 +39,13 @@ const ClubDetailsPage = () => {
             .deleteClub(club_id)
             .then(() => navigate('/clubs'))
             .catch(err => console.log(err))
+    }
+
+    const fireFinalActions = () => {
+
+        setShowModal(false)
+        loadClub()
+
     }
 
     return (
@@ -66,8 +75,8 @@ const ClubDetailsPage = () => {
                                             </Row>
                                             <Row>
                                                 <Col xs={{ span: 4 }}>
-                                                    <Link to={`/${club_id}/crear-cancha`} className="d-grid mb-2">
-                                                        <Button variant="DPmain">Agregar Cancha</Button>
+                                                    <Link className="d-grid mb-2">
+                                                        <Button onClick={() => setShowModal(true)} variant="DPmain">Agregar Cancha</Button>
                                                     </Link>
                                                 </Col>
                                                 <Col xs={{ span: 4 }}>
@@ -94,6 +103,12 @@ const ClubDetailsPage = () => {
                         </div>
                 }
             </Container>
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton> <Modal.Title>Crear Cancha Deportiva</Modal.Title></Modal.Header>
+                <Modal.Body>
+                    <CreateFieldForm fireFinalActions={fireFinalActions} club_id={club_id} />
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

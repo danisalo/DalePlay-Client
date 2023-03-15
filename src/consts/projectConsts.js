@@ -57,75 +57,75 @@ export const SPORTS_OPTIONS = [
 export const SCHEDULE_OPTIONS = [
     {
         name: '06:00',
-        value: '6'
+        value: 6
     },
     {
         name: '07:00',
-        value: '7'
+        value: 7
     },
     {
         name: '08:00',
-        value: '8'
+        value: 8
     },
     {
         name: '09:00',
-        value: '9'
+        value: 9
     },
     {
         name: '10:00',
-        value: '10'
+        value: 10
     },
     {
         name: '11:00',
-        value: '11'
+        value: 11
     },
     {
         name: '12:00',
-        value: '12'
+        value: 12
     },
     {
         name: '13:00',
-        value: '13'
+        value: 13
     },
     {
         name: '14:00',
-        value: '14'
+        value: 14
     },
     {
         name: '15:00',
-        value: '15'
+        value: 15
     },
     {
         name: '16:00',
-        value: '16'
+        value: 16
     },
     {
         name: '17:00',
-        value: '17'
+        value: 17
     },
     {
         name: '18:00',
-        value: '18'
+        value: 18
     },
     {
         name: '19:00',
-        value: '19'
+        value: 19
     },
     {
         name: '20:00',
-        value: '20'
+        value: 20
     },
     {
         name: '21:00',
-        value: '21'
+        value: 21
     },
     {
         name: '22:00',
-        value: '22'
+        value: 22
     },
     {
         name: '23:00',
-        value: '23'
+        value: 23
     }
 ]
 

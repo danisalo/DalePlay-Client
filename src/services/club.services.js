@@ -28,6 +28,10 @@ class ClubsService {
         return this.api.get(`/getOne/${club_id}`)
     }
 
+    addToClub(club_id, field_id) {
+        return this.api.put(`/addtoclub/${club_id}/${field_id}`)
+    }
+
     createClub(clubData) {
         return this.api.post('/create', clubData)
     }

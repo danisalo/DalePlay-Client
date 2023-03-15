@@ -2,18 +2,19 @@ import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 
 import * as projectConsts from "../../consts/projectConsts"
+import clubsServices from "../../services/club.services"
 import fieldsServices from '../../services/field.services'
 import uploadServices from "../../services/upload.services"
 
 import FormError from "../FormError/FormError"
 
 
-const CreateFieldForm = ({ club_id }) => {
+const CreateFieldForm = ({ fireFinalActions, club_id }) => {
 
     const [fieldData, setFieldData] = useState({
         sport: '',
         hourlyPrice: '',
-        maxPlayers: null,
+        maxPlayers: '',
         imageUrl: '',
         timeSlots: [],
         owner: club_id
@@ -21,43 +22,54 @@ const CreateFieldForm = ({ club_id }) => {
 
     const [errors, setErrors] = useState([])
     const [loadingImage, setLoadingImage] = useState(false)
+    const [openHour, setOpenHour] = useState()
+    const [closeHour, setCloseHour] = useState()
 
     const sportNames = projectConsts.SPORTS_OPTIONS.map((sport) => sport.name)
 
-    const [openHour, setOpenHour] = useState(7)
-    const [closeHour, setCloseHour] = useState(23)
-
-    const createHoursArray = (startHour, endHour) => {
-        const hoursArray = [];
-
-        for (let i = startHour; i <= endHour; i++) {
-            let hourString = i.toString().padStart(2, '0')
-            hoursArray.push(hourString + ':00')
-        }
+    const createHoursArray = (startHourStr, endHourStr) => {
+        const startHour = parseInt(startHourStr, 10)
+        const endHour = parseInt(endHourStr, 10)
+        const hoursArray = Array(endHour - startHour + 1)
+            .fill()
+            .map((_, index) => {
+                const hour = startHour + index;
+                const hourString = `${hour.toString().padStart(2, '0')}:00`;
+                return hourString
+            })
         return hoursArray
     }
 
     const handleInputChange = e => {
-
         const { value, name } = e.target
         setFieldData({ ...fieldData, [name]: value })
     }
 
+    useEffect(() => {
+        if (openHour && closeHour) { setFieldData({ ...fieldData, timeSlots: createHoursArray(openHour, closeHour) }) }
+    }, [openHour, closeHour])
+
+
     const handleFieldSubmit = e => {
+
         e.preventDefault()
 
-        const hoursArray = createHoursArray(openHour, closeHour)
-
-        const updateFieldData = { ...fieldData, timeSlots: hoursArray }
-
         fieldsServices
-            .createField(updateFieldData)
+            .createField(fieldData)
             .then(({ data }) => {
+
                 const max = getMaxPlayersByName(data.sport)
+
                 fieldsServices
+
                     .addMaxPlayer(data._id, max)
                     .then(({ data }) => {
-                        console.log(data)
+
+                        clubsServices
+                            .addToClub(club_id, data._id)
+                            .then((data) => fireFinalActions())
+                            .catch(err => setErrors(err.response.data.errorMessages))
+
                     })
                     .catch(err => setErrors(err.response.data.errorMessages))
             })
@@ -84,7 +96,7 @@ const CreateFieldForm = ({ club_id }) => {
 
     const getMaxPlayersByName = (name) => {
         const sportMax = projectConsts.SPORTS_OPTIONS.find((sport) => sport.name === name);
-        return sportMax ? sportMax.maxPlayers : null;
+        return sportMax.maxPlayers
     }
 
     return (
@@ -99,7 +111,7 @@ const CreateFieldForm = ({ club_id }) => {
                         {
                             sportNames.map(elm => {
                                 return (
-                                    <option value={elm}>{elm}</option>
+                                    <option key={elm} value={elm}>{elm}</option>
                                 )
                             })
                         }
@@ -112,23 +124,15 @@ const CreateFieldForm = ({ club_id }) => {
                     <Form.Label>Hora de apertura</Form.Label>
                     <Form.Select as={Col} aria-label="Default select example" value={openHour}
                         onChange={e => setOpenHour(e.target.value)}>
-                        <option value="7">07:00</option>
-                        <option value="8">08:00</option>
-                        <option value="9">09:00</option>
-                        <option value="10">10:00</option>
-                        <option value="11">11:00</option>
-                        <option value="12">12:00</option>
-                        <option value="13">13:00</option>
-                        <option value="14">14:00</option>
-                        <option value="15">15:00</option>
-                        <option value="16">16:00</option>
-                        <option value="17">17:00</option>
-                        <option value="18">18:00</option>
-                        <option value="19">19:00</option>
-                        <option value="20">20:00</option>
-                        <option value="21">21:00</option>
-                        <option value="22">22:00</option>
-                        <option value="23">23:00</option>
+                        <option>Elige la hora de apertura</option>
+                        {
+                            projectConsts.SCHEDULE_OPTIONS.map(elm => {
+                                return (
+                                    <option value={elm.value} key={elm.value}>{elm.name}</option>
+                                )
+                            })
+                        }
+
                     </Form.Select>
                 </Form.Group>
 
@@ -136,23 +140,14 @@ const CreateFieldForm = ({ club_id }) => {
                     <Form.Label>Hora de cierre</Form.Label>
                     <Form.Select as={Col} aria-label="Default select example" value={closeHour}
                         onChange={e => setCloseHour(e.target.value)}>
-                        <option value="7">07:00</option>
-                        <option value="8">08:00</option>
-                        <option value="9">09:00</option>
-                        <option value="10">10:00</option>
-                        <option value="11">11:00</option>
-                        <option value="12">12:00</option>
-                        <option value="13">13:00</option>
-                        <option value="14">14:00</option>
-                        <option value="15">15:00</option>
-                        <option value="16">16:00</option>
-                        <option value="17">17:00</option>
-                        <option value="18">18:00</option>
-                        <option value="19">19:00</option>
-                        <option value="20">20:00</option>
-                        <option value="21">21:00</option>
-                        <option value="22">22:00</option>
-                        <option value="23">23:00</option>
+                        <option>Elige la hora de cierre</option>
+                        {
+                            projectConsts.SCHEDULE_OPTIONS.map(elm => {
+                                return (
+                                    <option value={elm.value} key={elm.value}>{elm.name}</option>
+                                )
+                            })
+                        }
                     </Form.Select>
                 </Form.Group>
 
@@ -167,7 +162,7 @@ const CreateFieldForm = ({ club_id }) => {
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
 
-            {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
+            {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm}>{elm}</p>)}</FormError>}
 
             <div className="d-grid mb-4">
                 <Button variant="DPmain" type="submit" size="lg" disabled={loadingImage}>Crear Partida</Button>
