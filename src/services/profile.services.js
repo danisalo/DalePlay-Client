@@ -22,6 +22,14 @@ class ProfileService {
     getProfile(user_id) {
         return this.api.get(`/getone/${user_id}`)
     }
+
+    editProfile(user_id, registerData) {
+        return this.api.put(`/edit/${user_id}`, registerData)
+    }
+
+    deleteProfile(user_id) {
+        return this.api.delete(`/delete/${user_id}`)
+    }
 }
 
 const profileServices = new ProfileService()

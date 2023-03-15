@@ -56,7 +56,7 @@ function EventCard({ _id, name, notes, timeStart, playMinTotal, players, field }
                         <p>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
                         <p className='textOverflow'>{notes}</p>
                     </div>
-                    <div>
+                    <div className="d-grid">
                         <Button variant="DPmain">Ver Detalles</Button>
                     </div>
                 </Card.Body>

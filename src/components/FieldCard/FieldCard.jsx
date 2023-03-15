@@ -23,9 +23,9 @@ const FieldCard = ({ _id, sport, hourlyPrice, maxPlayers, imageUrl, timeSlots })
                         <p>Abierto de {timeSlots[opens]} a {timeSlots[closes]}</p>
                     </div>
                     <div>
-                        <Link to={`/cancha/${_id}`} className="d-grid">
+                        <div className="d-grid">
                             <Button variant="DPmain">Ver Cancha</Button>
-                        </Link>
+                        </div>
                         {/* <Link to={`/${_id}/editar`} className="d-grid">
                             <Button variant="DPoutline">Editar Cancha</Button>
                         </Link> */}
