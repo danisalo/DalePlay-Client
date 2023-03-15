@@ -89,7 +89,9 @@ const EventsPage = () => {
                         </Col>
                     </Row>
                     {
-                        hasActiveEvents ? <EventsList events={events} />
+                        hasActiveEvents
+                            ?
+                            <EventsList events={events} />
                             :
                             <div>
                                 <h6>No hay partidas programadas de <b>{selectedSport}</b></h6>

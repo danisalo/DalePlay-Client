@@ -1,42 +1,41 @@
 import { useState, useEffect } from "react"
-import { Col, Container, Row } from "react-bootstrap"
-import { useParams } from "react-router-dom"
-import eventsServices from "../../services/events.services"
-import { timeEnd } from "../../utils/projectUtils"
+import { Container, Row } from "react-bootstrap"
 
+const EventDetailsModal = ({ name, notes, day, timeStart, timeText, players, maxPlayer, field }) => {
 
+    const [fullDate, setfullDate] = useState([])
 
+    useEffect(() => {
+        parsedDate()
+    }, [])
 
-const EventDetailsModal = ({ event_id, name, dayText, notes, timeStart, timeText, playMinTotal, players, field, maxPlayer }) => {
-
-
-
+    const parsedDate = () => {
+        if (day) {
+            const date = new Date(day)
+            const finalDay = date.getDate()
+            const finalMonth = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(date)
+            const finalYear = date.getFullYear()
+            let finalDate = `${finalDay} de ${finalMonth} de ${finalYear}`
+            return setfullDate(finalDate)
+        }
+    }
 
     return (
-
         <Container>
-
             <Row>
-
-                <Col md={{ span: 6, offset: 1 }}>
-                    <h3>Juego de {name}</h3>
+                <div className="mb-4">
+                    <h3 className="mb-2">Juego de {name}</h3>
                     <p>{notes}</p>
-                    <ul>
-                        <li>Fecha: {dayText}</li>
-                        <li>Horario: {timeStart} - {timeText}</li>
-                    </ul>
+                </div>
+                <div>
+                    <p><b>Fecha:</b> {fullDate}</p>
+                    <p><b>Horario:</b> {timeStart} - {timeText}</p>
                     <p><b>Participantes:</b> {players.length}/{maxPlayer}</p>
-                    <hr />
-                </Col>
-
-                <Col md={{ span: 4 }}>
-                    hola
-                    {/* <img src={event} style={{ width: '100%' }} /> */}
-                </Col>
+                </div>
             </Row>
         </Container>
-
     )
 }
+
 
 export default EventDetailsModal

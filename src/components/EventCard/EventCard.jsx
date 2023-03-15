@@ -9,7 +9,7 @@ import EventDetailsModal from "../EventDetailsModal/EventDetailsModal"
 
 import './EventCard.css'
 
-function EventCard({ _id, name, dayText, notes, timeStart, playMinTotal, players, field }) {
+function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, players, field }) {
 
 
     const [maxPlayer, setMaxPlayer] = useState()
@@ -51,7 +51,6 @@ function EventCard({ _id, name, dayText, notes, timeStart, playMinTotal, players
 
     const handleJoinSubmit = () => {
 
-
         eventsServices
             .joinEvent(_id)
             .catch(err => console.log(err))
@@ -70,28 +69,24 @@ function EventCard({ _id, name, dayText, notes, timeStart, playMinTotal, players
                             <p>{timeStart} - {timeText}</p>
                             <p className='textOverflow'>{notes}</p>
                         </div>
-                        <div>
+                        <div className="d-grid">
                             <Button variant="DPmain" onClick={handleShow}>Ver Detalles</Button>
                         </div>
                     </Card.Body>
                 </Card>
             </Link >
 
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Detalles de la partida</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <EventDetailsModal event_id={_id} name={name} notes={notes} timeStart={timeStart} timeText={timeText} playMinTotal={playMinTotal} players={players} field={field} maxPlayer={maxPlayer} />
+                    <EventDetailsModal event_id={_id} name={name} notes={notes} day={day} timeStart={timeStart} timeText={timeText} players={players} maxPlayer={maxPlayer} field={field} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Cerrar
-                    </Button>
-                    <Button variant="primary" onClick={fireJoinActions}>
-                        Unirme
-                    </Button>
+                    <div className="d-grid">
+                        <Button variant="DPmain" onClick={fireJoinActions}>Unirme</Button>
+                    </div>
                 </Modal.Footer>
             </Modal>
         </>
