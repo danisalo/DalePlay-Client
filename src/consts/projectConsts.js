@@ -52,7 +52,6 @@ export const SPORTS_OPTIONS = [
     }
 ]
 
-
 export const SCHEDULE_OPTIONS = [
     {
         name: '06:00',

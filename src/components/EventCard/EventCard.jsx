@@ -1,12 +1,45 @@
+import { useEffect, useState } from "react"
 import { Card, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
 import eventsServices from '../../services/events.services'
+import fieldsServices from "../../services/field.services"
 
 import './EventCard.css'
 
+function EventCard({ _id, name, notes, timeStart, playMinTotal, players, field }) {
 
-function EventCard({ _id, name, notes, timeStart, playMinTotal }) {
+    const [maxPlayer, setMaxPlayer] = useState()
+
+    const [isFull, setIsFull] = useState(false)
+
+
+    useEffect(() => {
+        getMaxPlayers()
+        gameFull()
+    }, [field])
+
+
+    const getMaxPlayers = () => {
+        fieldsServices
+            .getOne(field)
+            .then(({ data }) => {
+                console.log(data)
+                setMaxPlayer(data.maxPlayers)
+            })
+            .catch(err => console.log(err))
+
+    }
+
+    const gameFull = () => {
+
+        if (players.length === maxPlayer) {
+            setIsFull(true)
+        }
+        setIsFull(false)
+    }
+
+    console.log('max de jugadores es', maxPlayer)
 
     const handleJoinSubmit = e => {
         e.preventDefault()
@@ -36,6 +69,14 @@ function EventCard({ _id, name, notes, timeStart, playMinTotal }) {
                 <Card.Body>
                     <h3>{name}</h3>
                     <p>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
+                    <p>Jugadores inscritos: {players.length} | Max Jugadores: {maxPlayer}</p>
+                    {
+                        !isFull
+                            ?
+                            <p>Aún hay hueco</p>
+                            :
+                            <p>No hay espacio</p>
+                    }
                     <p>{notes}</p>
                     <Link to={`/event/${_id}`} className="d-grid mb-2">
                         <Button variant="DPmain">Ver Detalles</Button>

@@ -7,8 +7,6 @@ import './Navigation.css'
 const Navigation = () => {
     const { user, logout } = useContext(AuthContext)
 
-    console.log(user)
-
     return (
         <Navbar bg='light' variant='light' expand='md' id='fixed'>
             <Container fluid>

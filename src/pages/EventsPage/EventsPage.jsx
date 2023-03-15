@@ -9,10 +9,12 @@ import EventsList from "../../components/EventList/EventList"
 import './EventsPage.css'
 import eventsServices from "../../services/events.services"
 import fieldsServices from "../../services/field.services"
+import * as projectConsts from "../../consts/projectConsts"
+
 
 const EventsPage = () => {
-    const [fields, setFields] = useState([])
-
+    const [events, setEvents] = useState([])
+    const [hasActiveEvents, setHasActiveEvents] = useState(false)
     const [selectedSport, setSelectedSport] = useState()
 
 
@@ -29,13 +31,41 @@ const EventsPage = () => {
         fieldsServices
             .getSports(selectedSport)
             .then(({ data }) => {
-                console.log('data antes del set', data[0].events)
-                setFields(data[0].events)
+
+                if (data.length === 0) {
+                    setHasActiveEvents(false)
+                }
+                else {
+
+                    function filterByDay(elm) {
+                        const today = new Date()
+                        const eventDay = new Date(elm.day)
+                        today.setHours(2)
+                        today.setMinutes(0)
+                        today.setSeconds(0)
+                        today.setMilliseconds(0)
+                        if (eventDay.getTime() >= today.getTime()) {
+                            return true
+                        }
+                        return false
+                    }
+
+                    const filteredEvents = data.filter(filterByDay)
+
+                    if (filteredEvents.length === 0) {
+                        setHasActiveEvents(false)
+                    }
+                    else {
+                        setHasActiveEvents(true)
+                        setEvents(filteredEvents)
+                    }
+
+                }
             })
             .catch(err => console.log(err))
     }
 
-    const sportOptions = ['Futbol 5v5', 'Futbol 7v7', 'Futbol 11v11', 'Volleyball 6v6', 'Baloncesto 3v3', 'Baloncesto 5v5', 'Padel 1v1', 'Padel 2v2', 'Tennis 1v1', 'Tennis 2v2']
+
     return (
         <div className="pt-5">
             <Container className="pt-5">
@@ -49,17 +79,24 @@ const EventsPage = () => {
                         <Form.Label>Deporte</Form.Label>
                         <Form.Select name="sport" value={selectedSport}
                             onChange={handleInputChange}>
+                            <option>Elige un deporte</option>
                             {
-                                sportOptions.map(elm => {
+
+                                projectConsts.SPORTS_OPTIONS.map(elm => {
                                     return (
-                                        <option value={elm}>{elm}</option>
+
+                                        <option value={elm.value}>{elm.name}</option>
                                     )
                                 })
                             }
                         </Form.Select>
                     </Form.Group>
 
-                    <EventsList events={fields} />
+                    {
+                        hasActiveEvents ? <EventsList events={events} /> : <p>No hay partidas programadas</p>
+                    }
+
+
                 </>
                 {/* )} */}
             </Container>
