@@ -15,7 +15,7 @@ const CreateEventPage = () => {
     }
 
     return (
-        <Container className="formTitle">
+        <Container className="text-left">
             <Row>
                 <Col md={{ span: 8, offset: 2 }}>
                     <h2>Crear partida</h2>

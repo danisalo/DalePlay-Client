@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react"
 import { Container, Col, Form } from "react-bootstrap"
 
-import Loader from "../../components/Loader/Loader"
-import eventsServices from "../../services/events.services"
 import fieldsServices from "../../services/field.services"
+
+import Loader from "../../components/Loader/Loader"
+import * as projectConsts from "../../consts/projectConsts"
 
 import EventsList from "../../components/EventList/EventList"
 
 import './EventsPage.css'
-import eventsServices from "../../services/events.services"
-import fieldsServices from "../../services/field.services"
-import * as projectConsts from "../../consts/projectConsts"
 
 
 const EventsPage = () => {

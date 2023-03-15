@@ -8,7 +8,7 @@ const RegisterPage = () => {
 
     return (
         <div className="pt-4">
-            <Container className="formTitle pt-4">
+            <Container className="text-left pt-4">
                 <Row className="pt-4">
                     <Col md={{ span: 8, offset: 2 }}>
                         <h2 className="mb-4">Registro</h2>

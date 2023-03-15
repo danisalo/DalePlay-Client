@@ -18,10 +18,8 @@ const ClubCard = ({ _id, name, description, address, imageUrl }) => {
                         <p className='textOverflow'>{description}</p>
                     </div>
                     <div>
-                        <p className='addressOverflow'>{address}</p>
-                        <Link to={`/clubs/${_id}`} className="d-grid">
-                            <Button variant="DPmain">Ver Club</Button>
-                        </Link>
+                        <p className='addressOverflow mb-4'>{address}</p>
+                        <Button variant="DPmain">Ver Club</Button>
                     </div>
                 </Card.Body>
             </Card>
