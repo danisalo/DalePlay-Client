@@ -10,14 +10,6 @@
     color: black;
 }
 
-h4 {
-    font-size: 1.2rem
-}
-
-p {
-    font-size: 0.82rem
-}
-
 .EventCard:hover {
     background-color: #fffcca;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

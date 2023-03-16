@@ -4,16 +4,9 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 
 import Loader from '../../components/Loader/Loader'
-<<<<<<< HEAD
 import fieldsServices from "../../services/field.services"
 import WeekTab from "../../components/WeekTab/WeekTab"
 import clubsServices from "../../services/club.services"
-=======
-import WeekTab from "../../components/WeekTab/WeekTab"
-import GoBack from "../../components/GoBack/GoBack"
-
-import fieldsServices from "../../services/field.services"
->>>>>>> 13f8c6c76ff6e8faaebfb433ae4f897f14d2546a
 
 
 const FieldListPage = () => {
@@ -99,7 +92,6 @@ const FieldListPage = () => {
                                             :
                                             <></>
                                         }
-
                                     </Row>
                                     <WeekTab field={field} loadField={loadField} />
                                 </div>

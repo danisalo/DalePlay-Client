@@ -10,6 +10,7 @@ import clubServices from '../../services/club.services'
 
 
 import './ClubDetailsPage.css'
+import GoBack from "../../components/GoBack/GoBack"
 
 
 const ClubDetailsPage = () => {
@@ -63,6 +64,7 @@ const ClubDetailsPage = () => {
                     isLoading
                         ?
                         <Loader />
+
                         :
                         <div className="pt-4">
                             <GoBack />
@@ -80,7 +82,7 @@ const ClubDetailsPage = () => {
                                                         <h6>{club.description}</h6>
                                                     </div>
                                                     <h5>Ubicación:</h5>
-                                                    <p>{club.address}</p>
+                                                    <p className="text-left">{club.address}</p>
                                                     <a id="openMap" href={`https://www.google.com/maps/search/?api=1&query=${club.address}`} target="_blank">Abrir en Google Maps</a>
                                                 </div>
                                             </Row>
@@ -112,7 +114,7 @@ const ClubDetailsPage = () => {
                                 </Col>
                             </Row>
                             <hr />
-                            <Row>
+                            <Row className="mb-4">
                                 <Col>
                                     <FieldsClub fields={club.fields} />
                                 </Col>

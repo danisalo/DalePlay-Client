@@ -53,7 +53,7 @@ function EventCardProfile({ _id, name, notes, timeStart, playMinTotal, players, 
                     <h4 className="mb-2">{name}</h4>
                     <p>{club.name}</p>
                     <Stack className="mb-1">
-                        <p><b>Tiempo de juego:</b>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
+                        <p><b>Horario:</b>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
                         <p><b>Precio:</b> {playerCost} €</p>
                         <p className='textOverflow'><b>Notas:</b>{notes}</p>
                         <p><b>Participantes:</b> {players.length}/{fieldData?.maxPlayers}</p>

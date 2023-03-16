@@ -17,10 +17,10 @@ const FieldCard = ({ _id, sport, hourlyPrice, maxPlayers, imageUrl, timeSlots })
                 </div>
                 <Card.Body className='d-flex flex-column justify-content-between'>
                     <div>
-                        <h4 className='mb-2'>{sport}</h4>
-                        <p className='mb-2'>Jugadores: {maxPlayers}</p>
-                        <p className='mb-2'>Precio por hora: €{hourlyPrice}</p>
-                        <p>Abierto de {timeSlots[opens]} a {timeSlots[closes]}</p>
+                        <h4 className='mb-2 text-left'>{sport}</h4>
+                        <p className='mb-2'><b>Jugadores:</b> {maxPlayers}</p>
+                        <p className='mb-2'><b>Precio por hora:</b> €{hourlyPrice}</p>
+                        <p><b>Horario:</b> {timeSlots[opens]} - {timeSlots[closes]}</p>
                     </div>
                     <div>
                         <div className="d-grid">

@@ -60,6 +60,7 @@ a {
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
+  font-size: 0.9rem;
 }
 
 .imgMask {
@@ -214,7 +215,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   letter-spacing: 0.1rem;
   font-family: 'Climate Crisis', cursive;
   line-height: 100%;
@@ -243,6 +244,7 @@ p {
   font-size: 0.8rem;
   font-weight: normal;
   text-align: left;
+  line-height: 120%;
   padding: 0;
   margin: 0;
 }
