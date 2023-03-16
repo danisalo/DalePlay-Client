@@ -1,5 +1,3 @@
-// import * as projectConsts from './../../consts/projectConsts'
-
 export const SPORTS_OPTIONS = [
     {
         name: 'Futbol 5v5',
