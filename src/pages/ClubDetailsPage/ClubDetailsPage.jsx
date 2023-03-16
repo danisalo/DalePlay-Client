@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react"
-import { Container, Row, Col, Image, Button, Modal } from "react-bootstrap"
+import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 import Loader from "../../components/Loader/Loader"
+import CreateFieldForm from "../../components/CreateFieldForm/CreateFieldForm"
 import FieldsClub from "../../components/FieldsClub/FieldsClub"
+import GoBack from "../../components/GoBack/GoBack"
 
 import clubServices from '../../services/club.services'
-import { goBack } from "../../utils/projectUtils"
+
 
 import './ClubDetailsPage.css'
-import CreateFieldForm from "../../components/CreateFieldForm/CreateFieldForm"
+
 
 const ClubDetailsPage = () => {
 
@@ -43,16 +45,9 @@ const ClubDetailsPage = () => {
     }
 
     const fireFinalActions = () => {
-
         setShowModal(false)
         loadClub()
-
     }
-
-    const goBack = () => {
-        navigate(-1)
-    }
-
 
 
     return (
@@ -64,9 +59,10 @@ const ClubDetailsPage = () => {
                         <Loader />
                         :
                         <div className="pt-4">
+                            <GoBack />
                             <Row id="hero" className="mb-4">
                                 <Col md={{ span: 3 }}>
-                                    <figure className="heroImg" style={{ backgroundImage: `url(${club.imageUrl})` }} />
+                                    <figure style={{ backgroundImage: `url(${club.imageUrl})` }} />
                                 </Col>
                                 <Col md={{ span: 9 }}>
                                     <Row>
@@ -109,11 +105,6 @@ const ClubDetailsPage = () => {
                                     <FieldsClub fields={club.fields} />
                                 </Col>
                             </Row>
-                            <hr />
-                            <Link className="d-grid mb-2">
-                                <Button onClick={goBack}>Volver</Button>
-                            </Link>
-
                         </div>
                 }
             </Container >

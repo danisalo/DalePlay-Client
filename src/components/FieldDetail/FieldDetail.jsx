@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Button, Modal } from "react-bootstrap"
+import { useNavigate } from 'react-router-dom'
 
 import { SelectButton } from 'primereact/selectbutton'
 import "primereact/resources/themes/lara-light-indigo/theme.css"
@@ -7,8 +8,11 @@ import "primereact/resources/primereact.min.css"
 import "primeicons/primeicons.css"
 
 import Loader from '../Loader/Loader'
-import eventsServices from "../../services/events.services"
 import CreateEventForm from "../CreateEventForm/CreateEventForm"
+
+import eventsServices from "../../services/events.services"
+
+import './FieldDetail.css'
 
 
 const FieldDetail = ({ field, day, date, loadField }) => {
@@ -17,6 +21,8 @@ const FieldDetail = ({ field, day, date, loadField }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [value, setSelectedHour] = useState([])
     const [availableSlots, setAvailableSlots] = useState([])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getAvailableSlots()
@@ -44,7 +50,6 @@ const FieldDetail = ({ field, day, date, loadField }) => {
                     setIsLoading(false)
                     return slotsAvailables
                 })
-
         }
 
         else {
@@ -61,14 +66,13 @@ const FieldDetail = ({ field, day, date, loadField }) => {
 
         return transformedHours
     }
+
     const items = transformSlotsToObjects(availableSlots)
 
     const fireFinalActions = () => {
-
         setShowModal(false)
         loadField()
         getAvailableSlots()
-
     }
 
     return (
@@ -80,16 +84,15 @@ const FieldDetail = ({ field, day, date, loadField }) => {
                     :
                     <>
                         <Container>
-                            <h3 className="mb-4" style={{ color: '#212529' }}>Partida de {field.sport}</h3>
+                            <h5 className="mb-4 subtitle">Partida de {field.sport}</h5>
                             <Row>
                                 <Col>
                                     <SelectButton value={value} onChange={(e) => setSelectedHour(e.value)} optionLabel='name' options={items} multiple />
                                 </Col>
                                 <div className="d-grid pt-4">
-                                    <Button onClick={() => setShowModal(true)} variant="DPmain" size='lg'>Crear partida</Button>
+                                    <Button onClick={() => setShowModal(true)} variant="DPmain" size='lg' disabled={!value || value.length === 0}>Crear partida</Button>
                                 </div>
                             </Row>
-
                         </Container >
 
                         <Modal show={showModal} onHide={() => setShowModal(false)}>

@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Button, Form, Row, Col } from "react-bootstrap"
 
 import FormError from "../FormError/FormError"
 
 import eventsServices from '../../services/events.services'
 import fieldsServices from "../../services/field.services"
-
-import * as projectConsts from './../../consts/projectConsts'
 
 
 const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fieldId, date, dayText }) => {

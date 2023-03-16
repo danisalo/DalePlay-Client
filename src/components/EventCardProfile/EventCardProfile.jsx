@@ -41,7 +41,7 @@ function EventCardProfile({ _id, name, notes, timeStart, playMinTotal, players, 
                 <Card.Body className='d-flex flex-column justify-content-between'>
                     <div>
                         <h4>{name}</h4>
-                        <p><b>Tiempo de juego:</b>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
+                        <p><b>Horario:</b>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
                         <p><b>Precio:</b> hacer playMinTotal * hourlyPrice</p>
                         <p className='textOverflow'><b>Notas:</b>{notes}</p>
                         <p><b>Participantes:</b> {players.length}/{fieldData?.maxPlayers}</p>

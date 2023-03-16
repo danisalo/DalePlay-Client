@@ -26,10 +26,6 @@ const FieldCard = ({ _id, sport, hourlyPrice, maxPlayers, imageUrl, timeSlots })
                         <div className="d-grid">
                             <Button variant="DPmain">Ver Cancha</Button>
                         </div>
-                        {/* <Link to={`/${_id}/editar`} className="d-grid">
-                            <Button variant="DPoutline">Editar Cancha</Button>
-                        </Link> */}
-                        {/* <Button onClick={() => deleteClub(club._id)} variant="DPdanger" className="d-grid">Eliminar Cancha</Button> */}
                     </div>
                 </Card.Body>
             </Card >

@@ -79,6 +79,50 @@ a {
   overflow: hidden;
 }
 
+/* AVATARS */
+
+.sm-avatar {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 0.2rem;
+  border-color: #6366F1;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.md-avatar {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 0.2rem;
+  border-color: #6366F1;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.avatar {
+  display: inline-block;
+  width: 160px;
+  height: 160px;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 0.4rem;
+  border-color: #6366F1;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 /* BUTTONS */
 
 .btn-DPmain {

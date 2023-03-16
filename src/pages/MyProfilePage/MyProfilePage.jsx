@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom"
 import ProfileGames from "../../components/ProfileGames/ProfileGames"
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader"
 
-import './MyProfilePage.css'
-
 
 const MyProfilePage = () => {
 

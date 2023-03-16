@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router-dom'
 
 import clubServices from '../../services/club.services'
+
 import Loader from "../../components/Loader/Loader"
 import ClubList from "../../components/ClubList/ClubList"
 
@@ -28,11 +29,6 @@ const ClubListPage = () => {
             })
             .catch(err => console.log(err))
     }
-    const goBack = () => {
-        navigate(-1)
-    }
-
-    const tempImg = 'https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg'
 
     return (
         <div className="pt-4">
@@ -51,7 +47,7 @@ const ClubListPage = () => {
                                 <Col md={{ span: 3 }}>
                                     <Link to={`/crear-club`}>
                                         <Card className="mb-4 ClubCard">
-                                            <Card.Img variant="top" src={tempImg} />
+                                            <Card.Img variant="top" src='{tempImg}' />
                                             <Card.Body className='d-flex flex-column justify-content-between'>
                                                 <h4>¿Te gustaría agregar a tu club?</h4>
                                                 <div className="d-grid">
@@ -62,10 +58,6 @@ const ClubListPage = () => {
                                     </Link >
                                 </Col>
                             </Row>
-                            <hr />
-                            <Link className="d-grid mb-2">
-                                <Button onClick={goBack}>Volver</Button>
-                            </Link>
                         </div>
 
                 }

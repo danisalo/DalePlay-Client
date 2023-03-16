@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState } from "react"
 import { TabView, TabPanel } from 'primereact/tabview'
+
 import FieldDetail from '../FieldDetail/FieldDetail'
 
 const WeekTab = ({ field, loadField }) => {
