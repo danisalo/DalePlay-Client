@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Container, Row } from "react-bootstrap"
+import { Container, Row, Stack } from "react-bootstrap"
 
 const EventDetailsModal = ({ name, notes, day, timeStart, timeText, players, maxPlayer, field }) => {
 
@@ -23,15 +23,14 @@ const EventDetailsModal = ({ name, notes, day, timeStart, timeText, players, max
     return (
         <Container>
             <Row>
-                <div className="mb-4">
-                    <h3 className="mb-2">Juego de {name}</h3>
+                <h4 className="mb-2">Juego de {name}</h4>
+                <Stack>
+                    <p className="mb-1"><b>Fecha:</b> {fullDate}</p>
+                    <p className="mb-1"><b>Horario:</b> {timeStart} - {timeText}</p>
+                    <p className="mb-4"><b>Participantes:</b> {players.length}/{maxPlayer}</p>
+                    <p className="mb-1"><b>Notas:</b></p>
                     <p>{notes}</p>
-                </div>
-                <div>
-                    <p><b>Fecha:</b> {fullDate}</p>
-                    <p><b>Horario:</b> {timeStart} - {timeText}</p>
-                    <p><b>Participantes:</b> {players.length}/{maxPlayer}</p>
-                </div>
+                </Stack>
             </Row>
         </Container>
     )

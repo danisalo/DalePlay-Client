@@ -15,11 +15,11 @@ const ClubCard = ({ _id, name, description, address, imageUrl }) => {
                 </div>
                 <Card.Body className='d-flex flex-column justify-content-between'>
                     <div>
-                        <h4 className='titleOverflow'>{name}</h4>
-                        <p className='textOverflow'>{description}</p>
+                        <h4 className='titleOverflow text-left mb-2'>{name}</h4>
+                        <p className='textOverflow text-left'>{description}</p>
                     </div>
                     <div>
-                        <p className='addressOverflow mb-4'>{address}</p>
+                        <p className='addressOverflow text-left mb-4'>{address}</p>
                         <div className="d-grid">
                             <Button variant="DPmain">Ver Club</Button>
                         </div>

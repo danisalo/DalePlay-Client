@@ -50,7 +50,7 @@ const ClubsHome = () => {
                                     <Card className="mb-4 ClubCard">
                                         <Card.Img variant="top" src={tempImg} />
                                         <Card.Body className='d-flex flex-column justify-content-between'>
-                                            <h4>¿Quieres ver todos los clubs disponibles?</h4>
+                                            <h4 className="text-left">¿Quieres ver todos los clubs disponibles?</h4>
                                             <Link to={`/clubs`} className="d-grid">
                                                 <Button variant="DPmain">Ver clubs</Button>
                                             </Link>

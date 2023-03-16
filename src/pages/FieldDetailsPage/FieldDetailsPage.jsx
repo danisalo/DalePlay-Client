@@ -92,7 +92,6 @@ const FieldListPage = () => {
                                             :
                                             <></>
                                         }
-
                                     </Row>
                                     <WeekTab field={field} loadField={loadField} />
                                 </div>

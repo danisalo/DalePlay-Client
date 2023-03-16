@@ -67,7 +67,7 @@ const ClubListPage = () => {
                                         <Col md={{ span: 3 }}>
                                             <Link to={`/crear-club`}>
                                                 <Card className="mb-4 ClubCard">
-                                                    <Card.Img variant="top" />
+                                                    <Card.Img variant="top" src="" />
                                                     <Card.Body className='d-flex flex-column justify-content-between'>
                                                         <h4>¿Te gustaría agregar a tu club?</h4>
                                                         <div className="d-grid">
