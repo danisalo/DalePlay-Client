@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react"
-import { Col, Row, Button } from "react-bootstrap"
+import { Col, Row, Button, Stack } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/auth.context'
@@ -63,11 +63,14 @@ const ProfileHeader = ({ user_id }) => {
                     </Col>
                     <Col md={{ span: 10 }}>
                         <h2 className="text-left">{userData.firstName} {userData.lastName}</h2>
-                        <Row>
+                        <Row className="mt-3">
                             <Col md={{ span: 10 }}>
-                                <h6><b>Username:</b> {userData.username}</h6>
-                                <h6><b>Correo:</b> {userData.email}</h6>
-                                <h6><b>Miembro desde:</b> {memberSince}</h6>
+                                <Stack gap={1}>
+                                    <h6><b>Username:</b> {userData.username}</h6>
+                                    <h6><b>Correo:</b> {userData.email}</h6>
+                                    <h6><b>Miembro desde:</b> {memberSince}</h6>
+                                </Stack>
+
                             </Col>
                             <Col md={{ span: 2 }}>
                                 <Link to={`/editar/${user_id}/`} className="d-grid">

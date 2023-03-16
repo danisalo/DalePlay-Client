@@ -74,8 +74,8 @@ function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, pl
                 <Card className="mb-4 EventCard">
                     <Card.Body className='d-flex flex-column justify-content-between'>
                         <div>
-                            <h4>{name}</h4>
-                            <p>{club.name}</p>
+                            <h4 className="mb-2">{name}</h4>
+                            <h6 className="mb-3">{club.name}</h6>
                             <p>{dayText}</p>
                             <p>{timeStart} - {timeText}</p>
                             <p className='textOverflow'>{notes}</p>

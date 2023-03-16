@@ -13,7 +13,7 @@ const MyProfilePage = () => {
 
     return (
         <div className="pt-4">
-            <Container className="pt-4">
+            <Container className="pt-5">
                 <div className="pt-4">
                     <ProfileHeader user_id={user_id} />
                     <ProfileGames user_id={user_id} />

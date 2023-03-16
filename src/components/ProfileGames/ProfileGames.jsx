@@ -27,9 +27,9 @@ const ProfileGames = ({ user_id }) => {
 
 
     return (
-        <Row className="mt-4">
+        <Row className="pt-5">
             <hr />
-            <h3 className="text-left mb-4">Mis partidas</h3>
+            <h3 className="text-left mb-4 pt-2 pb-1">Mis partidas</h3>
             {
                 hasGames ? games.map(elm => {
 

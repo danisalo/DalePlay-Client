@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router-dom'
 
+import { AuthContext } from "../../contexts/auth.context"
 import clubServices from '../../services/club.services'
 import Loader from "../../components/Loader/Loader"
 import ClubList from "../../components/ClubList/ClubList"
@@ -13,8 +14,16 @@ const ClubListPage = () => {
 
     const [clubs, setClubs] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [role, setRole] = useState('')
 
-    useEffect(() => { loadClub() }, [])
+    const { user } = useContext(AuthContext)
+
+
+    useEffect(() => {
+        loadClub()
+        const roleData = user?.role
+        setRole(roleData)
+    }, [user])
 
     const navigate = useNavigate()
 
@@ -47,21 +56,31 @@ const ClubListPage = () => {
                             <Row>
                                 <ClubList clubs={clubs} />
                             </Row>
-                            <Row>
-                                <Col md={{ span: 3 }}>
-                                    <Link to={`/crear-club`}>
-                                        <Card className="mb-4 ClubCard">
-                                            <Card.Img variant="top" src={tempImg} />
-                                            <Card.Body className='d-flex flex-column justify-content-between'>
-                                                <h4>¿Te gustaría agregar a tu club?</h4>
-                                                <div className="d-grid">
-                                                    <Button variant="DPmain">Agregar mi club</Button>
-                                                </div>
-                                            </Card.Body>
-                                        </Card>
-                                    </Link >
-                                </Col>
-                            </Row>
+
+
+                            {role == 'ADMIN'
+                                ?
+                                <>
+                                    <Row>
+                                        <Col md={{ span: 3 }}>
+                                            <Link to={`/crear-club`}>
+                                                <Card className="mb-4 ClubCard">
+                                                    <Card.Img variant="top" src={tempImg} />
+                                                    <Card.Body className='d-flex flex-column justify-content-between'>
+                                                        <h4>¿Te gustaría agregar a tu club?</h4>
+                                                        <div className="d-grid">
+                                                            <Button variant="DPmain">Agregar mi club</Button>
+                                                        </div>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Link >
+                                        </Col>
+                                    </Row>
+                                </>
+                                :
+                                <></>
+                            }
+
                             <hr />
                             <Link className="d-grid mb-2">
                                 <Button onClick={goBack}>Volver</Button>

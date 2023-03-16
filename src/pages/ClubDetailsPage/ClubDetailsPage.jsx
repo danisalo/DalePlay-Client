@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
-import { Container, Row, Col, Image, Button, Modal } from "react-bootstrap"
+import { useEffect, useState, useContext } from "react"
+import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { Link, useParams, useNavigate } from 'react-router-dom'
-
+import { AuthContext } from "../../contexts/auth.context"
 import Loader from "../../components/Loader/Loader"
 import FieldsClub from "../../components/FieldsClub/FieldsClub"
 
 import clubServices from '../../services/club.services'
-import { goBack } from "../../utils/projectUtils"
+
 
 import './ClubDetailsPage.css'
 import CreateFieldForm from "../../components/CreateFieldForm/CreateFieldForm"
@@ -16,12 +16,19 @@ const ClubDetailsPage = () => {
     const [club, setClub] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [showModal, setShowModal] = useState(false)
+    const [roleID, setRoleId] = useState('')
 
-    const navigate = useNavigate()
+    const { user } = useContext(AuthContext)
 
     const { club_id } = useParams()
 
-    useEffect(() => { loadClub() }, [club_id])
+    useEffect(() => {
+        loadClub()
+        const roleData = user?._id
+        setRoleId(roleData)
+    }, [club_id, user])
+
+    const navigate = useNavigate()
 
     const loadClub = () => {
 
@@ -53,8 +60,6 @@ const ClubDetailsPage = () => {
         navigate(-1)
     }
 
-
-
     return (
         <div className="pt-4">
             <Container className="pt-4">
@@ -82,23 +87,29 @@ const ClubDetailsPage = () => {
                                                     <a id="openMap" href={`https://www.google.com/maps/search/?api=1&query=${club.address}`} target="_blank">Abrir en Google Maps</a>
                                                 </div>
                                             </Row>
-                                            <Row>
-                                                <Col xs={{ span: 4 }}>
-                                                    <Link className="d-grid mb-2">
-                                                        <Button onClick={() => setShowModal(true)} variant="DPmain">Agregar Cancha</Button>
-                                                    </Link>
-                                                </Col>
-                                                <Col xs={{ span: 4 }}>
-                                                    <Link to={`/clubs/editar/${club_id}/`} className="d-grid mb-2">
-                                                        <Button variant="DPoutline">Editar Club</Button>
-                                                    </Link>
-                                                </Col>
-                                                <Col xs={{ span: 4 }} className="d-grid">
-                                                    <Link className="d-grid mb-2">
-                                                        <Button onClick={() => deleteClub(club._id)} variant="DPdanger" >Eliminar Club</Button>
-                                                    </Link>
-                                                </Col>
-                                            </Row>
+
+                                            {club.owner == roleID
+                                                ?
+                                                < Row >
+                                                    <Col xs={{ span: 4 }}>
+                                                        <Link className="d-grid mb-2">
+                                                            <Button onClick={() => setShowModal(true)} variant="DPmain">Agregar Cancha</Button>
+                                                        </Link>
+                                                    </Col>
+                                                    <Col xs={{ span: 4 }}>
+                                                        <Link to={`/clubs/editar/${club_id}/`} className="d-grid mb-2">
+                                                            <Button variant="DPoutline">Editar Club</Button>
+                                                        </Link>
+                                                    </Col>
+                                                    <Col xs={{ span: 4 }} className="d-grid">
+                                                        <Link className="d-grid mb-2">
+                                                            <Button onClick={() => deleteClub(club._id)} variant="DPdanger" >Eliminar Club</Button>
+                                                        </Link>
+                                                    </Col>
+                                                </Row>
+                                                :
+                                                <></>
+                                            }
                                         </Col>
                                     </Row>
                                 </Col>

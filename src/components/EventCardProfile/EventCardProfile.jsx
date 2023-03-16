@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { Row, Col, Card, Button } from "react-bootstrap"
+import { Row, Col, Card, Button, Container, Stack } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+import clubsServices from "../../services/club.services"
 
 import fieldServices from '../../services/field.services'
 
@@ -17,9 +18,11 @@ function EventCardProfile({ _id, name, notes, timeStart, playMinTotal, players, 
         imageUrl: ''
     })
     const [isLoading, setIsLoading] = useState(true)
+    const [club, setClub] = useState({})
 
     useEffect(() => { loadField() }, [])
 
+    const playerCost = (((playMinTotal / 60) * fieldData?.hourlyPrice) / fieldData?.maxPlayers)
 
     const loadField = () => {
 
@@ -27,39 +30,52 @@ function EventCardProfile({ _id, name, notes, timeStart, playMinTotal, players, 
             .getOne(field)
             .then(({ data }) => {
                 setFieldData(data)
-                setIsLoading(false)
+                clubsServices
+                    .getClubByField(field)
+                    .then(({ data }) => {
+                        setClub(data[0])
+                        setIsLoading(false)
+                    })
+                    .catch(err => console.log(err))
+
             })
             .catch(err => console.log(err))
     }
 
+
     return (
         <Link to={`/evento/${_id}`}>
-            <Card className="mb-4 EventCard">
+            <Card className="mb-4" >
                 <div className='imgMask'>
                     <Card.Img variant="top" className='imgOverflow' src={fieldData?.imageUrl} />
                 </div>
-                <Card.Body className='d-flex flex-column justify-content-between'>
-                    <div>
-                        <h4>{name}</h4>
+                <Card.Body className='d-flex flex-column'>
+                    <h4 className="mb-2">{name}</h4>
+                    <p>{club.name}</p>
+                    <Stack className="mb-1">
                         <p><b>Tiempo de juego:</b>{timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
-                        <p><b>Precio:</b> hacer playMinTotal * hourlyPrice</p>
+                        <p><b>Precio:</b> {playerCost} €</p>
                         <p className='textOverflow'><b>Notas:</b>{notes}</p>
                         <p><b>Participantes:</b> {players.length}/{fieldData?.maxPlayers}</p>
+                    </Stack>
+
+
+                    <Stack direction="horizontal" gap={3}>
                         {
+
                             players.map(elm => {
                                 return (
-                                    <Row key={elm._id}>
-                                        <div md={{ span: 3 }}>
-                                            <img className='sm-avatar' src={elm.imageUrl} alt={elm.username} />
-                                        </div>
-                                    </Row>
+
+                                    <img key={elm._id} className='sm-avatar mb-2' src={elm.imageUrl} alt={elm.username} />
                                 )
                             })
                         }
-                    </div>
-                    <div>
-                        <Button variant="DPmain">Ver Detalles</Button>
-                    </div>
+
+                    </Stack>
+
+
+
+                    <Button variant="DPmain">Ver Detalles</Button>
                 </Card.Body>
             </Card>
         </Link >

@@ -1,8 +1,21 @@
+.profileCard {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .EventCard {
     text-decoration: none;
     color: black;
-    min-height: 600px;
-    max-height: 600px;
+}
+
+h4 {
+    font-size: 1.2rem
+}
+
+p {
+    font-size: 0.82rem
 }
 
 .EventCard:hover {
