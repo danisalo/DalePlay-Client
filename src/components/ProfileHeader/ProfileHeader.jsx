@@ -74,7 +74,7 @@ const ProfileHeader = ({ user_id }) => {
                                     <Button variant="DPoutline">Editar Perfil</Button>
                                 </Link>
                                 <div className="d-grid mt-2">
-                                    <Button onClick={() => deleteUser()} variant="DPdanger" >Eliminar Perfil</Button>
+                                    <Button onClick={() => deleteUser()} variant="DPdanger" >Eliminar Cuenta</Button>
                                 </div>
                             </Col>
                         </Row>

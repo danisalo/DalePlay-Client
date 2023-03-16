@@ -43,20 +43,20 @@ const ClubListPage = () => {
                         <Loader />
                         :
                         <div className="pt-4">
-                            <h2>Listado de Clubs</h2>
+                            <h2 className="mb-4">Listado de Clubs</h2>
                             <Row>
                                 <ClubList clubs={clubs} />
                             </Row>
                             <Row>
                                 <Col md={{ span: 3 }}>
-                                    <Link to={`/clubs`}>
+                                    <Link to={`/crear-club`}>
                                         <Card className="mb-4 ClubCard">
                                             <Card.Img variant="top" src={tempImg} />
                                             <Card.Body className='d-flex flex-column justify-content-between'>
                                                 <h4>¿Te gustaría agregar a tu club?</h4>
-                                                <Link to={`/crear-club`} className="d-grid">
+                                                <div className="d-grid">
                                                     <Button variant="DPmain">Agregar mi club</Button>
-                                                </Link>
+                                                </div>
                                             </Card.Body>
                                         </Card>
                                     </Link >

@@ -17,7 +17,6 @@ const CreateFieldForm = ({ fireFinalActions, club_id }) => {
         maxPlayers: '',
         imageUrl: '',
         timeSlots: [],
-        owner: club_id
     })
 
     const [errors, setErrors] = useState([])
@@ -104,10 +103,11 @@ const CreateFieldForm = ({ fireFinalActions, club_id }) => {
         <Form onSubmit={handleFieldSubmit}>
 
             <Row className="mb-4">
-                <Form.Group as={Col} controlId="sport">
+                <Form.Group controlId="sport">
                     <Form.Label>Deporte</Form.Label>
                     <Form.Select name="sport" value={fieldData.sport}
                         onChange={handleInputChange}>
+                        <option>Elige un deporte</option>
                         {
                             sportNames.map(elm => {
                                 return (
