@@ -10,7 +10,7 @@ import EventDetailsModal from "../EventDetailsModal/EventDetailsModal"
 
 import './EventCard.css'
 
-function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, players, field }) {
+function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, players, field, getFilteredEvents }) {
 
     const [maxPlayer, setMaxPlayer] = useState()
     const [club, setClub] = useState([])
@@ -25,8 +25,8 @@ function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, pl
 
     useEffect(() => {
         getMaxPlayers()
-        gameFull()
         getDataClub()
+        gameFull()
     }, [field])
 
 
@@ -41,9 +41,12 @@ function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, pl
 
     const gameFull = () => {
         if (players.length === maxPlayer) {
+
             setIsFull(true)
         }
-        setIsFull(false)
+        else {
+            setIsFull(false)
+        }
     }
 
     const getDataClub = () => {
@@ -58,6 +61,8 @@ function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, pl
     const fireJoinActions = () => {
         handleJoinSubmit()
         handleClose()
+        getFilteredEvents()
+
     }
 
     const handleJoinSubmit = () => {
@@ -80,9 +85,17 @@ function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, pl
                             <p>{timeStart} - {timeText}</p>
                             <p className='textOverflow'>{notes}</p>
                         </div>
-                        <div className="d-grid">
-                            <Button variant="DPmain" onClick={handleShow}>Ver Detalles</Button>
-                        </div>
+                        {
+                            !isFull
+                                ?
+                                <div className="d-grid">
+                                    <Button variant="DPmain" onClick={handleShow}>Ver Detalles</Button>
+                                </div>
+                                :
+                                <p>PARTIDA FULL</p>
+
+                        }
+
                     </Card.Body>
                 </Card>
             </Link >
@@ -95,9 +108,21 @@ function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, pl
                     <EventDetailsModal event_id={_id} name={name} notes={notes} day={day} timeStart={timeStart} timeText={timeText} players={players} maxPlayer={maxPlayer} field={field} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className="d-grid">
-                        <Button variant="DPmain" onClick={fireJoinActions}>Unirme</Button>
-                    </div>
+                    {
+                        !isFull
+                            ?
+                            <div className="d-grid">
+                                <Button variant="DPmain" onClick={fireJoinActions}>Unirme</Button>
+                            </div>
+                            :
+                            <div className="d-grid">
+                                <Button variant="DPdanger" onClick={fireJoinActions} disabled>Partida Full</Button>
+                            </div>
+
+
+
+                    }
+
                 </Modal.Footer>
             </Modal>
         </>

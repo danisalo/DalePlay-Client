@@ -10,6 +10,7 @@ import clubServices from '../../services/club.services'
 
 
 import './ClubDetailsPage.css'
+import GoBack from "../../components/GoBack/GoBack"
 
 
 const ClubDetailsPage = () => {
@@ -65,6 +66,7 @@ const ClubDetailsPage = () => {
                         <Loader />
                         :
                         <div className="pt-4">
+
                             <GoBack />
                             <Row id="hero" className="mb-4">
                                 <Col md={{ span: 3 }}>

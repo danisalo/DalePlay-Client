@@ -5,7 +5,7 @@ import EventCard from "../EventCard/EventCard"
 import './EventList.css'
 
 
-const EventsList = ({ events }) => {
+const EventsList = ({ events, getFilteredEvents }) => {
 
     return (
         <Row>
@@ -13,7 +13,7 @@ const EventsList = ({ events }) => {
                 events.map(elm => {
                     return (
                         <Col md={{ span: 3 }} key={elm._id}>
-                            <EventCard {...elm} />
+                            <EventCard {...elm} getFilteredEvents={getFilteredEvents} />
                         </Col>
                     )
                 })

@@ -39,6 +39,11 @@ const ClubListPage = () => {
             .catch(err => console.log(err))
     }
 
+
+    const goBack = () => {
+        navigate(-1)
+    }
+
     return (
         <div className="pt-4">
             <Container className="pt-4">
@@ -54,6 +59,7 @@ const ClubListPage = () => {
                             </Row>
 
 
+
                             {role == 'ADMIN'
                                 ?
                                 <>
@@ -61,7 +67,7 @@ const ClubListPage = () => {
                                         <Col md={{ span: 3 }}>
                                             <Link to={`/crear-club`}>
                                                 <Card className="mb-4 ClubCard">
-                                                    <Card.Img variant="top" src={tempImg} />
+                                                    <Card.Img variant="top" />
                                                     <Card.Body className='d-flex flex-column justify-content-between'>
                                                         <h4>¿Te gustaría agregar a tu club?</h4>
                                                         <div className="d-grid">

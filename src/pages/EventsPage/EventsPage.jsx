@@ -91,7 +91,7 @@ const EventsPage = () => {
                     {
                         hasActiveEvents
                             ?
-                            <EventsList events={events} />
+                            <EventsList events={events} getFilteredEvents={getFilteredEvents} />
                             :
                             <div>
                                 <h6>No hay partidas programadas de <b>{selectedSport}</b></h6>
