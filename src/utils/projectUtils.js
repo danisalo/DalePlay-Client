@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+
 export const timeEnd = (timeStart, playMinTotal) => {
     const [startHours, startMinutes] = timeStart.split(":").map(Number)
 
@@ -10,3 +12,4 @@ export const timeEnd = (timeStart, playMinTotal) => {
 
     return finalEndTime
 }
+

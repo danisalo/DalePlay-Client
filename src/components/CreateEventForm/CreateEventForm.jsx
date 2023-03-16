@@ -55,9 +55,9 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
                     .then(({ data }) => {
                         fireFinalActions()
                     })
-                    .catch(err => console.log(err))
+                    .catch(err => setErrors(err.response.data.errorMessages))
             })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     return (

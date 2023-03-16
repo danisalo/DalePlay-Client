@@ -6,6 +6,7 @@ import Loader from "../../components/Loader/Loader"
 import FieldsClub from "../../components/FieldsClub/FieldsClub"
 
 import clubServices from '../../services/club.services'
+import { goBack } from "../../utils/projectUtils"
 
 import './ClubDetailsPage.css'
 import CreateFieldForm from "../../components/CreateFieldForm/CreateFieldForm"
@@ -47,6 +48,12 @@ const ClubDetailsPage = () => {
         loadClub()
 
     }
+
+    const goBack = () => {
+        navigate(-1)
+    }
+
+
 
     return (
         <div className="pt-4">
@@ -102,6 +109,11 @@ const ClubDetailsPage = () => {
                                     <FieldsClub fields={club.fields} />
                                 </Col>
                             </Row>
+                            <hr />
+                            <Link className="d-grid mb-2">
+                                <Button onClick={goBack}>Volver</Button>
+                            </Link>
+
                         </div>
                 }
             </Container >
