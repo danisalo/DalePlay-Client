@@ -34,10 +34,6 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
 
     const parts = reserveDay.toString().split(' ')
 
-    const dia = projectConsts.DAYS[date.getDay()]
-    const mes = projectConsts.MONTHS[date.getMonth()]
-    const year = parts[3]
-
     const handleInputChange = e => {
         const { value, name } = e.target
         setEventData({ ...eventData, [name]: value })
@@ -52,9 +48,7 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
                 const eventId = data._id
                 fieldsServices
                     .addEvent(fi, eventId)
-                    .then(({ data }) => {
-                        fireFinalActions()
-                    })
+                    .then(() => { fireFinalActions() })
                     .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
@@ -62,24 +56,20 @@ const CreateEventForm = ({ fireFinalActions, sport, hours, price, maxPlayers, fi
 
     return (
         <Form onSubmit={handleEventSubmit}>
-            <Row>
-                <Col>
-                    <p>Reserva de {sport}</p>
-                </Col>
-            </Row>
             <Row className="mb-4">
-                <p>Horas de Reserva: {hours.map(elm => <p>{elm}</p>)}</p>
+                <h5 className="mb-2">Horas de Reserva:</h5>
+                {hours.map(elm => <h6 className="mb-2">{elm}</h6>)}
             </Row>
 
             <Form.Group className="mb-4" controlId="notes">
-                <Form.Label>Notas</Form.Label>
-                <Form.Control type="text" name="notes" value={eventData.notes} onChange={handleInputChange} />
+                <Form.Label><h5>Notas de la partida</h5></Form.Label>
+                <Form.Control as="textarea" rows={3} type="text" name="notes" value={eventData.notes} onChange={handleInputChange} />
             </Form.Group>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
-            <div className="d-grid mb-4">
-                <Button variant="DPmain" type="submit" size="lg" >Reservar</Button>
+            <div className="d-grid">
+                <Button variant="DPmain" type="submit" size="lg">Reservar</Button>
             </div>
         </Form>
     )

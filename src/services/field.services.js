@@ -36,8 +36,8 @@ class FieldService {
         return this.api.post(`/delete/${field_id}`)
     }
 
-    editField(field_id) {
-        return this.api.put(`/edit/${field_id}`)
+    editField(field_id, fieldData) {
+        return this.api.put(`/edit/${field_id}`, fieldData)
     }
 
     addMaxPlayer(field_id, max) {

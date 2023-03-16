@@ -5,8 +5,6 @@ import FieldDetail from '../FieldDetail/FieldDetail'
 
 const WeekTab = ({ field, loadField }) => {
 
-
-
     let currentDate = new Date()
     let daysOfWeek = ["DOM", "LUN", "MAR", "MIE", "JUE", "VIE", "SAB"]
     let weekDays = []
@@ -24,20 +22,19 @@ const WeekTab = ({ field, loadField }) => {
     return (
         <div className="card">
             <TabView scrollableTabs>
-                {scrollableTabs.map((tab, idx) => {
+                {scrollableTabs.map((tab, index) => {
 
                     const date = new Date()
-                    date.setDate(currentDate.getDate() + idx)
+                    date.setDate(currentDate.getDate() + index)
+
                     return (
                         <TabPanel key={tab.title} header={tab.title}>
-
                             <FieldDetail field={field} day={tab.title} date={date} loadField={loadField} />
                         </TabPanel>
                     )
                 })}
             </TabView>
         </div>
-
     )
 }
 

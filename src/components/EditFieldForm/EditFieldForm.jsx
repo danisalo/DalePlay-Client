@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react"
-import { Form, Button, Row, Col } from "react-bootstrap"
+import { Form, Row, Col, Button } from "react-bootstrap"
 import { useParams, useNavigate } from "react-router-dom"
 
 import * as projectConsts from "../../consts/projectConsts"
 import fieldsServices from '../../services/field.services'
+import clubsServices from "../../services/club.services"
 import uploadServices from "../../services/upload.services"
 
 import FormError from "../FormError/FormError"
 
 
-const EditFieldForm = ({ club_id }) => {
+const EditFieldForm = () => {
 
     const [fieldData, setFieldData] = useState({
         sport: '',
         hourlyPrice: '',
-        maxPlayers: null,
-        imageUrl: '',
-        timeSlots: [],
-        owner: club_id
+        imageUrl: ''
     })
+
+    const [clubData, setClubData] = useState({})
 
     const [errors, setErrors] = useState([])
     const [loadingImage, setLoadingImage] = useState(false)
@@ -46,10 +46,20 @@ const EditFieldForm = ({ club_id }) => {
     }
 
     useEffect(() => {
-        getOne(field_id)
+        loadClubData(field_id)
+        loadFieldData(field_id)
     }, [])
 
-    const getOne = (field_id) => {
+    const loadClubData = (field_id) => {
+        clubsServices
+            .getClubByField(field_id)
+            .then(({ data }) => {
+                setClubData(data[0]._id)
+            })
+            .catch(err => setErrors(err.response.data.errorMessages))
+    }
+
+    const loadFieldData = (field_id) => {
         fieldsServices
             .getOne(field_id)
             .then(({ data }) => { setFieldData(data) })
@@ -63,17 +73,11 @@ const EditFieldForm = ({ club_id }) => {
         const updateFieldData = { ...fieldData, timeSlots: hoursArray }
 
         fieldsServices
-            .editField(field_id, fieldData, updateFieldData)
-            .then(({ data }) => {
-                const max = getMaxPlayersByName(data.sport)
-
-                fieldsServices
-                    .addMaxPlayer(data._id, max)
-                    .then(() => {
-                        navigate(`/details/${field_id}`)
-                    })
-                    .catch(err => setErrors(err.response.data.errorMessages))
+            .editField(field_id, fieldData)
+            .then(() => {
+                navigate(`/clubs/${clubData}`)
             })
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const handleFileUpload = e => {
@@ -94,26 +98,13 @@ const EditFieldForm = ({ club_id }) => {
             })
     }
 
-    const getMaxPlayersByName = (name) => {
-        const sportMax = projectConsts.SPORTS_OPTIONS.find((sport) => sport.name === name)
-        return sportMax ? sportMax.maxPlayers : null
-    }
-
-    const getScheduleHours = () => {
-        projectConsts.SCHEDULE_OPTIONS.map(elm => {
-            return (
-                <option value={elm.value}>{elm.name}</option>
-            )
-        })
-    }
-
     return (
         <Form onSubmit={handleFieldSubmit}>
-            <Row className="mb-4">
+            <Row className="mb-2">
                 <Form.Group as={Col} controlId="sport">
                     <Form.Label>Deporte</Form.Label>
                     <Form.Select name="sport" value={fieldData.sport}
-                        onChange={handleInputChange}>
+                        onChange={handleInputChange} disabled='true'>
                         {
                             sportNames.map(elm => {
                                 return (
@@ -124,36 +115,31 @@ const EditFieldForm = ({ club_id }) => {
                     </Form.Select>
                 </Form.Group>
             </Row>
-            <Row className="mb-4">
+            <Row className="mb-2">
                 <Form.Group as={Col}>
                     <Form.Label>Hora de apertura</Form.Label>
                     <Form.Select as={Col} aria-label="Default select example" value={openHour}
                         onChange={e => setOpenHour(e.target.value)}>
-                        {getScheduleHours()}
+                        {
+                            projectConsts.SCHEDULE_OPTIONS.map(elm => {
+                                return (
+                                    <option value={elm.value}>{elm.name}</option>
+                                )
+                            })
+                        }
                     </Form.Select>
                 </Form.Group>
                 <Form.Group as={Col}>
                     <Form.Label>Hora de cierre</Form.Label>
                     <Form.Select as={Col} aria-label="Default select example" value={closeHour}
                         onChange={e => setCloseHour(e.target.value)}>
-                        {getScheduleHours()}
-                        {/* <option value="7">07:00</option>
-                        <option value="8">08:00</option>
-                        <option value="9">09:00</option>
-                        <option value="10">10:00</option>
-                        <option value="11">11:00</option>
-                        <option value="12">12:00</option>
-                        <option value="13">13:00</option>
-                        <option value="14">14:00</option>
-                        <option value="15">15:00</option>
-                        <option value="16">16:00</option>
-                        <option value="17">17:00</option>
-                        <option value="18">18:00</option>
-                        <option value="19">19:00</option>
-                        <option value="20">20:00</option>
-                        <option value="21">21:00</option>
-                        <option value="22">22:00</option>
-                        <option value="23">23:00</option> */}
+                        {
+                            projectConsts.SCHEDULE_OPTIONS.map(elm => {
+                                return (
+                                    <option value={elm.value}>{elm.name}</option>
+                                )
+                            })
+                        }
                     </Form.Select>
                 </Form.Group>
                 <Form.Group as={Col} controlId="hourlyPrice">
@@ -161,15 +147,15 @@ const EditFieldForm = ({ club_id }) => {
                     <Form.Control type="text" name="hourlyPrice" value={fieldData.hourlyPrice} onChange={handleInputChange} />
                 </Form.Group>
             </Row>
-            <Form.Group className="mb-4" controlId="image">
+            <Form.Group className="mb-2" controlId="image">
                 <Form.Label>Foto del campo</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
-            <div className="d-grid mb-4">
-                <Button variant="DPmain" type="submit" size="lg" >Crear Partida</Button>
+            <div className="d-grid mt-4">
+                <Button variant="DPmain" type="submit" size="lg" >Guardar Cambios</Button>
             </div>
         </Form>
     )

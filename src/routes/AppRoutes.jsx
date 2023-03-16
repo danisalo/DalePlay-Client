@@ -4,7 +4,7 @@ import HomePage from "../pages/HomePage/HomePage"
 import RegisterPage from "../pages/RegisterPage/RegisterPage"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import MyProfilePage from "../pages/MyProfilePage/MyProfilePage"
-import EditUserForm from "../components/EditUserForm/EditUserForm"
+import EditUserPage from "../pages/EditUserPage/EditUserPage"
 
 import CreateClubPage from "../pages/CreateClubPage/CreateClubPage"
 import ClubListPage from "../pages/ClubListPage/ClubListPage"
@@ -14,7 +14,7 @@ import EditClubPage from "../pages/EditClubPage/EditClubPage"
 import CreateFieldPage from "../pages/CreateFieldPage/CreateFieldPage"
 import FieldListPage from "../pages/FieldListPage/FieldListPage"
 import FieldDetailsPage from "../pages/FieldDetailsPage/FieldDetailsPage"
-// import EditFieldForm from "../components/EditFieldForm/EditFieldForm"
+import EditFieldPage from "../pages/EditFieldPage/EditFieldPage"
 
 import CreateEventPage from "../pages/CreateEventPage/CreateEventPage"
 import EventsPage from "../pages/EventsPage/EventsPage"
@@ -40,7 +40,7 @@ const AppRoutes = () => {
 
             <Route path="/canchas" element={<FieldListPage />} />
             <Route path="/cancha/:field_id" element={<FieldDetailsPage />} />
-            {/* <Route path="/:field_id/editar" element={<EditFieldForm />} /> */}
+            <Route path="/cancha/editar/:field_id" element={<EditFieldPage />} />
 
             <Route path="/evento/:event_id" element={<EventDetailsPage />} />
 
@@ -53,7 +53,7 @@ const AppRoutes = () => {
                 <Route path="/crear-partida" element={<CreateEventPage />} />
 
                 <Route path="/miperfil/:user_id" element={<MyProfilePage />} />
-                <Route path="/editar/:user_id" element={<EditUserForm />} />
+                <Route path="/editar/:user_id" element={<EditUserPage />} />
 
             </Route>
             <Route path="/partidas" element={<EventsPage />} />

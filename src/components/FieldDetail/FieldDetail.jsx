@@ -79,29 +79,21 @@ const FieldDetail = ({ field, day, date, loadField }) => {
                     <Loader />
                     :
                     <>
-
                         <Container>
-
-                            <h3 className="mb-4">Crear Partida de {field.sport}</h3>
-                            <hr />
+                            <h3 className="mb-4" style={{ color: '#212529' }}>Partida de {field.sport}</h3>
                             <Row>
-
-                                <Col md={{ span: 6, offset: 1 }}>
-                                    <img src={field.imageUrl} style={{ width: '150px' }} />
+                                <Col>
+                                    <SelectButton value={value} onChange={(e) => setSelectedHour(e.value)} optionLabel='name' options={items} multiple />
                                 </Col>
-
-                                <Col md={{ span: 4 }} >
-                                    <SelectButton style={{ border: '2px solid', fontSize: '8px' }} value={value} onChange={(e) => setSelectedHour(e.value)} optionLabel='name' options={items} multiple />
-                                </Col>
-
-
-                                <Button onClick={() => setShowModal(true)} variant="DPmain" size='sm'>Crear nueva partida</Button>
+                                <div className="d-grid pt-4">
+                                    <Button onClick={() => setShowModal(true)} variant="DPmain" size='lg'>Crear partida</Button>
+                                </div>
                             </Row>
 
                         </Container >
 
                         <Modal show={showModal} onHide={() => setShowModal(false)}>
-                            <Modal.Header closeButton> <Modal.Title>Resumen de reserva {field.sport}</Modal.Title></Modal.Header>
+                            <Modal.Header closeButton><Modal.Title>Reserva para {field.sport}</Modal.Title></Modal.Header>
                             <Modal.Body>
                                 <CreateEventForm fireFinalActions={fireFinalActions} sport={field.sport} hours={value} price={field.hourlyPrice} maxPlayers={field.maxPlayers} fieldId={field._id} date={date} dayText={day} />
                             </Modal.Body>
