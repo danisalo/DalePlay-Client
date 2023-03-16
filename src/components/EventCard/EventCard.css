@@ -2,7 +2,7 @@
     text-decoration: none;
     color: black;
     min-height: 300px;
-    max-height: 300px;
+    max-height: 400px;
 }
 
 .EventCard:hover {
@@ -19,4 +19,12 @@
 
 .modal-footer {
     display: block;
+}
+
+#fontCardEvent p {
+    font-size: medium;
+}
+
+#clubFont {
+    color: grey;
 }

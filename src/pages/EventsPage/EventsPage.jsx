@@ -67,7 +67,7 @@ const EventsPage = () => {
     return (
         <div className="pt-4">
             <Container className="pt-4">
-                <div className="pt-4">
+                <div className="pt-4 mt-3">
                     <Row className="align-items-center">
                         <Col md={{ span: 8 }}>
                             <h2 className="text-left mb-4">Partidas Activas</h2>

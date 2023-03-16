@@ -45,15 +45,15 @@ const ClubListPage = () => {
     }
 
     return (
-        <div className="pt-4">
-            <Container className="pt-4">
+        <div className="pt-5">
+            <Container className="pt-5">
                 {
                     isLoading
                         ?
                         <Loader />
                         :
                         <div className="pt-4">
-                            <h2 className="mb-4">Listado de Clubs</h2>
+                            <h2 className="mb-5 pb-2">Listado de Clubs</h2>
                             <Row>
                                 <ClubList clubs={clubs} />
                             </Row>

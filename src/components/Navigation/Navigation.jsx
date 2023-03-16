@@ -33,7 +33,7 @@ const Navigation = () => {
                                 <Link to={`/miperfil/${user._id}`} className='mx-2'>
                                     <Button variant="DPmain">Mi Perfil</Button>
                                 </Link>
-                                <Link onClick={logout} className='mx-2'>
+                                <Link onClick={logout} to="/" className='mx-2'>
                                     <Button variant="DPoutline">Cerrar sesión</Button>
                                 </Link>
                             </>

@@ -10,14 +10,11 @@ import EventDetailsModal from "../EventDetailsModal/EventDetailsModal"
 
 import './EventCard.css'
 
-<<<<<<< HEAD
-function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, players, field, getFilteredEvents }) {
-=======
-function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, field }) {
->>>>>>> 574950642cfa70e8638e1feae96ec503ca77c956
+function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, field, getFilteredEvents }) {
 
     const [maxPlayer, setMaxPlayer] = useState()
     const [club, setClub] = useState([])
+    const [fullDate, setfullDate] = useState([])
 
     const [isFull, setIsFull] = useState(false)
 
@@ -26,13 +23,31 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
-
+    console.log(isFull)
     useEffect(() => {
         getMaxPlayers()
         getDataClub()
         gameFull()
     }, [field])
 
+    useEffect(() => {
+        gameFull()
+    }, [maxPlayer])
+
+    useEffect(() => {
+        parsedDate()
+    }, [])
+
+    const parsedDate = () => {
+        if (day) {
+            const date = new Date(day)
+            const finalDay = date.getDate()
+            const finalMonth = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(date)
+            const finalYear = date.getFullYear()
+            let finalDate = `${finalDay} de ${finalMonth} de ${finalYear}`
+            return setfullDate(finalDate)
+        }
+    }
 
     const getMaxPlayers = () => {
         fieldsServices
@@ -42,6 +57,7 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
             })
             .catch(err => console.log(err))
     }
+    console.log(players.length, 'essoooo', maxPlayer)
 
     const gameFull = () => {
         if (players.length === maxPlayer) {
@@ -84,12 +100,17 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
                     <Card.Body className='d-flex flex-column justify-content-between'>
                         <div>
                             <h4 className="mb-2 text-left">{name}</h4>
-                            <p className="mb-2">{club.name}</p>
-                            <Stack>
-                                <p className="mb-1"><b>Horario:</b> {timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
-                                <p className="mb-4"><b>Participantes:</b> {players.length}/{maxPlayer}</p>
-                                <p><b>Notas:</b></p>
-                                <p className='textOverflow mb-2'>{notes}</p>
+                            <p id="clubFont">{club.name}</p>
+                            <hr />
+                            <Stack gap={2} id="fontCardEvent">
+                                <p><b>Fecha:</b> {fullDate}</p>
+                                <p><b>Horario:</b> {timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
+                                <p><b>Participantes:</b> {players.length}/{maxPlayer}</p>
+                                <div>
+                                    <p><b>Notas:</b></p>
+                                    <p className='textOverflow mb-2'>{notes}</p>
+                                </div>
+
                             </Stack>
                         </div>
                         {
@@ -99,7 +120,10 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
                                     <Button variant="DPmain" onClick={handleShow}>Ver Detalles</Button>
                                 </div>
                                 :
-                                <p>PARTIDA FULL</p>
+                                <div className="d-grid">
+                                    <Button variant="DPmain" onClick={handleShow} disabled>Partida Llena</Button>
+                                </div>
+
 
                         }
 
@@ -123,7 +147,7 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
                             </div>
                             :
                             <div className="d-grid">
-                                <Button variant="DPdanger" onClick={fireJoinActions} disabled>Partida Full</Button>
+                                <Button variant="DPdanger" onClick={fireJoinActions} disabled>Partida Llena</Button>
                             </div>
 
                     }

@@ -8,7 +8,7 @@ import './EventList.css'
 const EventsList = ({ events, getFilteredEvents }) => {
 
     return (
-        <Row>
+        <Row className="mt-2 mb-2">
             {
                 events.map(elm => {
                     return (
