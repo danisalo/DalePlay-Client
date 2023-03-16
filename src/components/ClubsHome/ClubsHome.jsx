@@ -32,8 +32,6 @@ const ClubsHome = () => {
         loadClub()
     }
 
-    const tempImg = 'https://fastly.4sqi.net/img/general/600x600/61298733_eutk9aS2xcYaqQSD0T8XiNXDx1TPeMat2C-UKr0RFoc.jpg'
-
     return (
         <Container className='homepage'>
             {
@@ -48,7 +46,7 @@ const ClubsHome = () => {
                             <Col key='Clubs' sm={{ span: 6 }} md={{ span: 3 }}>
                                 <Link to={`/clubs`}>
                                     <Card className="mb-4 ClubCard">
-                                        <Card.Img variant="top" src={tempImg} />
+                                        <Card.Img variant="top" src='https://res.cloudinary.com/dle7ctrmn/image/upload/v1678992867/DIFF_20BALLS_20AND_20RACKETS_20-_20shutterstock_217282633_p0qd22.jpg' />
                                         <Card.Body className='d-flex flex-column justify-content-between'>
                                             <h4 className="text-left">¿Quieres ver todos los clubs disponibles?</h4>
                                             <Link to={`/clubs`} className="d-grid">

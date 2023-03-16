@@ -13,13 +13,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    color: #f8f9fa;
+    text-align: center;
+    text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }
 
-/* .carousel-text h2 {
-    color: #6366F1;
-} */
-
 .carousel-text h5 {
+    letter-spacing: 200%;
     text-align: center;
 }
 

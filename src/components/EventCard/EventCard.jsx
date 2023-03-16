@@ -10,11 +10,7 @@ import EventDetailsModal from "../EventDetailsModal/EventDetailsModal"
 
 import './EventCard.css'
 
-<<<<<<< HEAD
-function EventCard({ _id, name, day, dayText, notes, timeStart, playMinTotal, players, field, getFilteredEvents }) {
-=======
-function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, field }) {
->>>>>>> 574950642cfa70e8638e1feae96ec503ca77c956
+function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, field, getFilteredEvents }) {
 
     const [maxPlayer, setMaxPlayer] = useState()
     const [club, setClub] = useState([])
@@ -26,6 +22,7 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
+    console.log(isFull)
 
     useEffect(() => {
         getMaxPlayers()

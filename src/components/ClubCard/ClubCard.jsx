@@ -8,7 +8,6 @@ const ClubCard = ({ _id, name, description, address, imageUrl }) => {
 
     return (
         <Link to={`/clubs/${_id}`}>
-            <p>hols</p>
             <Card className="mb-4 ClubCard">
                 <div className='imgMask'>
                     <Card.Img variant="top" className='imgOverflow' src={imageUrl} />
