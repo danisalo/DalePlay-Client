@@ -1,0 +1,8 @@
+#eventDetails figure {
+    border-radius: 20px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}

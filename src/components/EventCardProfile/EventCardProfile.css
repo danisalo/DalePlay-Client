@@ -29,17 +29,3 @@ p {
     font-weight: bold;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-
-.sm-avatar {
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    border-style: solid;
-    border-radius: 50%;
-    border-width: 0.2rem;
-    border-color: #6366F1;
-    object-fit: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
