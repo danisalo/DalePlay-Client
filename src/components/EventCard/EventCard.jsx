@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Card, Button, Modal, Stack } from "react-bootstrap"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import clubsServices from "../../services/club.services"
+import { AuthContext } from "../../contexts/auth.context"
 
 import eventsServices from '../../services/events.services'
 import fieldsServices from "../../services/field.services"
@@ -19,9 +20,12 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
     const [isFull, setIsFull] = useState(false)
 
     const [show, setShow] = useState(false)
+    const { user } = useContext(AuthContext)
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getMaxPlayers()
@@ -102,19 +106,10 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
 
                             </Stack>
                         </div>
-                        {
-                            !isFull
-                                ?
-                                <div className="d-grid">
-                                    <Button variant="DPmain" onClick={handleShow}>Ver Detalles</Button>
-                                </div>
-                                :
-                                <div className="d-grid">
-                                    <Button variant="DPmain" onClick={handleShow} disabled>Partida Llena</Button>
-                                </div>
+                        <div className="d-grid">
+                            <Button variant="DPmain" onClick={handleShow}>Ver Detalles</Button>
+                        </div>
 
-
-                        }
 
                     </Card.Body>
                 </Card>
@@ -129,17 +124,21 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
                 </Modal.Body>
                 <Modal.Footer>
                     {
-                        !isFull
-                            ?
-                            <div className="d-grid">
-                                <Button variant="DPmain" onClick={fireJoinActions}>Unirme</Button>
+                        user
+                            ? isFull
+                                ? <div className="d-grid">
+                                    <Button variant="DPmain" onClick={handleShow} disabled>Partida Llena</Button>
+                                </div>
+                                : <div className="d-grid">
+                                    <Button variant="DPmain" onClick={fireJoinActions}>Unirme</Button>
+                                </div>
+                            : <div className="d-grid">
+                                <Link to="/iniciar-sesion">
+                                    <Button variant="DPmain">Iniciar Sesión</Button>
+                                </Link>
                             </div>
-                            :
-                            <div className="d-grid">
-                                <Button variant="DPdanger" onClick={fireJoinActions} disabled>Partida Llena</Button>
-                            </div>
-
                     }
+
 
                 </Modal.Footer>
             </Modal>

@@ -27,7 +27,7 @@ function EventCardProfile({ _id, name, day, timeStart, playMinTotal, players, fi
         })
     }, [])
 
-    const playerCost = (((playMinTotal / 60) * fieldData?.hourlyPrice) / fieldData?.maxPlayers)
+    const playerCost = (((playMinTotal / 60) * fieldData?.hourlyPrice))
 
     const loadField = () => {
         return fieldServices.getOne(field).then(({ data }) => {

@@ -14,15 +14,10 @@ export const timeEnd = (timeStart, playMinTotal) => {
 export const totalPrice = (playMinTotal, hourlyPrice) => {
 
     const playMinReal = Number(playMinTotal)
-    console.log('playMinReal1111', playMinReal)
 
     if (!isNaN(playMinReal)) {
         const hours = playMinReal / 60
         const result = hourlyPrice * hours
-        console.log('hourlyPrice----', hourlyPrice)
-        console.log("playMinReal----", playMinReal)
-        console.log('hours----', hours)
-        console.log('result----', result)
         return result
     }
 }
