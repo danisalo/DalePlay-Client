@@ -3,15 +3,15 @@ import { Col, Container, Row, Stack } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 
 import Loader from "../../components/Loader/Loader"
-import { timeEnd } from "../../utils/projectUtils"
+import { timeEnd, totalPrice, parsedDate } from "../../utils/projectUtils"
 import GoBack from "../../components/GoBack/GoBack"
 
 import eventsServices from "../../services/events.services"
 import fieldServices from "../../services/field.services"
 
-
-
 import './../../components/EventCardProfile/EventCardProfile.css'
+import './EventDetailsPage.css'
+
 
 const EventDetailsPage = () => {
 
@@ -25,9 +25,6 @@ const EventDetailsPage = () => {
     useEffect(() => {
         loadEvent()
     }, [event_id])
-
-    console.log('aqui estan los players', itsField)
-
 
     const loadEvent = () => {
 
@@ -46,6 +43,9 @@ const EventDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+    console.log('event.playMinTotalllll', event.playMinTotal)
+    // console.log('totalPriceeeee', totalPrice())
+    console.log('event.dayyyyy', event)
 
     return (
         <div className="pt-4">
@@ -60,19 +60,22 @@ const EventDetailsPage = () => {
 
                             <>
                                 <GoBack />
-                                <Row id="eventDetails">
+                                <Row>
                                     <Col md={{ span: 4 }} >
-                                        <figure style={{ backgroundImage: `url(${itsField.imageUrl})` }} />
+                                        <figure id="eventDetails">
+                                            <img src={itsField.imageUrl} alt="" />
+                                        </figure>
                                     </Col>
                                     <Col md={{ span: 8 }}>
                                         <Stack gap={1}>
                                             <h3 className="text-left mb-2 mt-2">Juego de {event.name}</h3>
-                                            <h6 className="mb-2">{event.notes}</h6>
+                                            <h6 >{event.notes}</h6>
                                         </Stack>
+                                        <hr />
                                         <Stack className="mb-4" gap={2}>
-                                            <p><b>Fecha:</b> {event.dayText}</p>
+                                            <p><b>Fecha:</b> {parsedDate(event.day)}</p>
                                             <p><b>Horario:</b> {event.timeStart} - {timeEnd(event.timeStart, event.playMinTotal)}</p>
-                                            <p><b>Precio:</b> hacer playMinTotal * hourlyPrice</p>
+                                            {/* <p><b>Precio:</b> {totalPrice(event?.timeStart, event?.playMinTotal)}</p> */}
                                             <p><b>Participantes:</b> {event.players.length}/{itsField.maxPlayers}</p>
                                         </Stack>
                                         <Stack direction="horizontal" gap={3}>

@@ -6,8 +6,8 @@ function HeroSectionHome() {
 
     const carouselImages = [
         "https://res.cloudinary.com/dle7ctrmn/image/upload/v1678991196/Campo-de-Futbol_dd1dia.png",
-        "https://res.cloudinary.com/dle7ctrmn/image/upload/v1678991651/Canchas-de-Padel_cmmtqa.png",
-        "https://res.cloudinary.com/dle7ctrmn/image/upload/v1678992014/Cancha-de-Volley_zybytm.png"
+        "https://res.cloudinary.com/dle7ctrmn/image/upload/v1678991651/Campos-de-Padel_cmmtqa.png",
+        "https://res.cloudinary.com/dle7ctrmn/image/upload/v1678992014/Campo-de-Volley_zybytm.png"
     ]
 
     return (

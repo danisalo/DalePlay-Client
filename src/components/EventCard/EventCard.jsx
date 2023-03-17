@@ -5,7 +5,7 @@ import clubsServices from "../../services/club.services"
 
 import eventsServices from '../../services/events.services'
 import fieldsServices from "../../services/field.services"
-import { timeEnd } from "../../utils/projectUtils"
+import { timeEnd, parsedDate } from "../../utils/projectUtils"
 import EventDetailsModal from "../EventDetailsModal/EventDetailsModal"
 
 import './EventCard.css'
@@ -23,7 +23,6 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
-    console.log(isFull)
     useEffect(() => {
         getMaxPlayers()
         getDataClub()
@@ -34,20 +33,11 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
         gameFull()
     }, [maxPlayer])
 
-    useEffect(() => {
-        parsedDate()
-    }, [])
+    const formattedDate = parsedDate(day)
 
-    const parsedDate = () => {
-        if (day) {
-            const date = new Date(day)
-            const finalDay = date.getDate()
-            const finalMonth = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(date)
-            const finalYear = date.getFullYear()
-            let finalDate = `${finalDay} de ${finalMonth} de ${finalYear}`
-            return setfullDate(finalDate)
-        }
-    }
+    useEffect(() => {
+        setfullDate(formattedDate)
+    }, [day])
 
     const getMaxPlayers = () => {
         fieldsServices
@@ -57,7 +47,6 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
             })
             .catch(err => console.log(err))
     }
-    console.log(players.length, 'essoooo', maxPlayer)
 
     const gameFull = () => {
         if (players.length === maxPlayer) {
@@ -100,10 +89,10 @@ function EventCard({ _id, name, day, notes, timeStart, playMinTotal, players, fi
                     <Card.Body className='d-flex flex-column justify-content-between'>
                         <div>
                             <h4 className="mb-2 text-left">{name}</h4>
-                            <p id="clubFont">{club.name}</p>
+                            <p id="clubFont">{club?.name}</p>
                             <hr />
                             <Stack gap={2} id="fontCardEvent">
-                                <p><b>Fecha:</b> {fullDate}</p>
+                                <p><b>Fecha:</b> {parsedDate(day)}</p>
                                 <p><b>Horario:</b> {timeStart} - {timeEnd(timeStart, playMinTotal)}</p>
                                 <p><b>Participantes:</b> {players.length}/{maxPlayer}</p>
                                 <div>

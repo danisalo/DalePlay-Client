@@ -1,13 +1,11 @@
 import { useState } from "react"
 import { Row, Col, Form, Button } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import authService from "../../services/auth.services"
 import uploadServices from "../../services/upload.services"
 
 import FormError from "../FormError/FormError"
-
-import './RegisterForm.css'
 
 
 const RegisterForm = () => {
@@ -61,49 +59,54 @@ const RegisterForm = () => {
     }
 
     return (
-        <Form onSubmit={handleFormSubmit}>
-            <Row>
-                <Col>
-                    <Form.Group className="mb-2" controlId="firstName">
-                        <Form.Label>Nombre</Form.Label>
-                        <Form.Control type="text" value={registerData.firstName} onChange={handleInputChange} name="firstName" placeholder="Nombre" />
-                    </Form.Group>
-                </Col>
-                <Col>
-                    <Form.Group className="mb-2" controlId="lastName">
-                        <Form.Label>Apellido</Form.Label>
-                        <Form.Control type="text" value={registerData.lastName} onChange={handleInputChange} name="lastName" placeholder="Apellido" />
-                    </Form.Group>
-                </Col>
-            </Row>
+        <>
+            <Form onSubmit={handleFormSubmit}>
+                <Row>
+                    <Col>
+                        <Form.Group className="mb-2" controlId="firstName">
+                            <Form.Label>Nombre</Form.Label>
+                            <Form.Control type="text" value={registerData.firstName} onChange={handleInputChange} name="firstName" placeholder="Nombre" />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-2" controlId="lastName">
+                            <Form.Label>Apellido</Form.Label>
+                            <Form.Control type="text" value={registerData.lastName} onChange={handleInputChange} name="lastName" placeholder="Apellido" />
+                        </Form.Group>
+                    </Col>
+                </Row>
 
-            <Form.Group className="mb-2" controlId="username">
-                <Form.Label>Nombre de usuario</Form.Label>
-                <Form.Control type="text" value={registerData.username} onChange={handleInputChange} name="username" placeholder="Username" />
-            </Form.Group>
+                <Form.Group className="mb-2" controlId="username">
+                    <Form.Label>Nombre de usuario</Form.Label>
+                    <Form.Control type="text" value={registerData.username} onChange={handleInputChange} name="username" placeholder="Username" />
+                </Form.Group>
 
-            <Form.Group className="mb-2" controlId="password">
-                <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" value={registerData.password} onChange={handleInputChange} name="password" placeholder="Contraseña" />
-            </Form.Group>
+                <Form.Group className="mb-2" controlId="password">
+                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Control type="password" value={registerData.password} onChange={handleInputChange} name="password" placeholder="Contraseña" />
+                </Form.Group>
 
-            <Form.Group className="mb-2" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={registerData.email} onChange={handleInputChange} name="email" placeholder="ejemplo@correo.com" />
-            </Form.Group>
+                <Form.Group className="mb-2" controlId="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" value={registerData.email} onChange={handleInputChange} name="email" placeholder="ejemplo@correo.com" />
+                </Form.Group>
 
-            <Form.Group className="mb-4" controlId="image">
-                <Form.Label>Avatar</Form.Label>
-                <Form.Control type="file" onChange={handleFileUpload} />
-            </Form.Group>
+                <Form.Group className="mb-4" controlId="image">
+                    <Form.Label>Avatar</Form.Label>
+                    <Form.Control type="file" onChange={handleFileUpload} />
+                </Form.Group>
 
-            {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
+                {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
 
-            <div className="d-grid mb-2">
-                <Button variant="DPmain" type="submit" size="lg" disabled={loadingImage}>Registrarme</Button>
-            </div>
+                <div className="d-grid mb-2">
+                    <Button variant="DPmain" type="submit" size="lg" disabled={loadingImage}>Registrarme</Button>
+                </div>
 
-        </Form>
+            </Form>
+            <Link to={'/iniciar-sesion'}>
+                <p className="btn-link">Ya tienes cuenta? Inicia sesión</p>
+            </Link>
+        </>
     )
 
 }

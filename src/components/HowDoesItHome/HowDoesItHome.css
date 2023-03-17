@@ -1,10 +1,10 @@
-.HowDoesItHome h2 {
-    text-align: left;
+.HowDoesItHome h6 {
+    font-size: 1.2rem;
 }
 
 .halfImg {
     object-fit: cover;
     width: 50vw;
-    height: 600px;
+    height: 50vh;
     left: 0;
 }

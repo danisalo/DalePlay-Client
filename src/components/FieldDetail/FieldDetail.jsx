@@ -8,9 +8,9 @@ import "primereact/resources/primereact.min.css"
 import "primeicons/primeicons.css"
 
 import Loader from '../Loader/Loader'
-import CreateEventForm from "../CreateEventForm/CreateEventForm"
-
 import eventsServices from "../../services/events.services"
+
+import CreateEventForm from "../CreateEventForm/CreateEventForm"
 
 import './FieldDetail.css'
 
@@ -84,7 +84,7 @@ const FieldDetail = ({ field, day, date, loadField }) => {
                     :
                     <>
                         <Container>
-                            <h5 className="mb-4 subtitle">Partida de {field.sport}</h5>
+                            <h5 className="mb-4 subtitle">Campo de {field.sport}</h5>
                             <Row>
                                 <Col>
                                     <SelectButton value={value} onChange={(e) => setSelectedHour(e.value)} optionLabel='name' options={items} multiple />

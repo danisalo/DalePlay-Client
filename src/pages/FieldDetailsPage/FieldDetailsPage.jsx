@@ -3,10 +3,13 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 
-import Loader from '../../components/Loader/Loader'
 import fieldsServices from "../../services/field.services"
-import WeekTab from "../../components/WeekTab/WeekTab"
 import clubsServices from "../../services/club.services"
+
+import Loader from '../../components/Loader/Loader'
+import GoBack from "../../components/GoBack/GoBack"
+import WeekTab from "../../components/WeekTab/WeekTab"
+
 
 
 const FieldListPage = () => {
@@ -53,8 +56,6 @@ const FieldListPage = () => {
 
     }
 
-    console.log('esta es la data que tengo aqui', clubData)
-
     const deleteField = () => {
 
         fieldsServices
@@ -73,20 +74,21 @@ const FieldListPage = () => {
                     <div className="pt-4">
                         <Container className="pt-4">
                             <div className="pt-4">
-                                <div className="pt-4">
+                                <GoBack />
+                                <div className="pt-2">
                                     <Row>
                                         <Col md={{ span: 9 }}>
-                                            <h2 className="text-left pb-4">Reservar partida</h2>
+                                            <h2 className="text-left pb-4">Crear Partida</h2>
                                         </Col>
 
                                         {userId == clubData.owner
                                             ?
                                             <Col md={{ span: 3 }}>
-                                                <Link to={`/cancha/editar/${field_id}/`} >
-                                                    <Button variant="DPoutline" size="sm">Editar Cancha</Button>
+                                                <Link to={`/campo/editar/${field_id}/`} >
+                                                    <Button variant="DPoutline" size="sm">Editar Campo</Button>
                                                 </Link>
                                                 <div className="mt-2">
-                                                    <Button onClick={() => deleteField()} variant="DPdanger" size="sm">Eliminar Cancha</Button>
+                                                    <Button onClick={() => deleteField()} variant="DPdanger" size="sm">Eliminar Campo</Button>
                                                 </div>
                                             </Col>
                                             :

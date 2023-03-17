@@ -15,7 +15,7 @@
     z-index: 1;
     color: #f8f9fa;
     text-align: center;
-    text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05), -1px -1px 0 rgba(0, 0, 0, 0.05), 1px -1px 0 rgba(0, 0, 0, 0.05), -1px 1px 0 rgba(0, 0, 0, 0.05);
 }
 
 .carousel-text h5 {

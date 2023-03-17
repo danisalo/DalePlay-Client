@@ -10,7 +10,7 @@ const FieldCard = ({ _id, sport, hourlyPrice, maxPlayers, imageUrl, timeSlots })
     const closes = timeSlots.length - 1
 
     return (
-        <Link to={`/cancha/${_id}`}>
+        <Link to={`/campo/${_id}`}>
             < Card className='FieldCard'>
                 <div className='imgMask'>
                     <Card.Img variant="top" className='imgOverflow' src={imageUrl} />
@@ -24,7 +24,7 @@ const FieldCard = ({ _id, sport, hourlyPrice, maxPlayers, imageUrl, timeSlots })
                     </div>
                     <div>
                         <div className="d-grid">
-                            <Button variant="DPmain">Ver Cancha</Button>
+                            <Button variant="DPmain">Ver Campo</Button>
                         </div>
                     </div>
                 </Card.Body>

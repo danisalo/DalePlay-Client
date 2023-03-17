@@ -35,7 +35,7 @@ const ProfileGames = ({ user_id }) => {
 
                     return (
                         <Col md={{ span: 3 }} key={elm._id}>
-                            <EventCardProfile _id={elm._id} name={elm.name} timeStart={elm.timeStart} playMinTotal={elm.playMinTotal} players={elm.players} field={elm.field} />
+                            <EventCardProfile _id={elm._id} name={elm.name} day={elm.day} timeStart={elm.timeStart} playMinTotal={elm.playMinTotal} players={elm.players} field={elm.field} />
                         </Col>
                     )
                 }) : <p>No tienes ninguna partida</p>

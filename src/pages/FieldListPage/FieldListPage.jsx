@@ -7,8 +7,6 @@ import Loader from "../../components/Loader/Loader"
 
 import FieldList from "../../components/FieldList/FieldList"
 
-import './FieldListPage.css'
-
 
 const FieldListPage = () => {
 
@@ -38,7 +36,7 @@ const FieldListPage = () => {
                         <Loader />
                         :
                         <>
-                            <h1>Listado de Canchas Deportivas</h1>
+                            <h1>Listado de Campos Deportivas</h1>
                             <hr />
                             <FieldList fields={fields} />
                         </>

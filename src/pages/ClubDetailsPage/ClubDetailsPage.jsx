@@ -1,16 +1,17 @@
 import { useEffect, useState, useContext } from "react"
 import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { Link, useParams, useNavigate } from 'react-router-dom'
+
 import { AuthContext } from "../../contexts/auth.context"
+
 import Loader from "../../components/Loader/Loader"
+import GoBack from "../../components/GoBack/GoBack"
 import CreateFieldForm from "../../components/CreateFieldForm/CreateFieldForm"
 import FieldsClub from "../../components/FieldsClub/FieldsClub"
 
 import clubServices from '../../services/club.services'
 
-
 import './ClubDetailsPage.css'
-import GoBack from "../../components/GoBack/GoBack"
 
 
 const ClubDetailsPage = () => {
@@ -64,10 +65,8 @@ const ClubDetailsPage = () => {
                     isLoading
                         ?
                         <Loader />
-
                         :
                         <div className="pt-4">
-
                             <GoBack />
                             <Row id="hero" className="mb-4">
                                 <Col md={{ span: 3 }}>
@@ -93,7 +92,7 @@ const ClubDetailsPage = () => {
                                                 < Row >
                                                     <Col xs={{ span: 4 }}>
                                                         <Link className="d-grid mb-2">
-                                                            <Button onClick={() => setShowModal(true)} variant="DPmain">Agregar Cancha</Button>
+                                                            <Button onClick={() => setShowModal(true)} variant="DPmain">Agregar Campo</Button>
                                                         </Link>
                                                     </Col>
                                                     <Col xs={{ span: 4 }}>
@@ -124,7 +123,7 @@ const ClubDetailsPage = () => {
                 }
             </Container >
             <Modal show={showModal} onHide={() => setShowModal(false)}>
-                <Modal.Header closeButton> <Modal.Title>Crear Cancha Deportiva</Modal.Title></Modal.Header>
+                <Modal.Header closeButton> <Modal.Title>Agrear Unidad Deportiva</Modal.Title></Modal.Header>
                 <Modal.Body>
                     <CreateFieldForm fireFinalActions={fireFinalActions} club_id={club_id} />
                 </Modal.Body>

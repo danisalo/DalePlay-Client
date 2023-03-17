@@ -1,13 +1,11 @@
 import { Container, Row, Col } from "react-bootstrap"
 import RegisterForm from "../../components/RegisterForm/RegsiterForm"
 
-import './RegisterPage.css'
-
 
 const RegisterPage = () => {
 
     return (
-        <div className="pt-4">
+        <div className="pt-4 mb-4">
             <Container className="text-left pt-4">
                 <Row className="pt-4">
                     <Col md={{ span: 8, offset: 2 }}>
