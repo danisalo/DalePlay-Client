@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/auth.context"
 import clubServices from '../../services/club.services'
 
 import Loader from "../../components/Loader/Loader"
+import GoBack from "../../components/GoBack/GoBack"
 import ClubList from "../../components/ClubList/ClubList"
 
 
@@ -45,6 +46,7 @@ const ClubListPage = () => {
     return (
         <div className="pt-5">
             <Container className="pt-5">
+                <goBack />
                 {
                     isLoading
                         ?
@@ -80,11 +82,6 @@ const ClubListPage = () => {
                                 :
                                 <></>
                             }
-
-                            <hr />
-                            <Link className="d-grid mb-2">
-                                <Button onClick={goBack}>Volver</Button>
-                            </Link>
                         </div>
 
                 }
