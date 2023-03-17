@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from "./../../contexts/auth.context"
 
 import { SelectButton } from 'primereact/selectbutton'
 import "primereact/resources/themes/lara-light-indigo/theme.css"
@@ -21,7 +22,7 @@ const FieldDetail = ({ field, day, date, loadField }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [value, setSelectedHour] = useState([])
     const [availableSlots, setAvailableSlots] = useState([])
-
+    const { user } = useContext(AuthContext)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -75,6 +76,13 @@ const FieldDetail = ({ field, day, date, loadField }) => {
         getAvailableSlots()
     }
 
+    const setLogin = () => {
+
+        navigate("/iniciar-sesion")
+    }
+
+
+
     return (
         <>
             {
@@ -83,15 +91,26 @@ const FieldDetail = ({ field, day, date, loadField }) => {
                     <Loader />
                     :
                     <>
+
                         <Container>
                             <h5 className="mb-4 subtitle">Campo de {field.sport}</h5>
                             <Row>
                                 <Col>
                                     <SelectButton value={value} onChange={(e) => setSelectedHour(e.value)} optionLabel='name' options={items} multiple />
                                 </Col>
-                                <div className="d-grid pt-4">
-                                    <Button onClick={() => setShowModal(true)} variant="DPmain" size='lg' disabled={!value || value.length === 0}>Crear partida</Button>
-                                </div>
+                                {
+                                    user
+                                        ?
+                                        <div className="d-grid pt-4">
+                                            <Button onClick={() => setShowModal(true)} variant="DPmain" size='lg' disabled={!value || value.length === 0}>Crear partida</Button>
+                                        </div>
+                                        :
+                                        <div className="d-grid pt-4">
+
+                                            <Button onClick={() => setLogin()} variant="DPmain" size='lg'>Iniciar Sesión</Button>
+
+                                        </div>
+                                }
                             </Row>
                         </Container >
 
